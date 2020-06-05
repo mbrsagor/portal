@@ -16,24 +16,33 @@ p {
     margin: 0;
 }
 
+$common_color: #ECF0F6;
+$font_color: #4b4c4c;
+$primary_color: #3C8DBC;
+$secondary_color: #3178a0;
+$border_color1: #377ca5;
+
+
 a {
     text-decoration: none;
     transition: .6s;
-    a:hover {
-    text-decoration: none;
-    color: #666666
 }
+
+ a:hover {
+    text-decoration: none;
+    color: $font_color;
 }
 
 
 link {
     text-decoration: none;
     transition: .6s;
-    link:hover {
+}
+
+link:hover {
         text-decoration: none;
         color: #666666
     }
-}
 
 table,
 tr,
@@ -46,12 +55,6 @@ td {
 .fix_height {
     height: 100vh !important;
 }
-
-$common_color: #ECF0F6;
-$font_color: #4b4c4c;
-$primary_color: #3C8DBC;
-$secondary_color: #3178a0;
-$border_color1: #377ca5;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
@@ -71,6 +74,9 @@ header {
     a {
         color: #ffffff !important;
         transition: .6s;
+    }
+    .navbar-text a {
+        font-size: 13px;;
     }
     .navbar-text a:hover{
         text-decoration: none;
@@ -107,6 +113,7 @@ header {
     nav ul li a{
         color: #ffffff;
         padding-left: 15px;
+        font-size: 14px;
     }
     nav ul li a:hover {
         text-decoration: none;
@@ -129,4 +136,14 @@ footer {
     width: 100%;
     left: 0;
     bottom: 0;
+}
+
+
+// Page
+.page_title a{
+    color: $font_color;
+}
+
+.page_title a:hover{
+    text-decoration: none;
 }

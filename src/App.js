@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Layout from '../src/pages/Layout';
+import Base from '../src/pages/Base';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Layout} />
+          <Route exact path="/" component={Base} />
           </Switch>
       </BrowserRouter>
     );

@@ -3,8 +3,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Header from '../components/common/Header';
 import Sidebar from '../components/common/Sidebar';
 import Footer from '../components/common/Footer';
+import BlankPage from '../components/../pages/BlankPage'
 
-class Layout extends Component {
+class Base extends Component {
     render() {
         return (
             <div>
@@ -16,7 +17,7 @@ class Layout extends Component {
                                 <Sidebar />
                             </Col>
                             <Col sm={10} className="p-0">
-
+                                <BlankPage />
                                 <div className="footer_child position-absolute">
                                     <Footer />
                                 </div>
@@ -29,4 +30,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default Base;
