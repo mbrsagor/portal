@@ -1,13 +1,16 @@
+import style from '../src/style/style.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from '../src/pages/Home';
+
+import Layout from '../src/pages/Layout';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Layout} />
           </Switch>
       </BrowserRouter>
     );

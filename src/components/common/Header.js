@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import style from '../../style/style.scss'
+import { Container, Row, Col } from 'react-bootstrap';
+import Nav from '../common/Nav';
 
 class Header extends Component {
     render() {
         return (
-            <div className="main_header">
-                <h2>hello I am here...</h2>
-            </div>
+            <header>
+                <Container fluid className="p-0">
+                    <Row>
+                        <Col>
+                            <Nav/>
+                        </Col>
+                    </Row>
+                </Container>
+            </header>
         );
     }
 }
 
 export default Header;
-
-

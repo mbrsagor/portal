@@ -1,4 +1,70 @@
-.main_header {
-    background: red;
-    height: 90px;
+/* Start normalize */
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    transition: .6s;
+    a:hover {
+    text-decoration: none;
+    color: #666666
+}
+}
+
+
+link {
+    text-decoration: none;
+    transition: .6s;
+    link:hover {
+        text-decoration: none;
+        color: #666666
+    }
+}
+
+table,
+tr,
+th,
+td {
+    padding: 0;
+    margin: 0
+}
+
+.fix_height {
+    height: 100vh !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* End normalize */
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    color: #4b4c4c;
+    font-weight: 300;
+}
+
+// Sidebar
+.main_sidebar {
+    height: 100%;
+}
+
+.footer_child {
+    width: 100%;
+    left: 0;
+    bottom: 0;
 }
