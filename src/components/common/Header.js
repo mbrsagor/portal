@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <Container fluid className="p-0">
+                <Container fluid>
                     <Row>
                         <Col>
                             <Nav/>

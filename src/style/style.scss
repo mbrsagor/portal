@@ -47,6 +47,12 @@ td {
     height: 100vh !important;
 }
 
+$common_color: #ECF0F6;
+$font_color: #4b4c4c;
+$primary_color: #3C8DBC;
+$secondary_color: #3178a0;
+$border_color1: #377ca5;
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /* End normalize */
@@ -54,15 +60,71 @@ td {
 body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1.2rem;
-    color: #4b4c4c;
+    color: $font_color;
     font-weight: 300;
+    background: $common_color;
+}
+
+// Header
+header {
+    background: $primary_color;
+    a {
+        color: #ffffff !important;
+        transition: .6s;
+    }
+    .navbar-text a:hover{
+        text-decoration: none;
+        padding-left: 2px;
+    }
+    .navbar-text svg {
+        margin-top: -3px;
+        width: 18px;
+        height: 18px;
+    }
 }
 
 // Sidebar
+.sidebar_bg_color {
+    background: $secondary_color;
+}
 .main_sidebar {
     height: 100%;
-}
+    nav {
+        border-top: 2px solid $border_color1;
+    }
+    nav ul li {
+        padding: 5px 0;
+        margin-bottom: 5px;
+    }
+    nav ul li svg {
+        width: 16px;
+        height: 16px;
+        margin-top: -3px;
+    }
+    nav ul li:hover {
+        background: $primary_color;
+    }
+    nav ul li a{
+        color: #ffffff;
+        padding-left: 15px;
+    }
+    nav ul li a:hover {
+        text-decoration: none;
+    }
 
+    nav ul .activeMenuItem {
+        background: $primary_color;
+    }
+}
+// Footer
+footer {
+    a{
+        color: $primary_color;
+    }
+    a:hover {
+            text-decoration: none;
+        }
+}
 .footer_child {
     width: 100%;
     left: 0;

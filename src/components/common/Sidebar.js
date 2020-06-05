@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import FeatherIcon from 'feather-icons-react';
 
 class Sidebar extends Component {
     render() {
         return (
-            <div className="main_sidebar ml-4">
-                <small>Navigation Bar</small>
-                <nav className="mt-3">
+            <div className="main_sidebar">
+                <nav>
                     <ul>
-                        <li><a href="">Line one</a></li>
-                        <li><a href="">Line one</a></li>
-                        <li><a href="">Line one</a></li>
-                        <li><a href="">Line one</a></li>
-                        <li><a href="">Line one</a></li>
+                        <li className="activeMenuItem"><a href="/"><FeatherIcon icon="home" /> Home Page</a></li>
+                        <li><a href="/"><FeatherIcon icon="alert-triangle" /> Total Test</a></li>
+                        <li><a href="/"><FeatherIcon icon="shield-off" /> Total Dies</a></li>
+                        <li><a href="/"><FeatherIcon icon="eye-off" /> Total Effected</a></li>
+                        <li><a href="/"><FeatherIcon icon="eye" /> Total Recovery</a></li>
                     </ul>
                 </nav>
             </div>

@@ -10,9 +10,9 @@ class Layout extends Component {
             <div>
                 <Header />
                 <div className="position-relative">
-                    <Container fluid className="p-0">
+                    <Container fluid>
                         <Row>
-                            <Col sm={2} className="p-0 bg-info text-light fix_height">
+                            <Col sm={2} className="p-0 text-light sidebar_bg_color fix_height">
                                 <Sidebar />
                             </Col>
                             <Col sm={10} className="p-0">
