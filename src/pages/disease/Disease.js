@@ -4,6 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import AddDisease from './modal/AddDisease';
 import DiseaseService from '../../services/DiseaseService';
 import Moment from 'react-moment';
+import Spinner from '../../components/common/Spinner';
 
 const disease_service = new DiseaseService();
 
@@ -17,7 +18,7 @@ class Disease extends Component {
     componentDidMount() {
         var self = this;
         disease_service.getDisease()
-            .then(function(result) {
+            .then(function (result) {
                 // console.log(result);
                 self.setState({ diseases: result });
             }).catch(error => {
@@ -26,6 +27,16 @@ class Disease extends Component {
     }
 
     render() {
+        // Loader 
+        if (this.state.diseases.length === 0) {
+            return (
+                <div className="text-center">
+                    <Spinner />
+                </div>
+            )
+        }
+        // /Loader 
+
         return (
             <>
                 <div className="page_title">
@@ -65,7 +76,7 @@ class Disease extends Component {
                                             <td>#{disease.id}</td>
                                             <td>{disease.disease_name}</td>
                                             <td>
-                                                <img src={disease.disease_image} alt={disease.disease_name} />
+                                                <img className="img-thumbnail image_in_table" src={disease.disease_image} alt={disease.disease_name} />
                                             </td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
                                             <td className="text-right">

@@ -7,4 +7,6 @@ export default class DiseaseService {
         const url = `${API_BASE_URL}/api/disease/`;
         return axios.get(url).then(response => response.data);
     }
+
+
 }
