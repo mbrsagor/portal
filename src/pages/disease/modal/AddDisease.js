@@ -9,7 +9,7 @@ class AddDisease extends Component {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h4 className="modal-title">Add new Disease</h4>
+                                <h4 className="modal-title custom_model_title">Add new Disease</h4>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -20,6 +20,12 @@ class AddDisease extends Component {
                                         <div className="form-group">
                                             <label htmlFor="name">Enter Disease Name</label>
                                             <input type="text" className="form-control" id="name" name="name" placeholder="Enter disease name" />
+                                        </div>
+                                        <div className="form-group">
+                                            <div className="custom-file">
+                                                <input type="file" className="custom-file-input" id="customFile"/>
+                                                <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

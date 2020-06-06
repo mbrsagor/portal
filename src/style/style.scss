@@ -66,6 +66,16 @@ input:focus {
     height: 100vh !important;
 }
 
+
+.modal-dialog {
+    margin: 20vh auto 0px auto
+}
+
+.custom_model_title {
+    font-size: 17px;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /* End normalize */
@@ -202,6 +212,7 @@ footer {
     padding: 3px;
     margin: 10px 0;
 }
+
 .data_table_list svg {
     width: 16px;
     height: 16px;

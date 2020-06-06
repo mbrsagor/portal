@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <div>
+          <>
             <Header />
             <div className="position-relative">
               <Container fluid>
@@ -41,7 +41,7 @@ class App extends Component {
                 </Row>
               </Container>
             </div>
-          </div>
+          </>
         </Switch>
       </BrowserRouter>
     );
