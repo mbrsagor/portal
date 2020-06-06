@@ -53,6 +53,15 @@ td {
     margin: 0
 }
 
+button:focus {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+input:focus {
+    box-shadow: none !important;
+}
+
 .fix_height {
     height: 100vh !important;
 }
@@ -185,4 +194,15 @@ footer {
 .help_category:hover {
     background: #fff;
     box-shadow: 0 6px 10px rgba(0,0,0,.1);
+}
+
+// Table
+.table_custom_class {
+    background: $help_bg;
+    padding: 3px;
+    margin: 10px 0;
+}
+.data_table_list svg {
+    width: 16px;
+    height: 16px;
 }

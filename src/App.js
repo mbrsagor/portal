@@ -1,6 +1,8 @@
 import '../src/style/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import 'jquery/src/jquery';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -10,6 +12,7 @@ import Sidebar from '../src/components/common/Sidebar'
 
 import Dashboard from '../src/pages/Dashbaord';
 import HelpLine from './pages/HelpLine';
+import Disease from './pages/disease/Disease';
 
 
 class App extends Component {
@@ -29,6 +32,7 @@ class App extends Component {
                     {/* start route form here */}
                     <Route exact path="/" component={Dashboard} />
                     <Route path="/help-line" component={HelpLine} />
+                    <Route path="/disease" component={Disease} />
                     {/* end route form here */}
                     <div className="footer_child position-absolute">
                       <Footer />
