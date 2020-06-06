@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
+import Help from '../contagion/Help';
 
-class BlankPage extends Component {
+class HelpLine extends Component {
     render() {
         return (
             <>
@@ -10,22 +11,26 @@ class BlankPage extends Component {
                     <div className="card">
                         <Row>
                             <Col md={8}>
-                                <div className="card-body">Basic card</div>
+                                <div className="card-body">Help LIne</div>
                             </Col>
                             <Col className="text-right" md={4}>
                                 <div className="card-body">
-                                    <a href="/">Homepage</a> <FeatherIcon icon="chevrons-right" /> Blank Page
+                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Help Line
                                 </div>
                             </Col>
                         </Row>
                     </div>
                 </div>
                 <div className="page-container m-2 p-2">
-                    <h2>Start Your code from here...</h2>
+                    <div className="help_by_category">
+                        <h3>Help by category</h3>
+                        <br />
+                        <Help/>
+                   </div>
                 </div>
             </>
         );
     }
 }
 
-export default BlankPage;
+export default HelpLine;

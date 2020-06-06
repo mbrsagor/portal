@@ -16,6 +16,7 @@ p {
     margin: 0;
 }
 
+$help_bg: #F7F7F7;
 $common_color: #ECF0F6;
 $font_color: #4b4c4c;
 $primary_color: #3C8DBC;
@@ -99,7 +100,7 @@ header {
         border-top: 2px solid $border_color1;
     }
     nav ul li {
-        padding: 5px 0;
+        padding: 10px 0;
         margin-bottom: 5px;
     }
     nav ul li svg {
@@ -146,4 +147,42 @@ footer {
 
 .page_title a:hover{
     text-decoration: none;
+}
+
+// Report list
+.report_list ul li span{
+    float: right;
+    padding: 1px 6px;
+    border-radius: 6px;
+}
+
+// Help Line
+.help_by_category h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.help_category {
+    background: $help_bg;
+    min-height: 100px;
+    transition: .6s;
+    svg {
+        color: $primary_color;
+        margin-top: 40px;
+    }
+    h5 {
+        margin: 0;
+        font-size: 15px;
+        padding: 5px 0;
+    }
+    p {
+        padding-bottom: 40px;
+        font-size: 13px;
+    }
+}
+
+.help_category:hover {
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.1);
 }
