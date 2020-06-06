@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FeatherIcon from 'feather-icons-react';
+import { NavLink } from 'react-router-dom';
 
 class Sidebar extends Component {
     render() {
@@ -7,12 +8,13 @@ class Sidebar extends Component {
             <div className="main_sidebar">
                 <nav>
                     <ul>
-                        <li className="activeMenuItem"><a href="/"><FeatherIcon icon="home" /> Home Page</a></li>
-                        <li><a href="/help-line"><FeatherIcon icon="help-circle" /> Help Line</a></li>
-                        <li><a href="/"><FeatherIcon icon="alert-triangle" /> Total Test</a></li>
-                        <li><a href="/"><FeatherIcon icon="shield-off" /> Total Dies</a></li>
-                        <li><a href="/"><FeatherIcon icon="eye-off" /> Total Effected</a></li>
-                        <li><a href="/"><FeatherIcon icon="eye" /> Total Recovery</a></li>
+                        <li className="activeMenuItem"><NavLink to="/"><FeatherIcon icon="home" /> Home Page</NavLink></li>
+                        <li><NavLink to="/disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
+                        <li><NavLink to="/"><FeatherIcon icon="alert-triangle" /> Total Test</NavLink></li>
+                        <li><NavLink to="/"><FeatherIcon icon="shield-off" /> Total Dies</NavLink></li>
+                        <li><NavLink to="/"><FeatherIcon icon="eye-off" /> Total Effected</NavLink></li>
+                        <li><NavLink to="/"><FeatherIcon icon="eye" /> Total Recovery</NavLink></li>
+                        <li><NavLink to="/help-line"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>
                 </nav>
             </div>
