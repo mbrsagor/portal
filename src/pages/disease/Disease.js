@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import AddDisease from './modal/AddDisease';
 import DiseaseService from '../../services/DiseaseService';
+import Moment from 'react-moment';
 
 const disease_service = new DiseaseService();
 
@@ -17,7 +18,7 @@ class Disease extends Component {
         var self = this;
         disease_service.getDisease()
             .then(function(result) {
-                console.log(result);
+                // console.log(result);
                 self.setState({ diseases: result });
             }).catch(error => {
                 console.log('Error ' + error.response);
@@ -54,23 +55,25 @@ class Disease extends Component {
                                         <th>ID</th>
                                         <th>Disease Name</th>
                                         <th>Disease Flag</th>
+                                        <th>Created Date</th>
                                         <th className="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {this.state.diseases.map(disease => (
+                                    {this.state.diseases.map(disease => (
                                         <tr key={disease.id}>
                                             <td>#{disease.id}</td>
-                                            <td>{disease.name}</td>
+                                            <td>{disease.disease_name}</td>
                                             <td>
-                                                <img src={disease.disease_image} alt="{disease.disease_name}" />
+                                                <img src={disease.disease_image} alt={disease.disease_name} />
                                             </td>
+                                            <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
                                             <td className="text-right">
                                                 <button className="btn btn-info btn-sm"><FeatherIcon icon="edit-3" /></button>
                                                 <button className="btn btn-danger btn-sm ml-2"><FeatherIcon icon="trash" /></button>
                                             </td>
                                         </tr>
-                                    ))} */}
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
