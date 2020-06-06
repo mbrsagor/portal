@@ -1,4 +1,4 @@
-import style from '../src/style/style.scss';
+import '../src/style/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
