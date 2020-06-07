@@ -22,7 +22,7 @@ class Disease extends Component {
                 // console.log(result);
                 self.setState({ diseases: result });
             }).catch(error => {
-                console.log('Error ',  error);
+                console.log('Error ', error);
             });
     }
 
@@ -55,9 +55,9 @@ class Disease extends Component {
                 </div>
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
+                        {/* <AddDisease /> */}
                         <div className="text-right">
                             <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mb-3"><FeatherIcon icon="plus" /></button>
-                            <AddDisease />
                         </div>
                         <div className="shadow table_custom_class">
                             <table className="table">

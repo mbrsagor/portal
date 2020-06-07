@@ -10,7 +10,8 @@ import Header from '../src/components/common/Header'
 import Footer from '../src/components/common/Footer'
 import Sidebar from '../src/components/common/Sidebar'
 
-import Dashboard from '../src/pages/Dashbaord';
+// import Error404 from './pages/Error404';
+import Dashboard from './pages/dashboard/Dashbaord';
 import HelpLine from './pages/help/HelpLine';
 import Disease from './pages/disease/Disease';
 
@@ -33,6 +34,7 @@ class App extends Component {
                     <Route exact path="/" component={Dashboard} />
                     <Route path="/help-line" component={HelpLine} />
                     <Route path="/disease" component={Disease} />
+                    {/* <Route component={Error404} /> */}
                     {/* end route form here */}
                     <div className="footer_child position-absolute">
                       <Footer />

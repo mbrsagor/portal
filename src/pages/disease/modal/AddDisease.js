@@ -11,14 +11,14 @@ class AddDisease extends Component {
     }
 
     componentDidMount() {
-        // const { match: { params } } = this.props;
-        // if (params) {
-        //     disease_service.getDiseaseById(params.id)
-        //         .then((disease) => {
-        //             this.refs.disease_name.value = disease.disease_name;
-        //             this.refs.disease_image.value = disease.disease_image;
-        //         })
-        // };
+        const { match: { _params } } = this.props;
+        if (_params) {
+            disease_service.getDiseaseById(_params.id)
+                .then((disease) => {
+                    this.refs.disease_name.value = disease.disease_name;
+                    this.refs.disease_image.value = disease.disease_image;
+                })
+        };
     };
 
     // Create diseage handeler
@@ -52,7 +52,7 @@ class AddDisease extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
-            this.handleCreate();
+            this.handelerCreate();
         }
         event.preventDefault();
     }

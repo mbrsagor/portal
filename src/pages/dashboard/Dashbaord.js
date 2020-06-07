@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import ReportList from '../contagion/ReportList';
+import ReportList from '../../contagion/ReportList';
 
 class Dashboard extends Component {
     render() {

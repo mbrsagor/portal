@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import Help from '../../contagion/Help';
-import AddHelp from './modal/AddHelp';
+// import AddHelp from './modal/AddHelp';
 
 class HelpLine extends Component {
     render() {
@@ -23,8 +23,8 @@ class HelpLine extends Component {
                     </div>
                 </div>
                 <div className="text-right">
+                    {/* <AddHelp /> */}
                     <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mr-2 mt-2"><FeatherIcon icon="plus" /></button>
-                    <AddHelp />
                     <hr />
                 </div>
                 <div className="page-container m-2 p-2">
