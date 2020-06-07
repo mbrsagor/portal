@@ -11,14 +11,14 @@ class AddDisease extends Component {
     }
 
     componentDidMount() {
-        const { match: { params } } = this.props;
-        if (params) {
-            disease_service.getDiseaseById(params.pk)
-                .then((disease) => {
-                    this.refs.disease_name.value = disease.disease_name;
-                    this.refs.disease_image.value = disease.disease_image;
-                })
-        };
+        // const { match: { params } } = this.props;
+        // if (params) {
+        //     disease_service.getDiseaseById(params.id)
+        //         .then((disease) => {
+        //             this.refs.disease_name.value = disease.disease_name;
+        //             this.refs.disease_image.value = disease.disease_image;
+        //         })
+        // };
     };
 
     // Create diseage handeler
@@ -61,7 +61,7 @@ class AddDisease extends Component {
     render() {
         return (
             <>
-                <div className="modal fade" id="open-modal">
+                <div className="modal fade mt-5" id="open-modal">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">

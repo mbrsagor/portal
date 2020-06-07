@@ -11,7 +11,7 @@ import Footer from '../src/components/common/Footer'
 import Sidebar from '../src/components/common/Sidebar'
 
 import Dashboard from '../src/pages/Dashbaord';
-import HelpLine from './pages/HelpLine';
+import HelpLine from './pages/help/HelpLine';
 import Disease from './pages/disease/Disease';
 
 
