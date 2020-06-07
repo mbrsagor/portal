@@ -3,6 +3,7 @@
 You locally run project follow the command:
 
 #### First setp:
+Open your terminal:
 Clone the project from the git repository https://github.com/mbrsagor/covid19-frontend.git 
 ```
 git clone https://github.com/mbrsagor/covid19-frontend.git 
