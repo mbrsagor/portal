@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import Help from '../../contagion/Help';
-// import AddHelp from './modal/AddHelp';
+import { NavLink } from 'react-router-dom';
+import HelpService from '../../services/HelpService';
+
+const help_service = new HelpService();
 
 class HelpLine extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { helps: [] }
+    }
+
+    componentDidMount() {
+        var self = this;
+        help_service.listHelp()
+            .then(function (result) {
+                self.setState({ helps: result })
+            }).catch(error => {
+                console.log("Error: ", error);
+            });
+    }
+
     render() {
         return (
             <>
@@ -16,14 +34,13 @@ class HelpLine extends Component {
                             </Col>
                             <Col className="text-right" md={4}>
                                 <div className="card-body">
-                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Help Line
+                                    <NavLink to="/">Dashboard</NavLink> <FeatherIcon icon="chevrons-right" /> Help Line
                                 </div>
                             </Col>
                         </Row>
                     </div>
                 </div>
                 <div className="text-right">
-                    {/* <AddHelp /> */}
                     <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mr-2 mt-2"><FeatherIcon icon="plus" /></button>
                     <hr />
                 </div>
@@ -31,7 +48,17 @@ class HelpLine extends Component {
                     <div className="help_by_category">
                         <h3>Help by category</h3>
                         <br />
-                        <Help />
+                        <Row>
+                            {this.state.helps.map(help =>
+                                <Col key={help.id} className="pl-1 pr-1" md={2} sm={3} xs={3}>
+                                    <div className="text-center help_category">
+                                        <FeatherIcon icon="phone-call" />
+                                        <h5 className="help_name">{help.title}</h5>
+                                        <p>{help.help_text}</p>
+                                    </div>
+                                </Col>
+                            )}
+                        </Row>
                     </div>
                 </div>
             </>

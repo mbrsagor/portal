@@ -63,7 +63,7 @@ input:focus {
 }
 
 .fix_height {
-    height: 100vh !important;
+    min-height: 100vh !important;
 }
 
 

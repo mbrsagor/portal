@@ -14,7 +14,7 @@ class Sidebar extends Component {
                         <li><NavLink to="/"><FeatherIcon icon="shield-off" /> Total Dies</NavLink></li>
                         <li><NavLink to="/"><FeatherIcon icon="eye-off" /> Total Effected</NavLink></li>
                         <li><NavLink to="/"><FeatherIcon icon="eye" /> Total Recovery</NavLink></li>
-                        <li><NavLink to="/help-line"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
+                        <li><NavLink to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>
                 </nav>
             </div>

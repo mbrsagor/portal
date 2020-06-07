@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import AddDisease from './modal/AddDisease';
 import DiseaseService from '../../services/DiseaseService';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
