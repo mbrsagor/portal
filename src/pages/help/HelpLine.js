@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import { NavLink } from 'react-router-dom';
 import HelpService from '../../services/HelpService';
+import Spinner from '../../components/common/Spinner';
 
 const help_service = new HelpService();
 
@@ -24,6 +25,17 @@ class HelpLine extends Component {
     }
 
     render() {
+
+        // Loader 
+        if (this.state.helps.length === 0) {
+            return (
+                <div className="text-center">
+                    <Spinner />
+                </div>
+            )
+        }
+        // /Loader
+
         return (
             <>
                 <div className="page_title">
