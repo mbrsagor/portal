@@ -1,6 +1,62 @@
 import React, { Component } from 'react';
+import DiseaseService from '../../../services/DiseaseService';
+
+const disease_service = new DiseaseService();
 
 class AddDisease extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        const { match: { params } } = this.props;
+        if (params) {
+            disease_service.getDiseaseById(params.pk)
+                .then((disease) => {
+                    this.refs.disease_name.value = disease.disease_name;
+                    this.refs.disease_image.value = disease.disease_image;
+                })
+        };
+    };
+
+    // Create diseage handeler
+    handelerCreate() {
+        disease_service.createDisease({
+            'disease_name': this.refs.disease_name.value,
+            'disease_image': this.refs.disease_image.value,
+        }).then((result => {
+            alert('Disages has been created.')
+        })).catch(() => {
+            alert('Something went wrong while creating the disages.');
+        })
+    }
+
+    // Update diseage handeler
+    handleUpdate(id) {
+        disease_service.updateDisease({
+            'id': id,
+            'disease_name': this.refs.disease_name.value,
+            'disease_image': this.refs.disease_image.value,
+        }).then((result) => {
+            alert('Disages has been updated.')
+        }).catch(() => {
+            alert('Something went wrong while updated the disages.');
+        })
+    }
+
+    // Handeler submit
+    handleSubmit(event) {
+        const { match: { params } } = this.props;
+        if (params && params.id) {
+            this.handleUpdate(params.id);
+        } else {
+            this.handleCreate();
+        }
+        event.preventDefault();
+    }
+
 
     render() {
         return (
@@ -14,24 +70,35 @@ class AddDisease extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="modal-body text-left">
                                     <div className="card-body">
                                         <div className="form-group">
-                                            <label htmlFor="name">Enter Disease Name</label>
-                                            <input type="text" className="form-control" id="name" name="name" placeholder="Enter disease name" />
+                                            <label htmlFor="disease_name">Enter Disease Name</label>
+                                            <input type="text"
+                                                className="form-control"
+                                                id="disease_name"
+                                                ref="disease_name"
+                                                name="disease_name"
+                                                placeholder="Enter disease name"
+                                            />
                                         </div>
                                         <div className="form-group">
                                             <div className="custom-file">
-                                                <input type="file" className="custom-file-input" id="customFile"/>
                                                 <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
+                                                <input type="file"
+                                                    name="disease_image"
+                                                    ref="disease_image"
+                                                    className="custom-file-input"
+                                                    id="customFile"
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="modal-footer text-right">
-                                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="btn btn-success">Save</button>
+                                    <button type="button" className="btn btn-danger  btn-sm" data-dismiss="modal">Close</button>
+                                    <button type="submit" className="btn btn-success btn-sm">Save</button>
                                 </div>
                             </form>
                         </div>

@@ -22,7 +22,7 @@ class Disease extends Component {
                 // console.log(result);
                 self.setState({ diseases: result });
             }).catch(error => {
-                console.log('Error ' + error.response);
+                console.log('Error ',  error);
             });
     }
 
