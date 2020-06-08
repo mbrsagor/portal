@@ -4,14 +4,16 @@ import FeatherIcon from 'feather-icons-react';
 import HospitalService from '../../services/HospitalService';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
+import swal from "sweetalert";
 
 const hospital_service = new HospitalService();
 
 class Hospital extends Component {
-    
+
     constructor(props) {
         super(props);
-        this.state = {hospitals: []}
+        this.state = { hospitals: [] };
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -23,10 +25,39 @@ class Hospital extends Component {
                 });
             }).catch(error => {
                 console.log("Error: ", error);
-            })
-    }
+            });
+    };
 
-    render() { 
+    // Delete hospital
+    handleDelete(e, id) {
+
+
+        swal({
+            title: "Are you sure?",
+            text: "Hospital will be deleted permanently!",
+            icon: "warning",
+            buttons: ["No", "Yes"],
+            dangerMode: true
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    swal("Deleted!", "Your imaginary file has been deleted!", "success");
+                    var self = this;
+                    var _data = null;
+                    hospital_service.deletehospital({ id: id })
+                        .then(() => {
+                            _data = self.state.hospitals.filter(function (obj) {
+                                return obj.id !== id;
+                            });
+                            self.setState({
+                                customers: _data
+                            })
+                        });
+                }
+            });
+    };
+
+    render() {
 
         // Loader 
         if (this.state.hospitals.length === 0) {
@@ -79,8 +110,17 @@ class Hospital extends Component {
                                             <td>{hospital.location}</td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment></td>
                                             <td className="text-right">
-                                                <button className="btn btn-info btn-sm"><FeatherIcon icon="edit-3" /></button>
-                                                <button className="btn btn-danger btn-sm ml-2"><FeatherIcon icon="trash" /></button>
+                                                <button
+                                                    data-toggle="modal" data-target="#open-modal"
+                                                    onClick={e => (hospital.id)}
+                                                    className="btn btn-info btn-sm">
+                                                    <FeatherIcon icon="edit-3" />
+                                                </button>
+                                                <button
+                                                    onClick={e => this.handleDelete(e, hospital.id)}
+                                                    className="btn btn-danger btn-sm ml-2">
+                                                    <FeatherIcon icon="trash" />
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
@@ -93,5 +133,5 @@ class Hospital extends Component {
         );
     }
 }
- 
+
 export default Hospital;

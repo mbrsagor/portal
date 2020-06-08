@@ -81,6 +81,10 @@ input:focus {
 
 }
 
+.swal-footer {
+    text-align: center !important;
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
@@ -201,6 +205,7 @@ footer {
     width: 100%;
     left: 0;
     bottom: 0;
+    box-shadow: 0 -5px 5px -5px #333;
 }
 
 

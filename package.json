@@ -20,7 +20,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-toasts": "^3.0.6",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
