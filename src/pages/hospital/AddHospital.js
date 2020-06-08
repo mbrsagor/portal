@@ -12,27 +12,20 @@ class AddHospital extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        const { match: { params } } = this.props;
-        if (params) {
-            hospital_service.getHospital(params.id)
-                .then((hospital => {
-                    this.refs.hospital_name.value = hospital.hospital_name;
-                    this.refs.location.value = hospital.location;
-                }))
-        }
-    }
-
     // create hospital handler
     handleCreate() {
-        hospital_service.createHospital({
-            'hospital_name': this.refs.hospital_name.value,
-            'location': this.refs.location.value,
-        }).then((result => {
-            ToastsStore.success('successfully created the hospital!');
-        })).catch((error => {
-            ToastsStore.warning('Something went wrong while creating hospital.', error);
-        }))
+        if (this.refs.hospital_name.value.length !== 0 && this.refs.location.value.length !== 0) {
+            hospital_service.createHospital({
+                'hospital_name': this.refs.hospital_name.value,
+                'location': this.refs.location.value,
+            }).then((result => {
+                ToastsStore.success('successfully created the hospital!');
+            })).catch((error => {
+                ToastsStore.warning('Something went wrong while creating hospital.??', error);
+            }))
+        } else {
+            ToastsStore.error('Sorry! Please fill up the field');
+        }
     }
 
     // update hospital handler
@@ -42,9 +35,9 @@ class AddHospital extends Component {
             'hospital_name': this.refs.hospital_name.value,
             'location': this.refs.location.value,
         }).then((result => {
-            alert("hospital updated")
+            ToastsStore.success('successfully update the hospital name!');
         })).catch((error => {
-            alert("Error: ", error)
+            ToastsStore.warning('Something went wrong while updateing the hospital name.??', error);
         }))
     }
 
@@ -63,7 +56,7 @@ class AddHospital extends Component {
     render() {
         return (
             <>
-            
+
                 <Hospital />
 
                 <div className="modal fade mt-5" id="open-modal">

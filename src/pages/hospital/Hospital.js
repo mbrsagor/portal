@@ -30,8 +30,6 @@ class Hospital extends Component {
 
     // Delete hospital
     handleDelete(e, id) {
-
-
         swal({
             title: "Are you sure?",
             text: "Hospital will be deleted permanently!",
@@ -41,7 +39,6 @@ class Hospital extends Component {
         })
             .then(willDelete => {
                 if (willDelete) {
-                    swal("Deleted!", "Your imaginary file has been deleted!", "success");
                     var self = this;
                     var _data = null;
                     hospital_service.deletehospital({ id: id })
@@ -87,7 +84,6 @@ class Hospital extends Component {
                 </div>
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
-                        {/* <AddDisease /> */}
                         <div className="text-right">
                             <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mb-3"><FeatherIcon icon="plus" /></button>
                         </div>
