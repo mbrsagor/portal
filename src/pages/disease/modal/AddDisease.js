@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DiseaseService from '../../../services/DiseaseService';
+import FeatherIcon from 'feather-icons-react';
 
 const disease_service = new DiseaseService();
 
@@ -14,10 +15,10 @@ class AddDisease extends Component {
         const { match: { _params } } = this.props;
         if (_params) {
             disease_service.getDiseaseById(_params.id)
-                .then((disease) => {
+                .then((disease => {
                     this.refs.disease_name.value = disease.disease_name;
                     this.refs.disease_image.value = disease.disease_image;
-                })
+                }))
         };
     };
 
@@ -55,12 +56,16 @@ class AddDisease extends Component {
             this.handelerCreate();
         }
         event.preventDefault();
+        event.target.reset()
     }
 
 
     render() {
         return (
             <>
+                <div className="text-right">
+                    <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mb-3"><FeatherIcon icon="plus" /></button>
+                </div>
                 <div className="modal fade mt-5" id="open-modal">
                     <div className="modal-dialog">
                         <div className="modal-content">

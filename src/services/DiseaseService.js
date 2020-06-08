@@ -8,6 +8,16 @@ export default class DiseaseService {
         return axios.get(url).then(response => response.data);
     }
 
+    getDiseaseById(id) {
+        const url = `${API_BASE_URL}/api/disease/${id}/`;
+        return axios.get(url).then(response => response.data);
+    }
+
+    deleteDisease(disease) {
+        const url = `${API_BASE_URL}/api/help/${disease.id}/`;
+        return axios.delete(url);
+    }
+
     createDisease(disease) {
         const url = `${API_BASE_URL}/api/disease`;
         return axios.post(url, disease);
@@ -18,8 +28,4 @@ export default class DiseaseService {
         return axios.put(url, disease);
     }
 
-    getDiseaseById(id) {
-        const url = `${API_BASE_URL}/api/disease/${id}/`;
-        return axios.get(url).then(response => response.data);
-    }
 }
