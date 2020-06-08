@@ -18,7 +18,7 @@ class AddHelp extends Component {
             help_service.getHelp(params.id)
                 .then((help => {
                     this.refs.title.value = help.title;
-                    this.refs.help_text.value = help.full_name;
+                    this.refs.help_text.value = help.help_text;
                 }))
         }
     }
