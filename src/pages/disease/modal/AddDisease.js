@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DiseaseService from '../../../services/DiseaseService';
-import FeatherIcon from 'feather-icons-react';
+import Disages from '../Disease';
 
 const disease_service = new DiseaseService();
 
@@ -28,9 +28,9 @@ class AddDisease extends Component {
             'disease_name': this.refs.disease_name.value,
             'disease_image': this.refs.disease_image.value,
         }).then((result => {
-            alert('Disages has been created.')
-        })).catch(() => {
-            alert('Something went wrong while creating the disages.');
+            alert(result)
+        })).catch((error) => {
+            alert(error);
         })
     }
 
@@ -63,9 +63,7 @@ class AddDisease extends Component {
     render() {
         return (
             <>
-                <div className="text-right">
-                    <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mb-3"><FeatherIcon icon="plus" /></button>
-                </div>
+                <Disages />
                 <div className="modal fade mt-5" id="open-modal">
                     <div className="modal-dialog">
                         <div className="modal-content">

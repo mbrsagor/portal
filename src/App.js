@@ -12,7 +12,6 @@ import Sidebar from '../src/components/common/Sidebar'
 
 // import Error404 from './pages/Error404';
 import Dashboard from './pages/dashboard/Dashbaord';
-import Disease from './pages/disease/Disease';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
 
@@ -34,7 +33,6 @@ class App extends Component {
                     {/* start route form here */}
                     <Route exact path="/" component={Dashboard} />
                     <Route path="/help" component={AddHelp} />
-                    <Route path="/disease" component={Disease} />
                     <Route path="/add-disease" component={AddDisease} />
                     {/* <Route component={Error404} /> */}
                     {/* end route form here */}
