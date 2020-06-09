@@ -17,6 +17,18 @@ class AddHospital extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // componentDidMount() {
+    //     const { match: { params } } = this.props;
+    //     if (params.id) {
+    //         hospital_service.getHospital(params.id)
+    //             .then((hospital) => {
+    //                 this.refs.hospital_name.value = hospital.hospital_name;
+    //                 this.refs.location.value = hospital.location;
+    //             })
+    //     }
+
+    // }
+
     // create hospital handler
     handleCreate() {
         hospital_service.createHospital({
@@ -42,7 +54,7 @@ class AddHospital extends Component {
         }))
     }
 
-    // 
+    // Close modal after sumited
     close_modal_box() {
         $('#open-modal').modal('hide');
     }

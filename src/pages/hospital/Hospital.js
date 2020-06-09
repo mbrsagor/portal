@@ -28,6 +28,11 @@ class Hospital extends Component {
             });
     };
 
+    // Open the current udpate modal
+    handleUpdate(e, id) {
+        alert(id);
+    }
+
     // Delete hospital
     handleDelete(e, id) {
         swal({
@@ -85,7 +90,12 @@ class Hospital extends Component {
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         <div className="text-right">
-                            <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mb-3"><FeatherIcon icon="plus" /></button>
+                            <button
+                                data-toggle="modal"
+                                data-target="#open-modal"
+                                className="btn btn-info btn-sm mb-3">
+                                <FeatherIcon icon="plus" />
+                            </button>
                         </div>
                         <div className="shadow table_custom_class">
                             <table className="table">
@@ -104,15 +114,19 @@ class Hospital extends Component {
                                             <td>#{hospital.id}</td>
                                             <td>{hospital.hospital_name}</td>
                                             <td>{hospital.location}</td>
-                                            <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment></td>
+                                            <td>
+                                                <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
+                                            </td>
                                             <td className="text-right">
                                                 <button
+                                                    title="Update the hospital."
                                                     data-toggle="modal" data-target="#open-modal"
-                                                    onClick={e => (hospital.id)}
+                                                    onClick={e => this.handleUpdate(e, hospital.id)}
                                                     className="btn btn-info btn-sm">
                                                     <FeatherIcon icon="edit-3" />
                                                 </button>
                                                 <button
+                                                    title="Delete the hospital."
                                                     onClick={e => this.handleDelete(e, hospital.id)}
                                                     className="btn btn-danger btn-sm ml-2">
                                                     <FeatherIcon icon="trash" />
