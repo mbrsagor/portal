@@ -9,23 +9,23 @@ class AddHospital extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            hospital_name: '',
+            location: '',
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // create hospital handler
     handleCreate() {
-        if (this.refs.hospital_name.value.length !== 0 && this.refs.location.value.length !== 0) {
-            hospital_service.createHospital({
-                'hospital_name': this.refs.hospital_name.value,
-                'location': this.refs.location.value,
-            }).then((result => {
-                ToastsStore.success('successfully created the hospital!');
-            })).catch((error => {
-                ToastsStore.warning('Something went wrong while creating hospital.??', error);
-            }))
-        } else {
-            ToastsStore.error('Sorry! Please fill up the field');
-        }
+        hospital_service.createHospital({
+            'hospital_name': this.refs.hospital_name.value,
+            'location': this.refs.location.value,
+        }).then((result => {
+            ToastsStore.success('successfully created the hospital!');
+        })).catch((error => {
+            ToastsStore.warning('Something went wrong while creating hospital.??', error);
+        }))
     }
 
     // update hospital handler
@@ -47,7 +47,18 @@ class AddHospital extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
-            this.handleCreate()
+            if (this.refs.hospital_name.value.length === 0) {
+                this.setState({
+                    hospital_name: "Fill up the hospital name",
+                });
+            } else if (this.refs.location.value.length === 0) {
+                this.setState({
+                    location: "Fill up the hospital location."
+                })
+            }
+            else {
+                this.handleCreate()
+            }
         }
         event.preventDefault();
         event.target.reset();
@@ -78,8 +89,9 @@ class AddHospital extends Component {
                                                 id="hospital_name"
                                                 ref="hospital_name"
                                                 name="hospital_name"
-                                                placeholder="Enter disease name"
+                                                placeholder="Enter hospital name"
                                             />
+                                            <small className="text-danger">{this.state.hospital_name}</small>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="location">Enter Hospital Location</label>
@@ -90,6 +102,7 @@ class AddHospital extends Component {
                                                 name="location"
                                                 placeholder="Enter hospital location"
                                             />
+                                            <small className="text-danger">{this.state.location}</small>
                                         </div>
                                     </div>
                                 </div>
