@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HospitalService from '../../services/HospitalService';
 import Hospital from './Hospital';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
+import $ from 'jquery';
 
 const hospital_service = new HospitalService()
 
@@ -41,6 +42,11 @@ class AddHospital extends Component {
         }))
     }
 
+    // 
+    close_modal_box() {
+        $('#open-modal').modal('hide');
+    }
+
     // Submit hander
     handleSubmit(event) {
         const { match: { params } } = this.props;
@@ -57,7 +63,8 @@ class AddHospital extends Component {
                 })
             }
             else {
-                this.handleCreate()
+                this.close_modal_box();
+                this.handleCreate();
             }
         }
         event.preventDefault();
