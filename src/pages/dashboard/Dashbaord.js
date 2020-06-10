@@ -9,7 +9,7 @@ class Dashboard extends Component {
             <>
                 <div className="page_title">
                     <div className="card">
-                        <Row>
+                        <Row className="m-0">
                             <Col md={8}>
                                 <div className="card-body">Dashboard</div>
                             </Col>

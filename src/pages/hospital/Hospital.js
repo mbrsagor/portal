@@ -12,7 +12,11 @@ class Hospital extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { hospitals: [] };
+        this.state = {
+            hospitals: [],
+            nextPageURL: ''
+        };
+        this.nextPage = this.nextPage.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
 
@@ -21,7 +25,8 @@ class Hospital extends Component {
         hospital_service.hospitalList()
             .then(function (result) {
                 self.setState({
-                    hospitals: result
+                    hospitals: result.results,
+                    nextPageURL: result.nextlink
                 });
             }).catch(error => {
                 console.log("Error: ", error);
@@ -31,6 +36,20 @@ class Hospital extends Component {
     // Open the current udpate modal
     handleUpdate(e, id) {
         alert(id);
+        // 
+    }
+
+    // Pagination method
+    nextPage() {
+        var self = this;
+        hospital_service.getHospitalsByURL(this.state.nextPageURL)
+            .then((response) => {
+                self.setState({
+                    hospitals: response.results.data,
+                    nextPageURL: response.nextlink
+                })
+                alert(response)
+            });
     }
 
     // Delete hospital
@@ -75,7 +94,7 @@ class Hospital extends Component {
             <>
                 <div className="page_title">
                     <div className="card">
-                        <Row>
+                        <Row className="m-0">
                             <Col md={8}>
                                 <div className="card-body">Hospital Page</div>
                             </Col>
@@ -136,6 +155,9 @@ class Hospital extends Component {
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+                        <div className="text-right">
+                            <button className="btn btn-info btn-sm" onClick={this.nextPage}>Next</button>
                         </div>
                     </div>
                 </div>

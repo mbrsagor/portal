@@ -12,6 +12,10 @@ export default class HospitalService {
         const url = `${API_BASE_URL}/api/hospital/${id}/`;
         return axios.get(url).then(response => response.data);
     }
+    getHospitalsByURL(page) {
+        const url = `${API_BASE_URL}${page}`;
+        return axios.get(url).then(response => response.data);
+    }
     deletehospital(hospital) {
         const url = `${API_BASE_URL}/api/hospital/${hospital.id}/`;
         return axios.delete(url);
