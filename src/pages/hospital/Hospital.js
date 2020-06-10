@@ -14,7 +14,10 @@ class Hospital extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hospitals: []
+            hospitals: [],
+            total: null,
+            per_page: null,
+            current_page: null
         };
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -32,9 +35,11 @@ class Hospital extends Component {
     };
 
     // Open the current udpate modal
-    handleUpdate(e, id) {
-        alert(id);
-        // 
+    UpdateHospital(hospital) {
+        // this.setState({
+        //     hospitals: hospital
+        // })
+        alert(hospital);
     }
 
     // Delete hospital
@@ -125,7 +130,7 @@ class Hospital extends Component {
                                                 <button
                                                     title="Update the hospital."
                                                     data-toggle="modal" data-target="#open-modal"
-                                                    onClick={e => this.handleUpdate(e, hospital.id)}
+                                                    onClick={() => this.UpdateHospital(hospital)}
                                                     className="btn btn-info btn-sm">
                                                     <FeatherIcon icon="edit-3" />
                                                 </button>
@@ -140,6 +145,15 @@ class Hospital extends Component {
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+                        <div className="pull-right">
+                            <ul className="pagination">
+                                <li className="page-item"><a className="page-link" href="/">Previous</a></li>
+                                <li className="page-item"><a className="page-link" href="/">1</a></li>
+                                <li className="page-item"><a className="page-link" href="/">2</a></li>
+                                <li className="page-item"><a className="page-link" href="/">3</a></li>
+                                <li className="page-item"><a className="page-link" href="/">Next</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
