@@ -11,6 +11,7 @@ import Footer from '../src/components/common/Footer'
 import Sidebar from '../src/components/common/Sidebar'
 
 // import Error404 from './pages/Error404';
+// import BlankPage from './pages/BlankPage';
 import Dashboard from './pages/dashboard/Dashbaord';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
@@ -38,6 +39,7 @@ class App extends Component {
                     <Route path="/add-disease" component={AddDisease} />
                     <Route path="/add-hospital" component={AddHospital} />
                     <Route path="/my-test" component={MyTest} />
+                    {/* <Route path="/blank" component={Error404} /> */}
                     {/* <Route component={Error404} /> */}
                     {/* end route form here */}
                     <div className="footer_child position-absolute">

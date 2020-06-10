@@ -15,9 +15,8 @@ class Hospital extends Component {
         super(props);
         this.state = {
             hospitals: [],
-            total: null,
-            per_page: null,
-            current_page: null
+            requiredItem: 0,
+
         };
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -35,11 +34,11 @@ class Hospital extends Component {
     };
 
     // Open the current udpate modal
-    UpdateHospital(hospital) {
+    UpdateHospital(index) {
         // this.setState({
-        //     hospitals: hospital
+        //     requiredItem: index
         // })
-        alert(hospital);
+        alert(typeof (index.id));
     }
 
     // Delete hospital
@@ -118,31 +117,34 @@ class Hospital extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.hospitals.map(hospital => (
-                                        <tr key={hospital.id}>
-                                            <td>#{hospital.id}</td>
-                                            <td>{hospital.hospital_name}</td>
-                                            <td>{hospital.location}</td>
-                                            <td>
-                                                <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
-                                            </td>
-                                            <td className="text-right">
-                                                <button
-                                                    title="Update the hospital."
-                                                    data-toggle="modal" data-target="#open-modal"
-                                                    onClick={() => this.UpdateHospital(hospital)}
-                                                    className="btn btn-info btn-sm">
-                                                    <FeatherIcon icon="edit-3" />
-                                                </button>
-                                                <button
-                                                    title="Delete the hospital."
-                                                    onClick={e => this.handleDelete(e, hospital.id)}
-                                                    className="btn btn-danger btn-sm ml-2">
-                                                    <FeatherIcon icon="trash" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                    {this.state.hospitals && this.state.hospitals.map((hospital, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>#{hospital.id}</td>
+                                                <td>{hospital.hospital_name}</td>
+                                                <td>{hospital.location}</td>
+                                                <td>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
+                                                </td>
+                                                <td className="text-right">
+                                                    <button
+                                                        title="Update the hospital."
+                                                        data-toggle="modal" data-target="#open-modal"
+                                                        onClick={() => this.UpdateHospital(index)}
+                                                        className="btn btn-info btn-sm">
+                                                        <FeatherIcon icon="edit-3" />
+                                                    </button>
+                                                    <button
+                                                        title="Delete the hospital."
+                                                        onClick={e => this.handleDelete(e, hospital.id)}
+                                                        className="btn btn-danger btn-sm ml-2">
+                                                        <FeatherIcon icon="trash" />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                    }
                                 </tbody>
                             </table>
                         </div>
