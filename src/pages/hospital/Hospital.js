@@ -5,6 +5,7 @@ import HospitalService from '../../services/HospitalService';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
 import swal from "sweetalert";
+// import $ from 'jquery';
 
 const hospital_service = new HospitalService();
 
@@ -13,10 +14,8 @@ class Hospital extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hospitals: [],
-            nextPageURL: ''
+            hospitals: []
         };
-        this.nextPage = this.nextPage.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
 
@@ -25,8 +24,7 @@ class Hospital extends Component {
         hospital_service.hospitalList()
             .then(function (result) {
                 self.setState({
-                    hospitals: result.results,
-                    nextPageURL: result.nextlink
+                    hospitals: result.results
                 });
             }).catch(error => {
                 console.log("Error: ", error);
@@ -37,19 +35,6 @@ class Hospital extends Component {
     handleUpdate(e, id) {
         alert(id);
         // 
-    }
-
-    // Pagination method
-    nextPage() {
-        var self = this;
-        hospital_service.getHospitalsByURL(this.state.nextPageURL)
-            .then((response) => {
-                self.setState({
-                    hospitals: response.results.data,
-                    nextPageURL: response.nextlink
-                })
-                alert(response)
-            });
     }
 
     // Delete hospital
@@ -155,9 +140,6 @@ class Hospital extends Component {
                                     ))}
                                 </tbody>
                             </table>
-                        </div>
-                        <div className="text-right">
-                            <button className="btn btn-info btn-sm" onClick={this.nextPage}>Next</button>
                         </div>
                     </div>
                 </div>
