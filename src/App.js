@@ -16,6 +16,7 @@ import Dashboard from './pages/dashboard/Dashbaord';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
 import AddHospital from './pages/hospital/AddHospital';
+import Hospitaldetail from './pages/hospital/Hospitaldetail';
 import MyTest from './pages/MyTest';
 
 
@@ -39,7 +40,7 @@ class App extends Component {
                     <Route path="/add-disease" component={AddDisease} />
                     <Route path="/add-hospital" component={AddHospital} />
                     <Route path="/my-test" component={MyTest} />
-                    {/* <Route path="/blank" component={Error404} /> */}
+                    <Route path="/hospital-detail/:id" component={Hospitaldetail} />
                     {/* <Route component={Error404} /> */}
                     {/* end route form here */}
                     <div className="footer_child position-absolute">

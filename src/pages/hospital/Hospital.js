@@ -5,6 +5,7 @@ import HospitalService from '../../services/HospitalService';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
 import swal from "sweetalert";
+import { NavLink } from 'react-router-dom';
 // import $ from 'jquery';
 
 const hospital_service = new HospitalService();
@@ -34,11 +35,12 @@ class Hospital extends Component {
     };
 
     // Open the current udpate modal
-    UpdateHospital(index) {
-        // this.setState({
-        //     requiredItem: index
-        // })
-        alert(typeof (index.id));
+    UpdateHospital(hospital) {
+        this.setState({
+            requiredItem: hospital
+        });
+
+        alert(hospital.location)
     }
 
     // Delete hospital
@@ -130,10 +132,14 @@ class Hospital extends Component {
                                                     <button
                                                         title="Update the hospital."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateHospital(index)}
+                                                        onClick={() => this.UpdateHospital(hospital)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
+                                                    <NavLink
+                                                        to={`hospital-detail/${hospital.id}`}>
+                                                        <FeatherIcon icon="link" />
+                                                    </NavLink>
                                                     <button
                                                         title="Delete the hospital."
                                                         onClick={e => this.handleDelete(e, hospital.id)}
