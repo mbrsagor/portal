@@ -41,14 +41,14 @@ class Hospitaldetail extends Component {
                 <div className="page-container m-2 p-2">
                     <Row>
                         <Col md={12}>
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <ul className="list-group">
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
                                     Hospital Name
-                                    <span class="badge badge-info badge-pill">{this.state.hospital.hospital_name}</span>
+                                    <span className="badge badge-info badge-pill">{this.state.hospital.hospital_name}</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
                                     Location
-                                    <span class="badge badge-info badge-pill">{this.state.hospital.location}</span>
+                                    <span className="badge badge-info badge-pill">{this.state.hospital.location}</span>
                                 </li>
                             </ul>
                         </Col>
