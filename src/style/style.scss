@@ -79,7 +79,11 @@ input:focus {
 .error_404 {
     margin:  200 auto;
     width: 400px;
+}
 
+.swal-button {
+    padding: 5px 10px;
+    font-size: 13px;
 }
 
 .swal-footer {
@@ -203,13 +207,12 @@ footer {
         }
     p {
         margin-bottom: 0;
-        padding-top: 15px
     }
 }
 .footer_child {
     width: 100%;
     left: 0;
-    bottom: 20px;
+    bottom: 0;
     box-shadow: 0 -5px 5px -5px #333;
 }
 
