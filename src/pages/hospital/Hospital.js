@@ -115,7 +115,7 @@ class Hospital extends Component {
                                         <th>Hospital Name</th>
                                         <th>Hospital Location</th>
                                         <th>Created Date</th>
-                                        <th className="text-right">Actions</th>
+                                        <th className="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,6 +137,7 @@ class Hospital extends Component {
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <NavLink
+                                                        className="btn btn-info btn-sm ml-2"
                                                         to={`hospital-detail/${hospital.id}`}>
                                                         <FeatherIcon icon="link" />
                                                     </NavLink>
@@ -154,8 +155,8 @@ class Hospital extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="pull-right">
-                            <ul className="pagination">
+                        <div className="text-normal">
+                            <ul className="pagination mb-0">
                                 <li className="page-item"><a className="page-link" href="/">Previous</a></li>
                                 <li className="page-item"><a className="page-link" href="/">1</a></li>
                                 <li className="page-item"><a className="page-link" href="/">2</a></li>
