@@ -18,6 +18,7 @@ import AddHelp from './pages/help/modal/AddHelp';
 import AddHospital from './pages/hospital/AddHospital';
 import Hospitaldetail from './pages/hospital/Hospitaldetail';
 import MyTest from './pages/MyTest';
+import Login from './pages/auth/Login';
 
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
               </Container>
             </div>
           </>
+          <Route exact path="/login" component={Login} />
         </Switch>
       </BrowserRouter>
     );

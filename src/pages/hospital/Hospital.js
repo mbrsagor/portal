@@ -16,7 +16,7 @@ class Hospital extends Component {
         super(props);
         this.state = {
             hospitals: [],
-            requiredItem: 0,
+            requiredItem: {},
 
         };
         this.handleDelete = this.handleDelete.bind(this);
@@ -37,10 +37,11 @@ class Hospital extends Component {
     // Open the current udpate modal
     UpdateHospital(hospital) {
         this.setState({
-            requiredItem: hospital
+            requiredItems: hospital
         });
 
-        alert(hospital.location)
+        let _json = JSON.stringify(hospital);
+        alert(_json);
     }
 
     // Delete hospital
