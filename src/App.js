@@ -22,13 +22,13 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route path="/help" component={AddHelp} />
             <Route path="/add-disease" component={AddDisease} />
             <Route path="/add-hospital" component={AddHospital} />
             <Route path="/my-test" component={MyTest} />
             <Route path="/hospital-detail/:id" component={Hospitaldetail} />
-            <Route path="/login" component={Login} />
+            <Route path="/" component={Login} />
             {/* <Route component={Error404} /> */}
           </>
         </Switch>

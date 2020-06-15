@@ -1,10 +1,54 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 import AuthService from '../../services/AuthService';
 
+const auth_service = new AuthService()
+
 class Login extends Component {
-    state = {}
+
+    constructor(props) {
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+
+        this.state = {
+            username: "",
+            password: "",
+        };
+
+    };
+
+    onChangeUsername(e) {
+        this.setState({
+            username: e.target.value
+        });
+    }
+
+    onChangePassword(e) {
+        this.setState({
+            password: e.target.value
+        });
+    }
+
+    handleLogin(e) {
+        e.preventDefault();
+
+        auth_service.login(this.state.username, this.state.password).then(
+            () => {
+                this.props.history.push('/dashboard');
+                window.location.reload();
+            },
+            error => {
+                var message = `Sorry!, Username and Passsword Invalid`
+                ToastsStore.error(message);
+            }
+        )
+
+    }
+
     render() {
         return (<>
 
@@ -21,19 +65,43 @@ class Login extends Component {
                         <Col className="p-0 bg_login_right" lg={7}>
                             <div className="login_form">
                                 <div className="login_right_side text-center">
-                                    <h2 className="mb-4">User Login</h2>
-                                    <form action="/">
+                                    <h2 className="mb-4"><span className="mr-2"><FeatherIcon icon="globe" /></span> Covid-19</h2>
+                                    <div className="bg-error">
+                                        <p>username and password incorrect</p>
+                                    </div>
+                                    <form onSubmit={this.handleLogin}>
                                         <div className="form-group text-left positon-relative">
                                             <FeatherIcon icon="user" />
-                                            <input type="email" placeholder="Enter your email addresss" className="form-control" />
+                                            <input
+                                                type="username"
+                                                placeholder="Enter username"
+                                                className="form-control"
+                                                name="username"
+                                                value={this.state.username}
+                                                onChange={this.onChangeUsername}
+                                            />
                                         </div>
                                         <div className="form-group text-left">
                                             <FeatherIcon icon="lock" />
-                                            <input type="password" placeholder="*****************" className="form-control" />
+                                            <input
+                                                type="password"
+                                                placeholder="*****************"
+                                                className="form-control"
+                                                name="password"
+                                                value={this.state.password}
+                                                onChange={this.onChangePassword}
+                                            />
                                         </div>
-                                        <div class="form-check text-left pb-3">
-                                            <input type="checkbox" class="form-check-input" id="remember" />
-                                            <label class="form-check-label" for="remember">Remember Me</label>
+                                        <div className="form-check text-left pb-3">
+                                            <input
+                                                type="checkbox"
+                                                className="form-check-input"
+                                                id="remember"
+                                            />
+                                            <label
+                                                className="form-check-label"
+                                                htmlFor="remember">Remember Me
+                                            </label>
                                         </div>
                                         <div className="button-group text-left">
                                             <button className="btn btn-success btn-sm mr-2">Login</button>
@@ -46,7 +114,7 @@ class Login extends Component {
                     </Row>
                 </div>
             </div>
-
+            <ToastsContainer store={ToastsStore} />
         </>);
     }
 }
