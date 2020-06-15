@@ -133,9 +133,7 @@ input:focus {
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }
-
 // Spinner End
-
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
@@ -170,6 +168,7 @@ header {
 .sidebar_bg_color {
     background: $secondary_color;
 }
+
 .main_sidebar {
     min-height: 100%;
     nav {
@@ -212,13 +211,13 @@ footer {
         margin-bottom: 0;
     }
 }
+
 .footer_child {
     width: 100%;
     left: 0;
     bottom: 0;
     box-shadow: 0 -5px 5px -5px #333;
 }
-
 
 // Page
 .page_title a{
