@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import HelpService from '../../../services/HelpService';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
-import HelpLine from '../HelpLine'
+import HelpLine from '../HelpLine';
+import Header from '../../../components/common/Header';
+import Footer from '../../../components/common/Footer';
+import Sidebar from '../../../components/common/Sidebar';
 
 const help_service = new HelpService();
 
@@ -62,10 +66,18 @@ class AddHelp extends Component {
     }
 
     render() {
-        
+
         return (
             <div>
-                <HelpLine />
+                <Header />
+                <Row className="m-0">
+                    <Col className="sidebar_bg_color p-0" lg={2}>
+                        <Sidebar />
+                    </Col>
+                    <Col className="p-0" lg={10}>
+                        <HelpLine />
+                    </Col>
+                </Row>
                 <div className="modal fade mt-5" id="open-modal">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -120,6 +132,7 @@ class AddHelp extends Component {
                     </div>
                 </div>
                 <ToastsContainer store={ToastsStore} />
+                <Footer />
             </div>
         );
     }

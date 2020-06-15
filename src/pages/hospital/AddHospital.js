@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import HospitalService from '../../services/HospitalService';
 import Hospital from './Hospital';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
 import $ from 'jquery';
+import Header from '../../components/common/Header';
+import Footer from '../../components/common/Footer';
+import Sidebar from '../../components/common/Sidebar';
 
 const hospital_service = new HospitalService()
 
@@ -86,54 +90,61 @@ class AddHospital extends Component {
     render() {
         return (
             <>
-
-                <Hospital />
-
-                <div className="modal fade mt-5" id="open-modal">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title custom_model_title">Add new Hospital</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="modal-body text-left">
-                                    <div className="card-body">
-                                        <div className="form-group">
-                                            <label htmlFor="hospital_name">Enter Hospital Name</label>
-                                            <input type="text"
-                                                className="form-control"
-                                                id="hospital_name"
-                                                ref="hospital_name"
-                                                name="hospital_name"
-                                                placeholder="Enter hospital name"
-                                            />
-                                            <small className="text-danger">{this.state.hospital_name}</small>
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="location">Enter Hospital Location</label>
-                                            <input type="text"
-                                                className="form-control"
-                                                id="location"
-                                                ref="location"
-                                                name="location"
-                                                placeholder="Enter hospital location"
-                                            />
-                                            <small className="text-danger">{this.state.location}</small>
-                                        </div>
+                <Header />
+                <Row className="m-0">
+                    <Col className="sidebar_bg_color p-0" lg={2}>
+                        <Sidebar />
+                    </Col>
+                    <Col className="p-0" lg={10}>
+                        <Hospital />
+                        <div className="modal fade mt-5" id="open-modal">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h4 className="modal-title custom_model_title">Add new Hospital</h4>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
+                                    <form onSubmit={this.handleSubmit}>
+                                        <div className="modal-body text-left">
+                                            <div className="card-body">
+                                                <div className="form-group">
+                                                    <label htmlFor="hospital_name">Enter Hospital Name</label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        id="hospital_name"
+                                                        ref="hospital_name"
+                                                        name="hospital_name"
+                                                        placeholder="Enter hospital name"
+                                                    />
+                                                    <small className="text-danger">{this.state.hospital_name}</small>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="location">Enter Hospital Location</label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        id="location"
+                                                        ref="location"
+                                                        name="location"
+                                                        placeholder="Enter hospital location"
+                                                    />
+                                                    <small className="text-danger">{this.state.location}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="modal-footer text-right">
+                                            <button type="button" className="btn btn-danger  btn-sm" data-dismiss="modal">Close</button>
+                                            <button type="submit" className="btn btn-success btn-sm">Save</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div className="modal-footer text-right">
-                                    <button type="button" className="btn btn-danger  btn-sm" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="btn btn-success btn-sm">Save</button>
-                                </div>
-                            </form>
+                            </div>
+                            <ToastsContainer store={ToastsStore} />
                         </div>
-                    </div>
-                    <ToastsContainer store={ToastsStore} />
-                </div>
+                    </Col>
+                </Row>
+                <Footer />
             </>
         );
     }

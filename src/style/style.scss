@@ -168,7 +168,7 @@ header {
     background: $secondary_color;
 }
 .main_sidebar {
-    height: 100%;
+    min-height: 100%;
     nav {
         border-top: 2px solid $border_color1;
     }
