@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
+import AuthService from '../../services/AuthService';
 
 class Login extends Component {
     state = {}
@@ -20,7 +21,7 @@ class Login extends Component {
                         <Col className="p-0 bg_login_right" lg={7}>
                             <div className="login_form">
                                 <div className="login_right_side text-center">
-                                    <h2 className="mb-4">Login Here...</h2>
+                                    <h2 className="mb-4">User Login</h2>
                                     <form action="/">
                                         <div className="form-group text-left positon-relative">
                                             <FeatherIcon icon="user" />
@@ -31,20 +32,20 @@ class Login extends Component {
                                             <input type="password" placeholder="*****************" className="form-control" />
                                         </div>
                                         <div class="form-check text-left pb-3">
-                                            <input type="checkbox" class="form-check-input" id="remember"/>
-                                                <label class="form-check-label" for="remember">Remember Me</label>
-                                            </div>
-                                            <div className="button-group text-left">
-                                                <button className="btn btn-success btn-sm mr-2">Login</button>
-                                                <button className="btn btn-danger btn-sm">Forgot password</button>
-                                            </div>
+                                            <input type="checkbox" class="form-check-input" id="remember" />
+                                            <label class="form-check-label" for="remember">Remember Me</label>
+                                        </div>
+                                        <div className="button-group text-left">
+                                            <button className="btn btn-success btn-sm mr-2">Login</button>
+                                            <button className="btn btn-danger btn-sm">Forgot password</button>
+                                        </div>
                                     </form>
                                 </div>
-                                </div>
+                            </div>
                         </Col>
                     </Row>
                 </div>
-                </div>
+            </div>
 
         </>);
     }
