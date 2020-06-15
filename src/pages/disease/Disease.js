@@ -40,7 +40,7 @@ class Disease extends Component {
             <>
                 <div className="page_title">
                     <div className="card">
-                        <Row>
+                        <Row className="p-0 m-0">
                             <Col md={8}>
                                 <div className="card-body">Disease Page</div>
                             </Col>

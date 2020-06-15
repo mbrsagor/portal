@@ -35,7 +35,7 @@ class Hospitaldetail extends Component {
                     <Col className="p-0" lg={10}>
                         <div className="page_title">
                             <div className="card">
-                                <Row>
+                                <Row className="p-0 m-0">
                                     <Col md={8}>
                                         <div className="card-body">{this.state.hospital.hospital_name} detail</div>
                                     </Col>

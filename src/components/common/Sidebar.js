@@ -9,7 +9,7 @@ class Sidebar extends Component {
                 <nav>
                     <ul>
                         <li className="activeMenuItem"><NavLink to="/"><FeatherIcon icon="home" /> Home Page</NavLink></li>
-                        <li><NavLink to="/disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
+                        <li><NavLink to="/add-disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
                         <li><NavLink to="/"><FeatherIcon icon="alert-triangle" /> Total Test</NavLink></li>
                         <li><NavLink to="/"><FeatherIcon icon="shield-off" /> Total Dies</NavLink></li>
                         <li><NavLink to="/"><FeatherIcon icon="eye-off" /> Total Effected</NavLink></li>

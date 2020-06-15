@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import DiseaseService from '../../../services/DiseaseService';
 import Disages from '../Disease';
+import Header from '../../../components/common/Header';
+import Footer from '../../../components/common/Footer';
+import Sidebar from '../../../components/common/Sidebar';
 
 const disease_service = new DiseaseService();
 
@@ -63,7 +67,16 @@ class AddDisease extends Component {
     render() {
         return (
             <>
-                <Disages />
+                <Header />
+
+                <Row className="fix_height m-0">
+                    <Col className="sidebar_bg_color p-0" lg={2}>
+                        <Sidebar />
+                    </Col>
+                    <Col className="p-0" lg={10}>
+                        <Disages />
+                    </Col>
+                </Row>
                 <div className="modal fade mt-5" id="open-modal">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -107,6 +120,7 @@ class AddDisease extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </>
         );
     }
