@@ -19,9 +19,9 @@ p {
 $help_bg: #F7F7F7;
 $common_color: #ECF0F6;
 $font_color: #4b4c4c;
-$primary_color: #3C8DBC;
-$secondary_color: #3178a0;
-$border_color1: #377ca5;
+$primary_color: #1abc9c;
+$secondary_color: #16a085;
+$border_color1: #27ae60;
 
 
 a {
@@ -67,6 +67,9 @@ input:focus {
     min-height: 100vh !important;
 }
 
+.margin_top130PX {
+    margin-top: 130px !important
+}
 
 .modal-dialog {
     margin: 20vh auto 0px auto
@@ -279,4 +282,51 @@ footer {
 .data_table_list svg {
     width: 16px;
     height: 16px;
+}
+
+// Login page
+.lgoin_container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.auth {
+    background: url('https://res.cloudinary.com/mbrsagor/image/upload/v1592219694/auth_bg_gj0ncv.jpg');
+    background-size: cover;
+    padding: 50px 0;
+}
+
+.bg_login_left {
+    background: $primary_color;
+}
+
+.login_left_side {
+    padding: 50px;
+    h2 {
+        font-size: 1.6em;
+    }
+}
+
+.bg_login_right {
+    background: #ffffff;
+}
+
+.login_right_side {
+    padding: 50px;
+    h2 {
+        font-size: 1.6em;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        color: $primary_color;
+    }
+
+    input {
+        border-radius: 15px;
+        background: $common_color;
+        padding-left: 40px;
+    }
+    svg {
+        position: absolute;
+        margin: 8px;
+    }
 }
