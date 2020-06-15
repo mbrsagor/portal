@@ -11,7 +11,7 @@ class Dashboard extends Component {
         return (
             <>
                 <Header />
-                <Row className="m-0">
+                <Row className="fix_height m-0">
                     <Col className="sidebar_bg_color p-0" lg={2}>
                         <Sidebar />
                     </Col>

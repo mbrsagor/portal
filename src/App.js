@@ -22,7 +22,6 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <>
-            {/* start route form here */}
             <Route exact path="/" component={Dashboard} />
             <Route path="/help" component={AddHelp} />
             <Route path="/add-disease" component={AddDisease} />
@@ -31,7 +30,6 @@ class App extends Component {
             <Route path="/hospital-detail/:id" component={Hospitaldetail} />
             <Route path="/login" component={Login} />
             {/* <Route component={Error404} /> */}
-            {/* end route form here */}
           </>
         </Switch>
       </BrowserRouter>
