@@ -63,6 +63,11 @@ input:focus {
     border-color: #ced4da !important;
 }
 
+select:focus {
+    box-shadow: none !important;
+    border-color: #ced4da !important;
+}
+
 .fix_height {
     min-height: 100vh !important;
 }

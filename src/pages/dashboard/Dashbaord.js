@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import ReportList from '../../contagion/ReportList';
+import ReportList from '../../components/report/ReportList';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
