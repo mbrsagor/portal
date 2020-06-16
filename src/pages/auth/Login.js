@@ -33,6 +33,7 @@ class Login extends Component {
         });
     }
 
+    // Login handler
     handleLogin(e) {
         e.preventDefault();
 
