@@ -11,10 +11,7 @@ class Sidebar extends Component {
                         <li className="activeMenuItem"><NavLink to="/"><FeatherIcon icon="home" /> Home Page</NavLink></li>
                         <li><NavLink to="/add-disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
                         <li><NavLink to="/add-contagion"><FeatherIcon icon="settings" /> Add Contagion</NavLink></li>
-                        <li><NavLink to="/"><FeatherIcon icon="alert-triangle" /> Total Test</NavLink></li>
-                        <li><NavLink to="/"><FeatherIcon icon="shield-off" /> Total Dies</NavLink></li>
-                        <li><NavLink to="/"><FeatherIcon icon="eye-off" /> Total Effected</NavLink></li>
-                        <li><NavLink to="/"><FeatherIcon icon="eye" /> Total Recovery</NavLink></li>
+                        <li><NavLink to="/add-location"><FeatherIcon icon="alert-triangle" /> Add Location</NavLink></li>
                         <li><NavLink to="/add-hospital"><FeatherIcon icon="package" /> Add Hospital</NavLink></li>
                         <li><NavLink to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>

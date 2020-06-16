@@ -52,6 +52,15 @@ class AddContagion extends Component {
                                                 </select>
                                             </div>
                                             <div className="form-group">
+                                                <label htmlFor="date_time">Date Time</label>
+                                                <input type="date"
+                                                    className="form-control"
+                                                    id="date_time"
+                                                    ref="date_time"
+                                                    name="date_time"
+                                                />
+                                            </div>
+                                            <div className="form-group">
                                                 <label htmlFor="daily_test">Daily Test</label>
                                                 <input type="number"
                                                     className="form-control"
@@ -93,6 +102,19 @@ class AddContagion extends Component {
                                                     name="daily_recovery"
                                                     placeholder="Daily recover"
                                                 />
+                                            </div>
+                                            <div className="form-group mt-5 mb-0">
+                                                <div className="form-check">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="form-check-input"
+                                                        id="publish"
+                                                    />
+                                                    <label
+                                                        className="form-check-label"
+                                                        htmlFor="publish">Is Publish
+                                                    </label>
+                                                </div>
                                             </div>
                                         </Col>
                                     </Row>

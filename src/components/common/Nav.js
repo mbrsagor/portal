@@ -14,7 +14,7 @@ class Nav extends Component {
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             <a className="mr-4" href="#register"> Mbr-Sagor <FeatherIcon icon="user" /></a>
-                            <a href="/login">Logout <FeatherIcon icon="lock" /></a>
+                            <a href="/">Logout <FeatherIcon icon="lock" /></a>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>

@@ -10,7 +10,8 @@ import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
 import AddHospital from './pages/hospital/AddHospital';
 import Hospitaldetail from './pages/hospital/Hospitaldetail';
-import AddContagion from './pages/contagion/AddContagion'
+import AddContagion from './pages/contagion/AddContagion';
+import AddLocation from './pages/location/modal/AddLocation';
 import MyTest from './pages/MyTest';
 import Login from './pages/auth/Login';
 import Error404 from './pages/Error404';
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/my-test" component={MyTest} />
           <Route path="/hospital-detail/:id" component={Hospitaldetail} />
           <Route path="/add-contagion" component={AddContagion} />
+          <Route path="/add-location" component={AddLocation} />
           <Route path="/" component={Login} />
           <Route component={Error404} />
         </Switch>
