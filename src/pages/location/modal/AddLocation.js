@@ -50,7 +50,7 @@ class AddLocation extends Component {
                                                 </div>                                                
                                                 <div className="form-group pt-2">
                                                     <div className="custom-file">
-                                                        <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
+                                                        <label className="custom-file-label" htmlFor="customFile">Location flag photo (Optional)</label>
                                                         <input type="file"
                                                             name="flag"
                                                             ref="flag"

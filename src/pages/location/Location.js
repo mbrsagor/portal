@@ -1,29 +1,44 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-// import Moment from 'react-moment';
+import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
 // import swal from "sweetalert";
-// import { NavLink } from 'react-router-dom';
-// import $ from 'jquery';
+import LocationService from '../../services/LocationService';
 
+const locaiton_serivce = new LocationService();
 
 class Location extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            locations: []
+        }
     }
+
+    componentDidMount() {
+        var self = this;
+        locaiton_serivce.locationList()
+            .then(function (response) {
+                self.setState({
+                    locations: response
+                });
+            }).catch(error => {
+                console.log("Error, ", error);
+            });
+    };
 
     render() {
 
         // Loader 
-        // if (this.state.hospitals.length === 0) {
-        //     return (
-        //         <div className="text-center">
-        //             <Spinner />
-        //         </div>
-        //     )
-        // }
+        if (this.state.locations.length === 0) {
+            return (
+                <div className="text-center">
+                    <Spinner />
+                </div>
+            )
+        }
         // /Loader
 
         return (
@@ -59,37 +74,37 @@ class Location extends Component {
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Flag</th>
-                                        <th>Is Active</th>
+                                        <th>Status</th>
                                         <th>Created Date</th>
-                                        <th className="text-center">Actions</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {this.state.hospitals && this.state.hospitals.map((hospital, index) => {
+                                    {this.state.locations && this.state.locations.map((location, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{hospital.id}</td>
-                                                <td>{hospital.hospital_name}</td>
-                                                <td>{hospital.location}</td>
+                                                <td>#{location.id}</td>
+                                                <td>{location.name}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
+                                                    {location.flag ? <img src="{location.flag}" alt={location.flag} /> : <FeatherIcon icon="flag" />}
                                                 </td>
-                                                <td className="text-right">
+                                                <td>
+                                                    {location.is_active ? 'Active' : 'Deactive'}
+                                                </td>
+                                                <td>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{location.created_at}</Moment>
+                                                </td>
+                                                <td>
                                                     <button
-                                                        title="Update the hospital."
+                                                        title="Update the location."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateHospital(hospital)}
+                                                        onClick={() => this.UpdateHospital(location)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
-                                                    <NavLink
-                                                        className="btn btn-info btn-sm ml-2"
-                                                        to={`hospital-detail/${hospital.id}`}>
-                                                        <FeatherIcon icon="link" />
-                                                    </NavLink>
                                                     <button
-                                                        title="Delete the hospital."
-                                                        onClick={e => this.handleDelete(e, hospital.id)}
+                                                        title="Delete the Location."
+                                                        onClick={e => this.handleDelete(e, location.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
@@ -97,7 +112,7 @@ class Location extends Component {
                                             </tr>
                                         )
                                     })
-                                    } */}
+                                    }
                                 </tbody>
                             </table>
                         </div>
