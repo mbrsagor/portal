@@ -176,6 +176,8 @@ header {
 
 .main_sidebar {
     min-height: 100%;
+    position: relative;
+    z-index: 2;
     nav {
         border-top: 2px solid $border_color1;
     }
@@ -187,6 +189,7 @@ header {
         width: 16px;
         height: 16px;
         margin-top: -3px;
+        margin-right: 25px;
     }
     nav ul li:hover {
         background: $primary_color;
@@ -203,6 +206,17 @@ header {
     nav ul .activeMenuItem {
         background: $primary_color;
     }
+}
+
+.main_sidebar:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background: $border_color1;
+    z-index: -1;
 }
 // Footer
 footer {
