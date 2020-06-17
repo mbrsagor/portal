@@ -63,7 +63,7 @@ class Hospital extends Component {
                                 return obj.id !== id;
                             });
                             self.setState({
-                                customers: _data
+                                hospitals: _data
                             })
                         });
                 }

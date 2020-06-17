@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import LocationService from '../../services/LocationService';
 
 const locaiton_serivce = new LocationService();
@@ -14,7 +14,9 @@ class Location extends Component {
         super(props);
         this.state = {
             locations: []
-        }
+        };
+
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount() {
@@ -28,6 +30,31 @@ class Location extends Component {
                 console.log("Error, ", error);
             });
     };
+
+    handleDelete(e, id) {
+        swal({
+            title: "Are you sure?",
+            text: "Will you delete the location",
+            icon: "warning",
+            buttons: ["No", "Yes"],
+            dangerMode: true
+        }).then(willDelete => {
+            if (willDelete) {
+                var self = this;
+                var _data = null;
+                locaiton_serivce.deleteLocation({ id: id })
+                    .then(() => {
+                        _data = self.state.locations.filter(function (obj) {
+                            return obj.id !== id;
+                        });
+                        self.setState({
+                            locations: _data
+                        })
+                    })
+
+            }
+        })
+    }
 
     render() {
 
@@ -86,7 +113,7 @@ class Location extends Component {
                                                 <td>#{location.id}</td>
                                                 <td>{location.name}</td>
                                                 <td>
-                                                    {location.flag ? <img src="{location.flag}" alt={location.flag} /> : <FeatherIcon icon="flag" />}
+                                                    {location.flag ? <img src="{location.flag}" alt={location.name} /> : <FeatherIcon icon="flag" />}
                                                 </td>
                                                 <td>
                                                     {location.is_active ? 'Active' : 'Deactive'}

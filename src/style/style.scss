@@ -192,7 +192,7 @@ header {
         margin-right: 25px;
     }
     nav ul li:hover {
-        background: $primary_color;
+        background: $border_color1;
     }
     nav ul li a{
         color: #ffffff;
@@ -204,7 +204,7 @@ header {
     }
 
     nav ul .activeMenuItem {
-        background: $primary_color;
+        background: $border_color1;
     }
 }
 
@@ -215,7 +215,7 @@ header {
     top: 0;
     width: 20%;
     height: 100%;
-    background: $border_color1;
+    background: $primary_color;
     z-index: -1;
 }
 // Footer
