@@ -113,7 +113,7 @@ class Location extends Component {
                                                 <td>#{location.id}</td>
                                                 <td>{location.name}</td>
                                                 <td>
-                                                    {location.flag ? <img src="{location.flag}" alt={location.name} /> : <FeatherIcon icon="flag" />}
+                                                    {location.flag ? <img className="img-thumbnail image_in_table" src={location.flag} alt={location.name} /> : <FeatherIcon icon="flag" />}
                                                 </td>
                                                 <td>
                                                     {location.is_active ? 'Active' : 'Deactive'}

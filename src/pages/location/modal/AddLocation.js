@@ -1,11 +1,65 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+// import { ToastsContainer, ToastsStore } from 'react-toasts';
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
 import Sidebar from '../../../components/common/Sidebar';
+import $ from 'jquery';
 import Location from '../Location';
+import LocationService from '../../../services/LocationService';
+
+const location_service = new LocationService();
 
 class AddLocation extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            parent: '',
+            flag: '',
+            is_active: ''
+        }
+    }
+
+    handleCreate() {
+        location_service.createLocation({
+            'name': this.refs.name.value,
+            'parent': this.refs.parent.value,
+            'flag': this.refs.flag.value,
+            'is_active': this.refs.is_active.value,
+        }).then((response => {
+            console.log(response);
+        })).catch((error => {
+            console.log(error);
+        }))
+    }
+
+    // Close modal after sumited
+    close_modal_box() {
+        $('#open-modal').modal('hide');
+    }
+
+    handleSubmit(event) {
+        const { match: { params } } = this.props;
+        if (params) {
+            if (this.refs.name.value.length === 0) {
+                this.setState({
+                    name: "Fill up the name"
+                });
+            } else if (this.refs.flag.value.length > 0) {
+                this.setState({
+                    flag: "Please upload image"
+                })
+            } else {
+                this.close_modal_box()
+                this.handleCreate()
+            }
+        }
+
+        event.preventDefault();
+        event.target.reset();
+    }
 
     render() {
         return (
@@ -47,7 +101,7 @@ class AddLocation extends Component {
                                                         placeholder="Enter location name"
                                                     />
                                                     {/* <small className="text-danger">{this.state.hospital_name}</small> */}
-                                                </div>                                                
+                                                </div>
                                                 <div className="form-group pt-2">
                                                     <div className="custom-file">
                                                         <label className="custom-file-label" htmlFor="customFile">Location flag photo (Optional)</label>

@@ -7,7 +7,7 @@ class Nav extends Component {
         return (
             <div>
                 <Navbar className="justify-content-between" sticky="top">
-                    <Navbar.Brand className="logo" href="/">
+                    <Navbar.Brand className="logo" href="/dashboard">
                         <span className="mr-2"><FeatherIcon icon="globe" /></span>Covid-19
                     </Navbar.Brand>
                     <Navbar.Toggle />
