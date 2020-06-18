@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-// import { ToastsContainer, ToastsStore } from 'react-toasts';
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
 import Sidebar from '../../../components/common/Sidebar';
@@ -19,10 +19,26 @@ class AddLocation extends Component {
             flag: '',
             is_active: ''
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleCreate() {
         location_service.createLocation({
+            'name': this.refs.name.value,
+            'flag': this.refs.flag.value,
+            'is_active': this.refs.is_active.value,
+        }).then((resp => {
+            ToastsStore.success('successfully created the location!', resp.data);
+        })).catch((error => {
+            alert(error);
+        }))
+    }
+
+    // Update handler
+    handleUpdate(id) {
+        location_service.updateLocation({
+            'id': id,
             'name': this.refs.name.value,
             'flag': this.refs.flag.value,
             'is_active': this.refs.is_active.value,
@@ -38,21 +54,14 @@ class AddLocation extends Component {
         $('#open-modal').modal('hide');
     }
 
+    // Form submit handler
     handleSubmit(event) {
         const { match: { params } } = this.props;
-        if (params) {
-            if (this.refs.name.value.length === 0) {
-                this.setState({
-                    name: "Fill up the name"
-                });
-            } else if (this.refs.flag.value.length > 0) {
-                this.setState({
-                    flag: "Please upload image"
-                })
-            } else {
-                this.close_modal_box()
-                this.handleCreate()
-            }
+        if (params && params.id) {
+            this.handleUpdate(params.id)
+        } else {
+            this.close_modal_box()
+            this.handleCreate()
         }
 
         event.preventDefault();
@@ -127,6 +136,7 @@ class AddLocation extends Component {
                                     </form>
                                 </div>
                             </div>
+                            <ToastsContainer store={ToastsStore} />
                         </div>
                     </Col>
                 </Row>
