@@ -16,7 +16,6 @@ class AddLocation extends Component {
         super(props);
         this.state = {
             name: '',
-            parent: '',
             flag: '',
             is_active: ''
         }
@@ -25,7 +24,6 @@ class AddLocation extends Component {
     handleCreate() {
         location_service.createLocation({
             'name': this.refs.name.value,
-            'parent': this.refs.parent.value,
             'flag': this.refs.flag.value,
             'is_active': this.refs.is_active.value,
         }).then((response => {
@@ -83,14 +81,6 @@ class AddLocation extends Component {
                                     <form onSubmit={this.handleSubmit}>
                                         <div className="modal-body text-left">
                                             <div className="card-body">
-                                                <div className="form-group">
-                                                    <label htmlFor="parent">Select Location</label>
-                                                    <select name="parent" ref="parent" className="form-control" id="parent">
-                                                        <option value="1">Gaibandha</option>
-                                                    </select>
-                                                    {/* <small className="text-danger">{this.state.location}</small> */}
-
-                                                </div>
                                                 <div className="form-group">
                                                     <label htmlFor="name">Enter Location Name</label>
                                                     <input type="text"
