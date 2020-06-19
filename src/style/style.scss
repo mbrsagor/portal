@@ -348,3 +348,20 @@ footer {
         margin: 8px;
     }
 }
+
+// Slide
+.slide {
+    background: url(https://res.cloudinary.com/mbrsagor/image/upload/v1592588415/home-v6_slide2_vzalmy.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 250px;
+    padding: 150px 0;
+    text-align: center;
+    color: #fff;
+
+    h2 {
+        padding-left: 150px;
+        margin-top: 25px;
+    }
+
+}
