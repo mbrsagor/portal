@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { Wave } from 'react-animated-text';
 
 class Slide extends Component {
 
@@ -8,7 +9,7 @@ class Slide extends Component {
             <div className="slide">
                 <Row className="m-0">
                     <Col lg={12}>
-                        <h2>Covid-19 help 2020</h2>
+                        <h2> <Wave text="We are helping Covid-19 effected" /></h2>
                         <p className="ml-5">We are help all of pepole</p>
                     </Col>
                 </Row>
