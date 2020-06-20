@@ -115,6 +115,7 @@ class Hospital extends Component {
                                         <th>ID</th>
                                         <th>Hospital Name</th>
                                         <th>Hospital Location</th>
+                                        <th>Hospital Type</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
@@ -126,6 +127,7 @@ class Hospital extends Component {
                                                 <td>#{hospital.id}</td>
                                                 <td>{hospital.hospital_name}</td>
                                                 <td>{hospital.location}</td>
+                                                <td>{hospital.hospital_type}</td>
                                                 <td>
                                                     <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
                                                 </td>
