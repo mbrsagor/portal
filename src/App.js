@@ -9,11 +9,9 @@ import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashbaord';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
-import AddHospital from './pages/hospital/AddHospital';
-import Hospitaldetail from './pages/hospital/Hospitaldetail';
+import AddDepartment from './pages/hospital/AddDepartment';
 import AddContagion from './pages/contagion/AddContagion';
 import AddLocation from './pages/location/modal/AddLocation';
-import MyTest from './pages/MyTest';
 import Login from './pages/auth/Login';
 import Error404 from './pages/Error404';
 
@@ -27,9 +25,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/help" component={AddHelp} />
           <Route path="/add-disease" component={AddDisease} />
-          <Route path="/add-hospital" component={AddHospital} />
-          <Route path="/my-test" component={MyTest} />
-          <Route path="/hospital-detail/:id" component={Hospitaldetail} />
+          <Route path="/add-department" component={AddDepartment} />
           <Route path="/add-contagion" component={AddContagion} />
           <Route path="/add-location" component={AddLocation} />
           <Route path="/login" component={Login} />

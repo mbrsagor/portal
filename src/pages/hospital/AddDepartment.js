@@ -1,43 +1,31 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import HospitalService from '../../services/HospitalService';
-import Hospital from './Hospital';
+import DepartmentService from '../../services/DepartmentService'
+import Hospital from './Department';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
 import $ from 'jquery';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
 
-const hospital_service = new HospitalService()
+const department_service = new DepartmentService()
 
 class AddHospital extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            hospital_name: '',
-            location: '',
+            department_name: '',
+            employee_type: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidMount() {
-    //     const { match: { params } } = this.props;
-    //     if (params.id) {
-    //         hospital_service.getHospital(params.id)
-    //             .then((hospital) => {
-    //                 this.refs.hospital_name.value = hospital.hospital_name;
-    //                 this.refs.location.value = hospital.location;
-    //             })
-    //     }
-
-    // }
-
     // create hospital handler
     handleCreate() {
-        hospital_service.createHospital({
-            'hospital_name': this.refs.hospital_name.value,
-            'location': this.refs.location.value,
+        department_service.createDepartment({
+            'department_name': this.refs.department_name.value,
+            'employee_type': this.refs.employee_type.value,
         }).then((result => {
             ToastsStore.success('successfully created the hospital!');
         })).catch((error => {
@@ -47,10 +35,10 @@ class AddHospital extends Component {
 
     // update hospital handler
     handleUpdate(id) {
-        hospital_service.updateHospital({
+        department_service.updateDepartment({
             'id': id,
-            'hospital_name': this.refs.hospital_name.value,
-            'location': this.refs.location.value,
+            'department_name': this.refs.department_name.value,
+            'employee_type': this.refs.employee_type.value,
         }).then((result => {
             ToastsStore.success('successfully update the hospital name!');
         })).catch((error => {
@@ -69,13 +57,13 @@ class AddHospital extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
-            if (this.refs.hospital_name.value.length === 0) {
+            if (this.refs.department_name.value.length === 0) {
                 this.setState({
-                    hospital_name: "Fill up the hospital name",
+                    department_name: "Fill up the hospital name",
                 });
-            } else if (this.refs.location.value.length === 0) {
+            } else if (this.refs.employee_type.value.length === 0) {
                 this.setState({
-                    location: "Fill up the hospital location."
+                    employee_type: "Fill up the hospital location."
                 })
             }
             else {
@@ -110,26 +98,26 @@ class AddHospital extends Component {
                                         <div className="modal-body text-left">
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label htmlFor="hospital_name">Enter Hospital Name</label>
+                                                    <label htmlFor="department_name">Enter Hospital Name</label>
                                                     <input type="text"
                                                         className="form-control"
-                                                        id="hospital_name"
-                                                        ref="hospital_name"
-                                                        name="hospital_name"
+                                                        id="department_name"
+                                                        ref="department_name"
+                                                        name="department_name"
                                                         placeholder="Enter hospital name"
                                                     />
-                                                    <small className="text-danger">{this.state.hospital_name}</small>
+                                                    <small className="text-danger">{this.state.department_name}</small>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="location">Enter Hospital Location</label>
+                                                    <label htmlFor="employee_type">Enter Hospital Location</label>
                                                     <input type="text"
                                                         className="form-control"
-                                                        id="location"
-                                                        ref="location"
-                                                        name="location"
+                                                        id="employee_type"
+                                                        ref="employee_type"
+                                                        name="employee_type"
                                                         placeholder="Enter hospital location"
                                                     />
-                                                    <small className="text-danger">{this.state.location}</small>
+                                                    <small className="text-danger">{this.state.employee_type}</small>
                                                 </div>
                                             </div>
                                         </div>

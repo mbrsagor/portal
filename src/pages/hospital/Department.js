@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import HospitalService from '../../services/HospitalService';
+import DepartmentService from '../../services/DepartmentService';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
 import swal from "sweetalert";
-import { NavLink } from 'react-router-dom';
 // import $ from 'jquery';
 
-const hospital_service = new HospitalService();
+const department_service = new DepartmentService();
 
 class Hospital extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            hospitals: [],
+            departments: [],
             requiredItem: {},
 
         };
@@ -24,10 +23,10 @@ class Hospital extends Component {
 
     componentDidMount() {
         var self = this;
-        hospital_service.hospitalList()
+        department_service.departmentList()
             .then(function (result) {
                 self.setState({
-                    hospitals: result.results
+                    departments: result
                 });
             }).catch(error => {
                 console.log("Error: ", error);
@@ -57,13 +56,13 @@ class Hospital extends Component {
                 if (willDelete) {
                     var self = this;
                     var _data = null;
-                    hospital_service.deletehospital({ id: id })
+                    department_service.deleteDepartment({ id: id })
                         .then(() => {
-                            _data = self.state.hospitals.filter(function (obj) {
+                            _data = self.state.departments.filter(function (obj) {
                                 return obj.id !== id;
                             });
                             self.setState({
-                                hospitals: _data
+                                departments: _data
                             })
                         });
                 }
@@ -73,7 +72,7 @@ class Hospital extends Component {
     render() {
 
         // Loader 
-        if (this.state.hospitals.length === 0) {
+        if (this.state.departments.length === 0) {
             return (
                 <div className="text-center">
                     <Spinner />
@@ -113,40 +112,33 @@ class Hospital extends Component {
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Hospital Name</th>
-                                        <th>Hospital Location</th>
-                                        <th>Hospital Type</th>
+                                        <th>Department Name</th> 
+                                        <th>Department Type</th> 
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.hospitals && this.state.hospitals.map((hospital, index) => {
+                                    {this.state.departments && this.state.departments.map((department, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{hospital.id}</td>
-                                                <td>{hospital.hospital_name}</td>
-                                                <td>{hospital.location}</td>
-                                                <td>{hospital.hospital_type}</td>
+                                                <td>#{department.id}</td>
+                                                <td>{department.department_name}</td>
+                                                <td>{department.employee_type}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{hospital.created_at}</Moment>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{department.created_at}</Moment>
                                                 </td>
                                                 <td className="text-right">
                                                     <button
-                                                        title="Update the hospital."
+                                                        title="Update the department."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateHospital(hospital)}
+                                                        onClick={() => this.UpdateHospital(department)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
-                                                    <NavLink
-                                                        className="btn btn-info btn-sm ml-2"
-                                                        to={`hospital-detail/${hospital.id}`}>
-                                                        <FeatherIcon icon="link" />
-                                                    </NavLink>
                                                     <button
                                                         title="Delete the hospital."
-                                                        onClick={e => this.handleDelete(e, hospital.id)}
+                                                        onClick={e => this.handleDelete(e, department.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
