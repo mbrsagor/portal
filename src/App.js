@@ -9,7 +9,7 @@ import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashbaord';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
-import AddDepartment from './pages/hospital/AddDepartment';
+import AddDepartment from './pages/department/AddDepartment';
 import AddContagion from './pages/contagion/AddContagion';
 import AddLocation from './pages/location/modal/AddLocation';
 import Login from './pages/auth/Login';
