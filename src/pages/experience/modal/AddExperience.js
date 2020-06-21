@@ -5,43 +5,43 @@ import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
 import Sidebar from '../../../components/common/Sidebar';
 import $ from 'jquery';
-import Location from '../Location';
-import LocationService from '../../../services/LocationService';
+import Experience from '../Experience';
+import ExperienceService from '../../../services/ExperienceService';
 
-const location_service = new LocationService();
+const experience_service = new ExperienceService();
 
-class AddLocation extends Component {
+class AddExperience extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            flag: '',
-            is_active: ''
+            organization_name: '',
+            designation: '',
+            job_year: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleCreate() {
-        location_service.createLocation({
-            'name': this.refs.name.value,
-            'flag': this.refs.flag.value,
-            'is_active': this.refs.is_active.value,
+        experience_service.createExperience({
+            'organization_name': this.refs.organization_name.value,
+            'designation': this.refs.designation.value,
+            'job_year': this.refs.job_year.value,
         }).then((resp => {
-            ToastsStore.success('successfully created the location!', resp.data);
+            ToastsStore.success('successfully created the experience!');
         })).catch((error => {
-            alert(error);
+            ToastsStore.warning('Something went wrong while updateing the experience?', error);
         }))
     }
 
     // Update handler
     handleUpdate(id) {
-        location_service.updateLocation({
+        experience_service.updateExperience({
             'id': id,
-            'name': this.refs.name.value,
-            'flag': this.refs.flag.value,
-            'is_active': this.refs.is_active.value,
+            'organization_name': this.refs.organization_name.value,
+            'designation': this.refs.designation.value,
+            'job_year': this.refs.job_year.value,
         }).then((response => {
             console.log(response);
         })).catch((error => {
@@ -77,12 +77,12 @@ class AddLocation extends Component {
                         <Sidebar />
                     </Col>
                     <Col className="p-0" lg={10}>
-                        <Location />
+                        <Experience />
                         <div className="modal fade mt-5" id="open-modal">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h4 className="modal-title custom_model_title">Add new Location</h4>
+                                        <h4 className="modal-title custom_model_title">Add new Experience</h4>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -91,41 +91,37 @@ class AddLocation extends Component {
                                         <div className="modal-body text-left">
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label htmlFor="name">Enter Location Name</label>
+                                                    <label htmlFor="organization_name">Enter Organization Name</label>
                                                     <input type="text"
                                                         className="form-control"
-                                                        id="name"
-                                                        ref="name"
-                                                        name="name"
-                                                        placeholder="Enter location name"
+                                                        id="organization_name"
+                                                        ref="organization_name"
+                                                        name="organization_name"
+                                                        placeholder="Enter organization name"
                                                     />
                                                     {/* <small className="text-danger">{this.state.hospital_name}</small> */}
                                                 </div>
-                                                <div className="form-group pt-2">
-                                                    <div className="custom-file">
-                                                        <label className="custom-file-label" htmlFor="customFile">Location flag photo (Optional)</label>
-                                                        <input type="file"
-                                                            name="flag"
-                                                            ref="flag"
-                                                            className="custom-file-input"
-                                                            id="customFile"
-                                                        />
-                                                    </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="designation">Enter Designation</label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        id="designation"
+                                                        ref="designation"
+                                                        name="designation"
+                                                        placeholder="Enter designation"
+                                                    />
+                                                    {/* <small className="text-danger">{this.state.hospital_name}</small> */}
                                                 </div>
                                                 <div className="form-group">
-                                                    <div className="form-check text-left pb-3">
-                                                        <input
-                                                            type="checkbox"
-                                                            className="form-check-input"
-                                                            name="is_active"
-                                                            ref="is_active"
-                                                            id="is_active"
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor="is_active">Active
-                                                        </label>
-                                                    </div>
+                                                    <label htmlFor="job_year">Enter Job Year</label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        id="job_year"
+                                                        ref="job_year"
+                                                        name="job_year"
+                                                        placeholder="Enter job year"
+                                                    />
+                                                    {/* <small className="text-danger">{this.state.hospital_name}</small> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -146,4 +142,4 @@ class AddLocation extends Component {
     }
 }
 
-export default AddLocation;
+export default AddExperience;

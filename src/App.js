@@ -11,7 +11,7 @@ import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
 import AddDepartment from './pages/department/AddDepartment';
 import AddContagion from './pages/contagion/AddContagion';
-import AddLocation from './pages/location/modal/AddLocation';
+import AddExperience from './pages/experience/modal/AddExperience';
 import Login from './pages/auth/Login';
 import Error404 from './pages/Error404';
 
@@ -27,7 +27,7 @@ class App extends Component {
           <Route path="/add-disease" component={AddDisease} />
           <Route path="/add-department" component={AddDepartment} />
           <Route path="/add-contagion" component={AddContagion} />
-          <Route path="/add-location" component={AddLocation} />
+          <Route path="/add-experience" component={AddExperience} />
           <Route path="/login" component={Login} />
           <Route component={Error404} />
         </Switch>

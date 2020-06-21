@@ -34,7 +34,7 @@ class Hospital extends Component {
     };
 
     // Open the current udpate modal
-    UpdateHospital(hospital) {
+    UpdateDepartment(hospital) {
         this.setState({
             requiredItems: hospital
         });
@@ -87,11 +87,11 @@ class Hospital extends Component {
                     <div className="card">
                         <Row className="m-0">
                             <Col md={8}>
-                                <div className="card-body">Hospital Page</div>
+                                <div className="card-body">Department Page</div>
                             </Col>
                             <Col className="text-right" md={4}>
                                 <div className="card-body">
-                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Hospital List
+                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Department List
                                 </div>
                             </Col>
                         </Row>
@@ -132,12 +132,12 @@ class Hospital extends Component {
                                                     <button
                                                         title="Update the department."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateHospital(department)}
+                                                        onClick={() => this.UpdateDepartment(department)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <button
-                                                        title="Delete the hospital."
+                                                        title="Delete the department."
                                                         onClick={e => this.handleDelete(e, department.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />

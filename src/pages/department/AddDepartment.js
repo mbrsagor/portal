@@ -21,15 +21,15 @@ class AddHospital extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // create hospital handler
+    // create department handler
     handleCreate() {
         department_service.createDepartment({
             'department_name': this.refs.department_name.value,
             'employee_type': this.refs.employee_type.value,
         }).then((result => {
-            ToastsStore.success('successfully created the hospital!');
+            ToastsStore.success('successfully created the department!');
         })).catch((error => {
-            ToastsStore.warning('Something went wrong while creating hospital.??', error);
+            ToastsStore.warning('Something went wrong while creating department.??', error);
         }))
     }
 
@@ -40,9 +40,9 @@ class AddHospital extends Component {
             'department_name': this.refs.department_name.value,
             'employee_type': this.refs.employee_type.value,
         }).then((result => {
-            ToastsStore.success('successfully update the hospital name!');
+            ToastsStore.success('successfully update the department!');
         })).catch((error => {
-            ToastsStore.warning('Something went wrong while updateing the hospital name.??', error);
+            ToastsStore.warning('Something went wrong while updateing the department??', error);
         }))
     }
 
@@ -59,11 +59,11 @@ class AddHospital extends Component {
         } else {
             if (this.refs.department_name.value.length === 0) {
                 this.setState({
-                    department_name: "Fill up the hospital name",
+                    department_name: "Fill up the department name",
                 });
             } else if (this.refs.employee_type.value.length === 0) {
                 this.setState({
-                    employee_type: "Fill up the hospital location."
+                    employee_type: "Fill up the employee type."
                 })
             }
             else {
@@ -89,7 +89,7 @@ class AddHospital extends Component {
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h4 className="modal-title custom_model_title">Add new Hospital</h4>
+                                        <h4 className="modal-title custom_model_title">Add new Department</h4>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -98,24 +98,24 @@ class AddHospital extends Component {
                                         <div className="modal-body text-left">
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label htmlFor="department_name">Enter Hospital Name</label>
+                                                    <label htmlFor="department_name">Enter Department Name</label>
                                                     <input type="text"
                                                         className="form-control"
                                                         id="department_name"
                                                         ref="department_name"
                                                         name="department_name"
-                                                        placeholder="Enter hospital name"
+                                                        placeholder="Enter department name"
                                                     />
                                                     <small className="text-danger">{this.state.department_name}</small>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="employee_type">Enter Hospital Location</label>
+                                                    <label htmlFor="employee_type">Enter Employee Type</label>
                                                     <input type="text"
                                                         className="form-control"
                                                         id="employee_type"
                                                         ref="employee_type"
                                                         name="employee_type"
-                                                        placeholder="Enter hospital location"
+                                                        placeholder="Enter employee type"
                                                     />
                                                     <small className="text-danger">{this.state.employee_type}</small>
                                                 </div>

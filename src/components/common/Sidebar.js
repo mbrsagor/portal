@@ -11,7 +11,7 @@ class Sidebar extends Component {
                         <li className="activeMenuItem"><NavLink to="/dashboard"><FeatherIcon icon="home" /> Dashboard</NavLink></li>
                         <li><NavLink to="/add-disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
                         <li><NavLink to="/add-contagion"><FeatherIcon icon="alert-triangle" /> Add Contagion</NavLink></li>
-                        <li><NavLink to="/add-location"><FeatherIcon icon="map-pin" /> Add Location</NavLink></li>
+                        <li><NavLink to="/add-experience"><FeatherIcon icon="map-pin" /> Add Experience</NavLink></li>
                         <li><NavLink to="/add-department"><FeatherIcon icon="package" /> Add Department</NavLink></li>
                         <li><NavLink to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>
