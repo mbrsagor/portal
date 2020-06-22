@@ -1,53 +1,38 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import DepartmentService from '../../services/DepartmentService';
-import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
+import AvailabilityService from '../../services/AvailabilityService';
+import Moment from 'react-moment';
 import swal from "sweetalert";
-// import $ from 'jquery';
 
-const department_service = new DepartmentService();
+const availability_service = new AvailabilityService();
 
-class Hospital extends Component {
+class Availability extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            departments: [],
-            requiredItem: {},
-
-        };
-        this.handleDelete = this.handleDelete.bind(this);
+            availabilitys: ''
+        }
     }
 
     componentDidMount() {
         var self = this;
-        department_service.departmentList()
-            .then(function (result) {
+        availability_service.getAvailability()
+            .then(function (response) {
                 self.setState({
-                    departments: result
-                });
+                    availabilitys: response
+                })
             }).catch(error => {
-                console.log("Error: ", error);
-            });
-    };
-
-    // Open the current udpate modal
-    UpdateDepartment(hospital) {
-        this.setState({
-            requiredItems: hospital
-        });
-
-        let _json = JSON.stringify(hospital);
-        alert(_json);
+                console.log(error);
+            })
     }
 
-    // Delete hospital
     handleDelete(e, id) {
         swal({
             title: "Are you sure?",
-            text: "Hospital will be deleted permanently!",
+            text: "will be delete the availability permanently!",
             icon: "warning",
             buttons: ["No", "Yes"],
             dangerMode: true
@@ -56,23 +41,23 @@ class Hospital extends Component {
             if (willDelete) {
                 var self = this;
                 var _data = null;
-                department_service.deleteDepartment({ id: id })
-                    .then(() => {
-                        _data = self.state.departments.filter(function (obj) {
-                            return obj.id !== id;
-                        });
-                        self.setState({
-                            departments: _data
-                        })
+                availability_service.deleteAvailability({ id: id })
+                .then(() => {
+                    _data = self.state.availabilitys.filter(function (obj) {
+                        return obj.id !== id;
                     });
+                    self.setState({
+                        availabilitys: _data
+                    })
+                });
             }
-        });
-    };
+        })
+    }
 
     render() {
 
         // Loader 
-        if (this.state.departments.length === 0) {
+        if (this.state.availabilitys.length === 0) {
             return (
                 <div className="text-center">
                     <Spinner />
@@ -81,22 +66,24 @@ class Hospital extends Component {
         }
         // /Loader
 
+
         return (
             <>
                 <div className="page_title">
                     <div className="card">
                         <Row className="m-0">
                             <Col md={8}>
-                                <div className="card-body">Department Page</div>
+                                <div className="card-body">Employee Availability</div>
                             </Col>
                             <Col className="text-right" md={4}>
                                 <div className="card-body">
-                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Department List
+                                    <a href="/dashboard">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Employee Availability
                                 </div>
                             </Col>
                         </Row>
                     </div>
                 </div>
+
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         <div className="text-right">
@@ -112,33 +99,35 @@ class Hospital extends Component {
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Department Name</th> 
-                                        <th>Department Type</th> 
+                                        <th>Availability Day</th>
+                                        <th>Availability Time</th>
+                                        <th>Availability Date</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.departments && this.state.departments.map((department, index) => {
+                                    {this.state.availabilitys && this.state.availabilitys.map((availability, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{department.id}</td>
-                                                <td>{department.department_name}</td>
-                                                <td>{department.employee_type}</td>
+                                                <td>#{availability.id}</td>
+                                                <td>{availability.day}</td>
+                                                <td>{availability.time}</td>
+                                                <td>{availability.date}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{department.created_at}</Moment>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{availability.created_at}</Moment>
                                                 </td>
                                                 <td className="text-right">
                                                     <button
-                                                        title="Update the department."
+                                                        title="Update the availability."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateDepartment(department)}
+                                                        onClick={() => this.UpdateAvailability(availability)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <button
-                                                        title="Delete the department."
-                                                        onClick={e => this.handleDelete(e, department.id)}
+                                                        title="Delete the availability."
+                                                        onClick={e => this.handleDelete(e, availability.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
@@ -150,20 +139,12 @@ class Hospital extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="text-normal">
-                            <ul className="pagination mb-0">
-                                <li className="page-item"><a className="page-link" href="/">Previous</a></li>
-                                <li className="page-item"><a className="page-link" href="/">1</a></li>
-                                <li className="page-item"><a className="page-link" href="/">2</a></li>
-                                <li className="page-item"><a className="page-link" href="/">3</a></li>
-                                <li className="page-item"><a className="page-link" href="/">Next</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
+
             </>
         );
     }
 }
 
-export default Hospital;
+export default Availability;

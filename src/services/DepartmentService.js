@@ -25,7 +25,7 @@ export default class DepartmentService {
         return axios.post(url, department);
     }
     updateDepartment(department) {
-        const url = `${API_BASE_URL}/api/hospital/${department.id}/`;
+        const url = `${API_BASE_URL}/api/department/${department.id}/`;
         return axios.put(url, department);
     }
 }

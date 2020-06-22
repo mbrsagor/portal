@@ -1,78 +1,61 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import DepartmentService from '../../services/DepartmentService'
-import Hospital from './Department';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
-import $ from 'jquery';
+import AvailabilityService from '../../services/AvailabilityService';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
+import Availability from './Availability';
 
-const department_service = new DepartmentService()
+const availability_service = new AvailabilityService();
 
-class AddHospital extends Component {
+class AddAvailability extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            department_name: '',
-            employee_type: '',
+            day: '',
+            time: '',
+            date: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // create department handler
+    // create handler
     handleCreate() {
-        department_service.createDepartment({
-            'department_name': this.refs.department_name.value,
-            'employee_type': this.refs.employee_type.value,
-        }).then((result => {
-            ToastsStore.success('successfully created the department!');
-        })).catch((error => {
-            ToastsStore.warning('Something went wrong while creating department.??', error);
-        }))
+        availability_service.createAvailability({
+            'day': this.refs.day.value,
+            'time': this.refs.time.value,
+            'date': this.refs.date.value
+        }).then((response => {
+            console.log(response.data);
+        })).catch((error) => {
+            console.log("Main error is: ", error);
+        })
     }
 
-    // update department handler
+    // update handler
     handleUpdate(id) {
-        department_service.updateDepartment({
+        availability_service.udpateAvailability({
             'id': id,
-            'department_name': this.refs.department_name.value,
-            'employee_type': this.refs.employee_type.value,
-        }).then((result => {
-            ToastsStore.success('successfully update the department!');
-        })).catch((error => {
-            ToastsStore.warning('Something went wrong while updateing the department??', error);
-        }))
+            'day': this.refs.day.value,
+            'time': this.refs.time.value,
+            'date': this.refs.date.value
+        }).then((response) => {
+            console.log(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
-    // Close modal after sumited
-    close_modal_box() {
-        $('#open-modal').modal('hide');
-    }
-
-    // Submit hander
+    // Submit handler
     handleSubmit(event) {
         const { match: { params } } = this.props;
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
-            if (this.refs.department_name.value.length === 0) {
-                this.setState({
-                    department_name: "Fill up the department name",
-                });
-            } else if (this.refs.employee_type.value.length === 0) {
-                this.setState({
-                    employee_type: "Fill up the employee type."
-                })
-            }
-            else {
-                this.close_modal_box();
-                this.handleCreate();
-            }
+            this.handleCreate();
         }
-        event.preventDefault();
-        event.target.reset();
     }
 
     render() {
@@ -84,12 +67,12 @@ class AddHospital extends Component {
                         <Sidebar />
                     </Col>
                     <Col className="p-0" lg={10}>
-                        <Hospital />
+                        <Availability />
                         <div className="modal fade mt-5" id="open-modal">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h4 className="modal-title custom_model_title">Add new Department</h4>
+                                        <h4 className="modal-title custom_model_title">Employee Availability</h4>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -98,26 +81,38 @@ class AddHospital extends Component {
                                         <div className="modal-body text-left">
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label htmlFor="department_name">Enter Department Name</label>
+                                                    <label htmlFor="day">Enter Availability Day</label>
                                                     <input type="text"
                                                         className="form-control"
-                                                        id="department_name"
-                                                        ref="department_name"
-                                                        name="department_name"
-                                                        placeholder="Enter department name"
+                                                        id="day"
+                                                        ref="day"
+                                                        name="day"
+                                                        placeholder="Enter availability Day"
                                                     />
-                                                    <small className="text-danger">{this.state.department_name}</small>
+                                                    {/* <small className="text-danger">{this.state.department_name}</small> */}
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="employee_type">Enter Employee Type</label>
-                                                    <input type="text"
+                                                    <label htmlFor="time">Enter Availability Time</label>
+                                                    <input type="time"
                                                         className="form-control"
-                                                        id="employee_type"
-                                                        ref="employee_type"
-                                                        name="employee_type"
-                                                        placeholder="Enter employee type"
+                                                        id="time"
+                                                        ref="time"
+                                                        name="time"
+                                                        placeholder="Enter availability time"
                                                     />
-                                                    <small className="text-danger">{this.state.employee_type}</small>
+                                                    {/* <small className="text-danger">{this.state.employee_type}</small> */}
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label htmlFor="date">Enter Availability Date</label>
+                                                    <input type="date"
+                                                        className="form-control"
+                                                        id="date"
+                                                        ref="date"
+                                                        name="date"
+                                                        placeholder="Enter availability date"
+                                                    />
+                                                    {/* <small className="text-danger">{this.state.employee_type}</small> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -138,4 +133,4 @@ class AddHospital extends Component {
     }
 }
 
-export default AddHospital;
+export default AddAvailability;
