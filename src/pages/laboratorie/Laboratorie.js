@@ -1,53 +1,49 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import DepartmentService from '../../services/DepartmentService';
 import Moment from 'react-moment';
-import Spinner from '../../components/common/Spinner';
 import swal from "sweetalert";
-// import $ from 'jquery';
+import LaboratorieService from '../../services/LaboratorieService';
 
-const department_service = new DepartmentService();
+const laboratorie_service = new LaboratorieService();
 
-class Hospital extends Component {
+class Laboratorie extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            departments: [],
-            requiredItem: {},
-
-        };
+        this.state = ({
+            lab: {},
+            laboratories: []
+        });
         this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
         var self = this;
-        department_service.departmentList()
-            .then(function (result) {
+        laboratorie_service.laboratorieList()
+            .then(function (response) {
                 self.setState({
-                    departments: result
+                    laboratories: response
                 });
             }).catch(error => {
-                console.log("Error: ", error);
+                console.log(error);
             });
     };
 
-    // Open the current udpate modal
-    UpdateDepartment(department) {
+    UpdateLaboratorie(laboratorie) {
         this.setState({
-            requiredItems: department
-        });
+            lab: laboratorie
+        })
 
-        let _json = JSON.stringify(department);
+        let _json = JSON.stringify(laboratorie);
         alert(_json);
     }
 
-    // Delete department
+    // Delete laboratorie
     handleDelete(e, id) {
         swal({
             title: "Are you sure?",
-            text: "Department will be deleted permanently!",
+            text: "Laboratorie will be deleted permanently!",
             icon: "warning",
             buttons: ["No", "Yes"],
             dangerMode: true
@@ -56,42 +52,31 @@ class Hospital extends Component {
             if (willDelete) {
                 var self = this;
                 var _data = null;
-                department_service.deleteDepartment({ id: id })
+                laboratorie_service.laboratorieDelete({ id: id })
                     .then(() => {
-                        _data = self.state.departments.filter(function (obj) {
-                            return obj.id !== id;
+                        _data = self.state.laboratories.filter(function (obj) {
+                            return obj.id !== id
                         });
                         self.setState({
-                            departments: _data
+                            laboratories: _data
                         })
                     });
-            }
-        });
-    };
+            }    
+        })
+    }
 
     render() {
-
-        // Loader 
-        if (this.state.departments.length === 0) {
-            return (
-                <div className="text-center">
-                    <Spinner />
-                </div>
-            )
-        }
-        // /Loader
-
         return (
             <>
                 <div className="page_title">
                     <div className="card">
                         <Row className="m-0">
                             <Col md={8}>
-                                <div className="card-body">Department Page</div>
+                                <div className="card-body">Laboratorie Page</div>
                             </Col>
                             <Col className="text-right" md={4}>
                                 <div className="card-body">
-                                    <a href="/dashboard">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Department List
+                                    <a href="/dashboard">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Laboratorie List
                                 </div>
                             </Col>
                         </Row>
@@ -112,33 +97,35 @@ class Hospital extends Component {
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Department Name</th> 
-                                        <th>Department Type</th> 
+                                        <th>Lab Name</th>
+                                        <th>Machinery Name</th>
+                                        <th>Total Machinery</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.departments && this.state.departments.map((department, index) => {
+                                    {this.state.laboratories && this.state.laboratories.map((laboratorie, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{department.id}</td>
-                                                <td>{department.department_name}</td>
-                                                <td>{department.employee_type}</td>
+                                                <td>#{laboratorie.id}</td>
+                                                <td>{laboratorie.lab_name}</td>
+                                                <td>{laboratorie.machinery_name}</td>
+                                                <td>{laboratorie.total_machinery}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{department.created_at}</Moment>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{laboratorie.created_at}</Moment>
                                                 </td>
                                                 <td className="text-right">
                                                     <button
-                                                        title="Update the department."
+                                                        title="Update the laboratorie."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateDepartment(department)}
+                                                        onClick={() => this.UpdateLaboratorie(laboratorie)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <button
-                                                        title="Delete the department."
-                                                        onClick={e => this.handleDelete(e, department.id)}
+                                                        title="Delete the laboratorie."
+                                                        onClick={e => this.handleDelete(e, laboratorie.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
@@ -150,15 +137,6 @@ class Hospital extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="text-normal">
-                            <ul className="pagination mb-0">
-                                <li className="page-item"><a className="page-link" href="/">Previous</a></li>
-                                <li className="page-item"><a className="page-link" href="/">1</a></li>
-                                <li className="page-item"><a className="page-link" href="/">2</a></li>
-                                <li className="page-item"><a className="page-link" href="/">3</a></li>
-                                <li className="page-item"><a className="page-link" href="/">Next</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </>
@@ -166,4 +144,4 @@ class Hospital extends Component {
     }
 }
 
-export default Hospital;
+export default Laboratorie;

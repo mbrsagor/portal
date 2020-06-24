@@ -13,7 +13,8 @@ class Sidebar extends Component {
                         <li><NavLink to="/add-contagion"><FeatherIcon icon="alert-triangle" /> Add Contagion</NavLink></li>
                         <li><NavLink to="/add-experience"><FeatherIcon icon="map-pin" /> Add Experience</NavLink></li>
                         <li><NavLink to="/add-department"><FeatherIcon icon="package" /> Add Department</NavLink></li>
-                        <li><NavLink to="/add-availability"><FeatherIcon icon="link-2" /> Add Availability</NavLink></li>
+                        <li><NavLink to="/add-availability"><FeatherIcon icon="disc" /> Add Availability</NavLink></li>
+                        <li><NavLink to="/add-laboratorie"><FeatherIcon icon="gitlab" /> Add Laboratorie</NavLink></li>
                         <li><NavLink to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>
                 </nav>
