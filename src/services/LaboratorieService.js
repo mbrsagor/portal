@@ -13,12 +13,12 @@ export default class LaboratorieService {
     }
 
     laboratorieUpdate(laboratorie) {
-        const url = `${API_BASE_URL}/api/laboratories/${laboratorie.id}`;
+        const url = `${API_BASE_URL}/api/laboratories/${laboratorie.id}/`;
         return axios.put(url, laboratorie);
     }
 
     laboratorieDelete(laboratorie) {
-        const url = `${API_BASE_URL}/api/laboratories/${laboratorie.id}`;
+        const url = `${API_BASE_URL}/api/laboratories/${laboratorie.id}/`;
         return axios.delete(url);
     }
 }

@@ -19,7 +19,7 @@ export default class DiseaseService {
     }
 
     createDisease(disease) {
-        const url = `${API_BASE_URL}/api/disease`;
+        const url = `${API_BASE_URL}/api/disease/`;
         return axios.post(url, disease);
     }
 
