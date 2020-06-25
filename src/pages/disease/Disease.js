@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
 import DiseaseService from '../../services/DiseaseService';
 import Moment from 'react-moment';
@@ -38,20 +38,7 @@ class Disease extends Component {
 
         return (
             <>
-                <div className="page_title">
-                    <div className="card">
-                        <Row className="p-0 m-0">
-                            <Col md={8}>
-                                <div className="card-body">Disease Page</div>
-                            </Col>
-                            <Col className="text-right" md={4}>
-                                <div className="card-body">
-                                    <a href="/">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Disease List
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
+                <PageTitle title="Disease" sub_title="Disease list" />
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         {/* <AddDisease /> */}

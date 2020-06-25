@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import FeatherIcon from 'feather-icons-react';
 import ReportList from '../../components/report/ReportList';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
+import PageTitle from '../../components/common/PageTitle';
 
 class Dashboard extends Component {
     render() {
@@ -16,20 +16,7 @@ class Dashboard extends Component {
                         <Sidebar />
                     </Col>
                     <Col className="p-0" lg={10}>
-                        <div className="page_title">
-                            <div className="card">
-                                <Row className="m-0">
-                                    <Col md={8}>
-                                        <div className="card-body">Dashboard</div>
-                                    </Col>
-                                    <Col className="text-right" md={4}>
-                                        <div className="card-body">
-                                            <a href="/">Homepage</a> <FeatherIcon icon="chevrons-right" /> Dashboard
-                                </div>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </div>
+                        <PageTitle title="Dashboard" sub_title="Dashboard" />
                         <div className="page-container m-2 p-2">
 
                             <Row>
