@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
 import Spinner from '../../components/common/Spinner';
 import AvailabilityService from '../../services/AvailabilityService';
@@ -69,21 +69,7 @@ class Availability extends Component {
 
         return (
             <>
-                <div className="page_title">
-                    <div className="card">
-                        <Row className="m-0">
-                            <Col md={8}>
-                                <div className="card-body">Employee Availability</div>
-                            </Col>
-                            <Col className="text-right" md={4}>
-                                <div className="card-body">
-                                    <a href="/dashboard">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Employee Availability
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-
+                <PageTitle title="Employee Availability" sub_title="Employee Availability" />
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         <div className="text-right">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
-import { NavLink } from 'react-router-dom';
 import HelpService from '../../services/HelpService';
 import Spinner from '../../components/common/Spinner';
 
@@ -38,20 +38,7 @@ class HelpLine extends Component {
 
         return (
             <>
-                <div className="page_title">
-                    <div className="card">
-                        <Row className="m-0">
-                            <Col md={8}>
-                                <div className="card-body">Help LIne</div>
-                            </Col>
-                            <Col className="text-right" md={4}>
-                                <div className="card-body">
-                                    <NavLink to="/">Dashboard</NavLink> <FeatherIcon icon="chevrons-right" /> Help Line
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
+                <PageTitle title="Help Line" sub_title="Help List" />
                 <div className="text-right">
                     <button data-toggle="modal" data-target="#open-modal" className="btn btn-info btn-sm mr-2 mt-2"><FeatherIcon icon="plus" /></button>
                     <hr />

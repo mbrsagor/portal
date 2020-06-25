@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import Moment from 'react-moment';
 import swal from "sweetalert";
 import LaboratorieService from '../../services/LaboratorieService';
+import PageTitle from '../../components/common/PageTitle';
 
 const laboratorie_service = new LaboratorieService();
 
@@ -68,20 +68,7 @@ class Laboratorie extends Component {
     render() {
         return (
             <>
-                <div className="page_title">
-                    <div className="card">
-                        <Row className="m-0">
-                            <Col md={8}>
-                                <div className="card-body">Laboratorie Page</div>
-                            </Col>
-                            <Col className="text-right" md={4}>
-                                <div className="card-body">
-                                    <a href="/dashboard">Dashboard</a> <FeatherIcon icon="chevrons-right" /> Laboratorie List
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
+                <PageTitle title="Laboratorie" sub_title="Laboratorie list" />
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         <div className="text-right">
