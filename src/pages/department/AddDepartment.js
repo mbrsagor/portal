@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import DepartmentService from '../../services/DepartmentService'
-import Hospital from './Department';
+import Department from './Department';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
 import $ from 'jquery';
 import Header from '../../components/common/Header';
@@ -10,7 +10,7 @@ import Sidebar from '../../components/common/Sidebar';
 
 const department_service = new DepartmentService()
 
-class AddHospital extends Component {
+class AddDepartment extends Component {
 
     constructor(props) {
         super(props);
@@ -84,7 +84,7 @@ class AddHospital extends Component {
                         <Sidebar />
                     </Col>
                     <Col className="p-0" lg={10}>
-                        <Hospital />
+                        <Department />
                         <div className="modal fade mt-5" id="open-modal">
                             <div className="modal-dialog">
                                 <div className="modal-content">
@@ -138,4 +138,4 @@ class AddHospital extends Component {
     }
 }
 
-export default AddHospital;
+export default AddDepartment;

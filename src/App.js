@@ -14,6 +14,7 @@ import AddContagion from './pages/contagion/AddContagion';
 import AddExperience from './pages/experience/modal/AddExperience';
 import AddAvailability from './pages/availability/AddAvailability';
 import AddLaboratorie from './pages/laboratorie/AddLaboratorie';
+import AddService from './pages/service/AddService';
 import Login from './pages/auth/Login';
 import Error404 from './pages/Error404';
 
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path="/add-experience" component={AddExperience} />
           <Route path="/add-availability" component={AddAvailability} />
           <Route path="/add-laboratorie" component={AddLaboratorie} />
+          <Route path="/add-service" component={AddService} />
           <Route path="/login" component={Login} />
           <Route component={Error404} />
         </Switch>
