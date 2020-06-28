@@ -3,11 +3,35 @@ import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
+import HospitalService from '../../services/HospitalService'
 import swal from "sweetalert";
 
+const hospital_service = new HospitalService()
+
 class Service extends Component {
-    state = {  }
-    render() { 
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            services: []
+        }
+    }
+
+    componentDidMount() {
+        var self = this;
+        hospital_service.serviceList()
+            .then(function (response) {
+                self.setState({
+                    services: response
+                })
+                // console.log(response);
+            }).catch(error => {
+                console.log(`Error: ${error}`)
+            })
+    }
+
+
+    render() {
         return (
             <>
                 <PageTitle title="Service" sub_title="Service List" />
@@ -34,26 +58,27 @@ class Service extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {this.state.departments && this.state.departments.map((department, index) => {
+                                    {this.state.services && this.state.services.map((service, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{department.id}</td>
-                                                <td>{department.department_name}</td>
-                                                <td>{department.employee_type}</td>
+                                                <td>#{service.service_name}</td>
+                                                <td>{service.price}</td>
+                                                <td>{service.discount_price}</td>
+                                                <td>{service.laboratories.lab_name}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{department.created_at}</Moment>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{service.created_at}</Moment>
                                                 </td>
                                                 <td className="text-right">
                                                     <button
-                                                        title="Update the department."
+                                                        title="Update the service."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateDepartment(department)}
+                                                        onClick={() => this.UpdateLaboratorie(service)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <button
-                                                        title="Delete the department."
-                                                        onClick={e => this.handleDelete(e, department.id)}
+                                                        title="Delete the service."
+                                                        onClick={e => this.handleDelete(e, service.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
@@ -61,7 +86,7 @@ class Service extends Component {
                                             </tr>
                                         )
                                     })
-                                    } */}
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -71,5 +96,5 @@ class Service extends Component {
         );
     }
 }
- 
+
 export default Service;
