@@ -31,7 +31,44 @@ class Service extends Component {
     }
 
 
+    // Delete service
+    handleDelete(e, id) {
+        swal({
+            title: "Are you sure?",
+            text: "Service will be deleted permanently!",
+            icon: "warning",
+            buttons: ["No", "Yes"],
+            dangerMode: true
+        }).then(willDelete => {
+            if (willDelete) {
+                var self = this;
+                var _data = null;
+                hospital_service.deleteService({ id: id })
+                    .then(() => {
+                        _data = self.state.services.filter(function (obj) {
+                            return obj.id !== id;
+                        });
+                        self.setState({
+                            services: _data
+                        })
+                    });
+            }
+        });
+    }
+
+
     render() {
+
+        // Loader 
+        if (this.state.services.length === 0) {
+            return (
+                <div className="text-center">
+                    <Spinner />
+                </div>
+            )
+        }
+        // /Loader
+
         return (
             <>
                 <PageTitle title="Service" sub_title="Service List" />
