@@ -6,10 +6,89 @@ import $ from 'jquery';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
+import HospitalService from '../../services/HospitalService';
 
+
+const hospital_services = new HospitalService();
 
 class AddService extends Component {
-    state = {}
+    constructor(props) {
+        super(props);
+        this.state = {
+            service_name: '',
+            price: '',
+            discount_price: '',
+            hospital_service: ''
+        }
+    }
+
+    // create service handler
+    handleCreate() {
+        hospital_services.createService({
+            'service_name': this.refs.service_name.value,
+            'price': this.refs.price.value,
+            'discount_price': this.refs.discount_price.value,
+            'hospital_service': this.refs.hospital_service.value,
+        }).then((response) => {
+            ToastsStore.success('successfully created the service!');
+        }).catch((error) => {
+            ToastsStore.warning('Something went wrong while creating service.??', error);
+        })
+    }
+
+    // update service handler
+    handleUpdate(id) {
+        hospital_services.createService({
+            'id': id,
+            'service_name': this.refs.service_name.value,
+            'price': this.refs.price.value,
+            'discount_price': this.refs.discount_price.value,
+            'hospital_service': this.refs.hospital_service.value,
+        }).then((response) => {
+            console.log(response.data);
+            ToastsStore.success('successfully update the service!');
+        }).catch((error) => {
+            ToastsStore.warning('Something went wrong while updating service.??', error);
+        })
+    }
+
+    // Close modal after sumited
+    close_modal_box() {
+        $('#open-modal').modal('hide');
+    }
+
+    // Submit hander
+    handleSubmit(event) {
+        const { match: { params } } = this.props;
+        if (params && params.id) {
+            this.handleUpdate(params.id);
+        } else {
+            if (this.refs.service_name.value.length === 0) {
+                this.setState({
+                    service_name: "Fill up the service name",
+                });
+            }else if (this.refs.price.value.length === 0) {
+                this.setState({
+                    price: "Fill service price."
+                })
+            } else if (this.refs.discount_price.value.length === 0) {
+                this.setState({
+                    discount_price: "Fill service discount price."
+                })
+            } else if (this.refs.laboratories.value.length === 0) {
+                this.setState({
+                    laboratories: "Select laboratorie ."
+                })
+            }
+            else {
+                this.close_modal_box();
+                this.handleCreate();
+            }
+        }
+        event.preventDefault();
+        event.target.reset();
+    }
+
     render() {
         return (
             <>

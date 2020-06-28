@@ -3,10 +3,10 @@ import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
 import Moment from 'react-moment';
 import Spinner from '../../components/common/Spinner';
-import HospitalService from '../../services/HospitalService'
+import HospitalService from '../../services/HospitalService';
 import swal from "sweetalert";
 
-const hospital_service = new HospitalService()
+const hospital_service = new HospitalService();
 
 class Service extends Component {
 
@@ -88,7 +88,7 @@ class Service extends Component {
                                     <tr>
                                         <th>Service Name</th>
                                         <th>Price</th>
-                                        <th>Discount price</th>
+                                        <th>Discount</th>
                                         <th>Laboratories</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
@@ -99,8 +99,8 @@ class Service extends Component {
                                         return (
                                             <tr key={index}>
                                                 <td>#{service.service_name}</td>
-                                                <td>{service.price}</td>
-                                                <td>{service.discount_price}</td>
+                                                <td>{service.price} BDT</td>
+                                                <td>{service.discount_price} BDT</td>
                                                 <td>{service.laboratories.lab_name}</td>
                                                 <td>
                                                     <Moment format='MMMM Do YYYY, h:mm:ss a'>{service.created_at}</Moment>
