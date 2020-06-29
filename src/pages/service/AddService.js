@@ -7,14 +7,17 @@ import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
 import HospitalService from '../../services/HospitalService';
+import LaboratorieService from '../../services/LaboratorieService';
 
 
 const hospital_services = new HospitalService();
+const laboratorie_service = new LaboratorieService()
 
 class AddService extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            labs: [],
             service_name: '',
             price: '',
             discount_price: '',
@@ -23,6 +26,18 @@ class AddService extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        var self = this;
+        laboratorie_service.laboratorieList()
+            .then(function (response) {
+                self.setState({
+                    labs: response
+                });
+            }).catch(error => {
+                console.log(error);
+            });
+    };
+
     // create service handler
     handleCreate() {
         hospital_services.createService({
@@ -30,8 +45,8 @@ class AddService extends Component {
             'price': this.refs.price.value,
             'discount_price': this.refs.discount_price.value,
             'laboratories': this.refs.laboratories.value,
-        }).then((result => {
-            console.log(result.data);
+        }).then((response => {
+            // console.log(response.data);
             ToastsStore.success('successfully created the service!');
         })).catch(( error => {
             ToastsStore.warning('Something went wrong while creating service.??', error);
@@ -149,8 +164,11 @@ class AddService extends Component {
                                                 <div className="form-group">
                                                     <label htmlFor="laboratories">Select laboratories</label>
                                                     <select name="laboratories" ref="laboratories" id="laboratories" className="form-control">
-                                                        <option value="1">Corona test</option>
-                                                        <option value="1">MRI test</option>
+                                                        { this.state.labs && this.state.labs.map((lab, index) => {
+                                                            return(
+                                                                <option key={index} value={lab.id}>{lab.lab_name}</option>
+                                                            )
+                                                        })}
                                                     </select>
                                                     <small className="text-danger">{this.state.laboratories}</small>
                                                 </div>
