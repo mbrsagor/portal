@@ -38,7 +38,7 @@ class AddService extends Component {
 
     // update service handler
     handleUpdate(id) {
-        hospital_services.createService({
+        hospital_services.updateService({
             'id': id,
             'service_name': this.refs.service_name.value,
             'price': this.refs.price.value,
@@ -120,7 +120,7 @@ class AddService extends Component {
                                                         name="service_name"
                                                         placeholder="Enter service name"
                                                     />
-                                                    {/* <small className="text-danger">{this.state.service_name}</small> */}
+                                                    <small className="text-danger">{this.state.service_name}</small>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="price">Service Price</label>
@@ -131,7 +131,7 @@ class AddService extends Component {
                                                         name="price"
                                                         placeholder="Enter service price"
                                                     />
-                                                    {/* <small className="text-danger">{this.state.price}</small> */}
+                                                    <small className="text-danger">{this.state.price}</small>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="discount_price">Discount Price</label>
@@ -142,7 +142,7 @@ class AddService extends Component {
                                                         name="discount_price"
                                                         placeholder="Enter discount price"
                                                     />
-                                                    {/* <small className="text-danger">{this.state.discount_price}</small> */}
+                                                    <small className="text-danger">{this.state.discount_price}</small>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="laboratories">Select laboratories</label>
@@ -150,7 +150,7 @@ class AddService extends Component {
                                                         <option value="1">Corona test</option>
                                                         <option value="1">MRI test</option>
                                                     </select>
-                                                    {/* <small className="text-danger">{this.state.laboratories}</small> */}
+                                                    <small className="text-danger">{this.state.laboratories}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,4 +172,3 @@ class AddService extends Component {
 }
 
 export default AddService;
-
