@@ -30,6 +30,10 @@ class Service extends Component {
             })
     }
 
+    UpdateLaboratorie(service){
+        let _json = JSON.stringify(service);
+        alert(_json);
+    }
 
     // Delete service
     handleDelete(e, id) {
@@ -87,8 +91,8 @@ class Service extends Component {
                                 <thead>
                                     <tr>
                                         <th>Service Name</th>
-                                        <th>Price</th>
-                                        <th>Discount</th>
+                                        <th>Service Price</th>
+                                        <th>Discount Price</th>
                                         <th>Laboratories</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
@@ -98,7 +102,7 @@ class Service extends Component {
                                     {this.state.services && this.state.services.map((service, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{service.service_name}</td>
+                                                <td>{service.service_name}</td>
                                                 <td>{service.price} BDT</td>
                                                 <td>{service.discount_price} BDT</td>
                                                 <td>{service.laboratories.lab_name}</td>

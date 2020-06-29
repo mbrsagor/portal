@@ -18,8 +18,9 @@ class AddService extends Component {
             service_name: '',
             price: '',
             discount_price: '',
-            hospital_service: ''
-        }
+            laboratories: ''
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // create service handler
@@ -28,12 +29,13 @@ class AddService extends Component {
             'service_name': this.refs.service_name.value,
             'price': this.refs.price.value,
             'discount_price': this.refs.discount_price.value,
-            'hospital_service': this.refs.hospital_service.value,
-        }).then((response) => {
+            'laboratories': this.refs.laboratories.value,
+        }).then((result => {
+            console.log(result.data);
             ToastsStore.success('successfully created the service!');
-        }).catch((error) => {
+        })).catch(( error => {
             ToastsStore.warning('Something went wrong while creating service.??', error);
-        })
+        }))
     }
 
     // update service handler
@@ -146,7 +148,7 @@ class AddService extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="laboratories">Select laboratories</label>
-                                                    <select name="laboratories" id="laboratories" className="form-control">
+                                                    <select name="laboratories" ref="laboratories" id="laboratories" className="form-control">
                                                         <option value="1">Corona test</option>
                                                         <option value="1">MRI test</option>
                                                     </select>
