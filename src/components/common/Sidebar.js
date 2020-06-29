@@ -8,15 +8,15 @@ class Sidebar extends Component {
             <div className="main_sidebar">
                 <nav>
                     <ul>
-                        <li className="activeMenuItem"><NavLink to="/dashboard"><FeatherIcon icon="home" /> Dashboard</NavLink></li>
-                        <li><NavLink to="/add-disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
-                        <li><NavLink to="/add-contagion"><FeatherIcon icon="alert-triangle" /> Add Contagion</NavLink></li>
-                        <li><NavLink to="/add-experience"><FeatherIcon icon="map-pin" /> Add Experience</NavLink></li>
-                        <li><NavLink to="/add-department"><FeatherIcon icon="package" /> Add Department</NavLink></li>
-                        <li><NavLink to="/add-availability"><FeatherIcon icon="disc" /> Add Availability</NavLink></li>
-                        <li><NavLink to="/add-laboratorie"><FeatherIcon icon="gitlab" /> Add Laboratorie</NavLink></li>
-                        <li><NavLink to="/add-service"><FeatherIcon icon="database" /> Add Service</NavLink></li>
-                        <li><NavLink to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/dashboard"><FeatherIcon icon="home" /> Dashboard</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-disease"><FeatherIcon icon="droplet" /> Disease</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-contagion"><FeatherIcon icon="alert-triangle" /> Add Contagion</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-experience"><FeatherIcon icon="map-pin" /> Add Experience</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-department"><FeatherIcon icon="package" /> Add Department</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-availability"><FeatherIcon icon="disc" /> Add Availability</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-laboratorie"><FeatherIcon icon="gitlab" /> Add Laboratorie</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/add-service"><FeatherIcon icon="database" /> Add Service</NavLink></li>
+                        <li><NavLink activeClassName="activeMenuItem" to="/help"><FeatherIcon icon="help-circle" /> Help Line</NavLink></li>
                     </ul>
                 </nav>
             </div>
