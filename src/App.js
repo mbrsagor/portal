@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashbaord';
+import AddDoctor from './pages/addDoctor/AddDoctor';
 import AddDisease from './pages/disease/modal/AddDisease';
 import AddHelp from './pages/help/modal/AddHelp';
 import AddDepartment from './pages/department/AddDepartment';
@@ -26,6 +27,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/add-doctor" component={AddDoctor} />
           <Route path="/help" component={AddHelp} />
           <Route path="/add-disease" component={AddDisease} />
           <Route path="/add-department" component={AddDepartment} />
