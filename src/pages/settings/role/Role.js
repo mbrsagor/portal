@@ -30,6 +30,11 @@ class Role extends Component {
             })
     }
 
+    UpdateUserRole(role) {
+        let _json = JSON.stringify(role);
+        alert(_json);
+    }
+
     // Delete Role
     handleDelete(e, id) {
         swal({
@@ -96,7 +101,7 @@ class Role extends Component {
                                                     <button
                                                         title="Update the role."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateLaboratorie(role)}
+                                                        onClick={() => this.UpdateUserRole(role)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
