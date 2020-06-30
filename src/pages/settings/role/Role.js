@@ -1,46 +1,40 @@
 import React, { Component } from 'react';
-import PageTitle from '../../components/common/PageTitle';
-import FeatherIcon from 'feather-icons-react';
-import Moment from 'react-moment';
-import Spinner from '../../components/common/Spinner';
-import HospitalService from '../../services/HospitalService';
+import PageTitle from '../../../components/common/PageTitle';
 import swal from "sweetalert";
+import Moment from 'react-moment';
+import FeatherIcon from 'feather-icons-react';
+import RoleService from '../../../services/RoleService';
 
-const hospital_service = new HospitalService();
+const role_service = new RoleService();
 
-class Service extends Component {
+class Role extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            services: []
+            roles: []
         };
         this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
         var self = this;
-        hospital_service.serviceList()
+        role_service.roleList()
             .then(function (response) {
                 self.setState({
-                    services: response
+                    roles: response
                 })
-                // console.log(response);
-            }).catch(error => {
+            })
+            .catch(error => {
                 console.log(`Error: ${error}`)
             })
     }
 
-    UpdateLaboratorie(service){
-        let _json = JSON.stringify(service);
-        alert(_json);
-    }
-
-    // Delete service
+    // Delete Role
     handleDelete(e, id) {
         swal({
             title: "Are you sure?",
-            text: "Service will be deleted permanently!",
+            text: "Role will be deleted permanently!",
             icon: "warning",
             buttons: ["No", "Yes"],
             dangerMode: true
@@ -48,35 +42,23 @@ class Service extends Component {
             if (willDelete) {
                 var self = this;
                 var _data = null;
-                hospital_service.deleteService({ id: id })
+                role_service.DeleteRole({ id: id })
                     .then(() => {
-                        _data = self.state.services.filter(function (obj) {
+                        _data = self.state.roles.filter(function (obj) {
                             return obj.id !== id;
                         });
                         self.setState({
-                            services: _data
+                            roles: _data
                         })
                     });
             }
         });
     }
 
-
     render() {
-
-        // Loader 
-        if (this.state.services.length === 0) {
-            return (
-                <div className="text-center">
-                    <Spinner />
-                </div>
-            )
-        }
-        // /Loader
-
         return (
             <>
-                <PageTitle title="Service" sub_title="Service List" />
+                <PageTitle title="Add Role" sub_title="Add new user role" />
                 <div className="page-container m-2 p-2">
                     <div className="data_table_list">
                         <div className="text-right">
@@ -91,44 +73,43 @@ class Service extends Component {
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th>Service Name</th>
-                                        <th>Service Price</th>
-                                        <th>Discount Price</th>
-                                        <th>Laboratories</th>
+                                        <th>#ID</th>
+                                        <th>Usrname</th>
+                                        <th>User Role</th>
+                                        <th>User Email</th>
                                         <th>Created Date</th>
-                                        <th className="text-center">Actions</th>
+                                        <th className="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.services && this.state.services.map((service, index) => {
+                                    {this.state.roles && this.state.roles.map((role, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>{service.service_name}</td>
-                                                <td>{service.price} BDT</td>
-                                                <td>{service.discount_price} BDT</td>
-                                                <td>{service.laboratories.lab_name}</td>
+                                                <td>{role.id}</td>
+                                                <td>{role.user.username}</td>
+                                                <td>{role.role}</td>
+                                                <td>{role.user.email}</td>
                                                 <td>
-                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{service.created_at}</Moment>
+                                                    <Moment format='MMMM Do YYYY, h:mm:ss a'>{role.created_at}</Moment>
                                                 </td>
                                                 <td className="text-right">
                                                     <button
-                                                        title="Update the service."
+                                                        title="Update the role."
                                                         data-toggle="modal" data-target="#open-modal"
-                                                        onClick={() => this.UpdateLaboratorie(service)}
+                                                        onClick={() => this.UpdateLaboratorie(role)}
                                                         className="btn btn-info btn-sm">
                                                         <FeatherIcon icon="edit-3" />
                                                     </button>
                                                     <button
-                                                        title="Delete the service."
-                                                        onClick={e => this.handleDelete(e, service.id)}
+                                                        title="Delete the role."
+                                                        onClick={e => this.handleDelete(e, role.id)}
                                                         className="btn btn-danger btn-sm ml-2">
                                                         <FeatherIcon icon="trash" />
                                                     </button>
                                                 </td>
                                             </tr>
                                         )
-                                    })
-                                    }
+                                    })}
                                 </tbody>
                             </table>
                         </div>
@@ -139,4 +120,4 @@ class Service extends Component {
     }
 }
 
-export default Service;
+export default Role;
