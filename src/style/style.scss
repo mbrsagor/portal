@@ -221,13 +221,15 @@ header {
 // Footer
 footer {
     a{
-        color: $primary_color;
+        color: #fff;
     }
     a:hover {
             text-decoration: none;
+            color: #fff;
         }
     p {
         margin-bottom: 0;
+        font-size: 14px;
     }
 }
 
@@ -236,6 +238,11 @@ footer {
     left: 0;
     bottom: 0;
     box-shadow: 0 -5px 5px -5px #333;
+}
+
+// footer style changes by sohan
+.ftr_custom {
+    background: #1abc9c !important;
 }
 
 // Page
@@ -358,4 +365,49 @@ footer {
     padding: 150px 0;
     text-align: center;
     color: #fff;
+}
+.slide .slide_content{
+    margin-left: 37%;
+}
+
+
+// Error page
+.error {
+    padding: 150px 0;
+    background: $primary_color;
+    .error_title{
+
+        h4{
+            color: #ddd;
+            font-size: 23px;
+        }
+    }
+    .error_content{
+
+        h1{
+            color: #fff;
+            font-size: 3.5rem;
+            padding: 10px 0;
+        }
+        p{
+            color: #ddd;
+            font-size: 20px;
+        }
+        a{
+            color: #ddd;
+            padding: 4px 32px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #0d182a;
+            background: #0d182a;
+            text-decoration: none;
+            border-radius: 7px;
+
+        }
+        a:hover{
+            background: $secondary_color;
+            color: #ddd;
+        }
+    }
 }

@@ -9,8 +9,10 @@ class Slide extends Component {
             <div className="slide">
                 <Row className="m-0">
                     <Col lg={12}>
-                        <h2> <Wave text="We are helping Covid-19 effected" /></h2>
-                        <p className="ml-5">We are help all of pepole</p>
+                        <div className="slide_content">
+                            <h2> <Wave text="We are helping Covid-19 effected" /></h2>
+                            <p className="ml-5">We are help all of pepole</p>
+                        </div>
                     </Col>
                 </Row>
             </div>
@@ -19,3 +21,6 @@ class Slide extends Component {
 }
 
 export default Slide;
+
+/// tomar devlopment env setup
+/// Hopefully r kno problem nai. tumi apajato slide.js and style.scss file akj kro
