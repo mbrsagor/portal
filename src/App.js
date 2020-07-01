@@ -37,7 +37,7 @@ class App extends Component {
           <Route path="/add-availability" component={AddAvailability} />
           <Route path="/add-laboratorie" component={AddLaboratorie} />
           <Route path="/add-service" component={AddService} />
-          <Route path="/add-role" component={AddRole} />
+          <Route path="/settings/add-role" component={AddRole} />
           <Route path="/login" component={Login} />
           <Route component={Error404} />
         </Switch>
