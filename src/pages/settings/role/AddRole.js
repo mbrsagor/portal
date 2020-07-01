@@ -1,12 +1,96 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
+import $ from 'jquery';
 import Role from './Role';
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
 import Sidebar from '../../../components/common/Sidebar';
+import UserService from '../../../services/UserService';
+import RoleService from '../../../services/RoleService';
+
+const user_service = new UserService();
+const role_service = new RoleService();
 
 class AddRole extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: '',
+            role: '',
+            users: [],
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        // Users show in dropdonw
+        var self = this;
+        user_service.listOfUsers()
+            .then(function (response) {
+                self.setState({
+                    users: response
+                })
+                // console.log(response);
+            })
+            .catch(error => {
+                console.log(`${error}`)
+            })
+    }
+
+    // create user role handler
+    handleCreate() {
+        role_service.createRole({
+            'user': this.refs.user.value,
+            'role': this.refs.role.value
+        }).then((response => {
+            ToastsStore.success('successfully created the role!');
+        })).catch(error => {
+            ToastsStore.warning('Something went wrong while creating role.??', error);
+        })
+    }
+
+    // update user role handler
+    handleUpdateCreate(id) {
+        role_service.createRole({
+            'id': id,
+            'user': this.refs.user.value,
+            'role': this.refs.role.value
+        }).then((response => {
+            ToastsStore.success('successfully updating the role!');
+        })).catch(error => {
+            ToastsStore.warning('Something went wrong while updating role.??', error);
+        })
+    }
+
+    // Close modal after sumited
+    close_modal_box() {
+        $('#open-modal').modal('hide');
+    }
+
+    // Handler submit
+    handleSubmit(event) {
+        const { match: { params } } = this.props;
+        if (params && params.id) {
+            this.handleUpdateCreate(params.id)
+        } else {
+            if (this.refs.user.value.lenght === 0) {
+                this.setState({
+                    user: 'Please select the user'
+                })
+            } else if (this.refs.user.value.lenght === 0) {
+                this.setState({
+                    role: 'Please select the role'
+                })
+            } else {
+                this.close_modal_box();
+                this.handleCreate();
+            }
+        }
+        event.preventDefault();
+        event.target.reset();
+    }
 
     render() {
         return (
@@ -35,16 +119,23 @@ class AddRole extends Component {
                                         <div className="form-group">
                                             <label htmlFor="user">Select User</label>
                                             <select name="user" ref="user" id="user" className="form-control">
-                                                <option value="1">Sagor</option>
-                                                <option value="1">Limon</option>
+                                                {this.state.users && this.state.users.map((user, index) => {
+                                                    return (
+                                                        <option key={index} value={user.id}>{user.username}</option>
+                                                    )
+                                                })}
                                             </select>
                                             {/* <small className="text-danger">{this.state.user}</small> */}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="role">Select Role</label>
                                             <select name="role" ref="role" id="role" className="form-control">
-                                                <option value="1">Sagor</option>
-                                                <option value="1">Limon</option>
+                                                <option value='admin'>Admin</option>
+                                                <option value='hr'>HR</option>
+                                                <option value='doctor'>Doctor</option>
+                                                <option value='nurse'>Nurse</option>
+                                                <option value='laboratories'>Laboratories</option>
+                                                <option value='accountant'>Accountant</option>
                                             </select>
                                             {/* <small className="text-danger">{this.state.role}</small> */}
                                         </div>
