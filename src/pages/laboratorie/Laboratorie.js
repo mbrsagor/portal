@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import swal from "sweetalert";
 import LaboratorieService from '../../services/LaboratorieService';
 import PageTitle from '../../components/common/PageTitle';
+import Spinner from '../../components/common/Spinner';
 
 const laboratorie_service = new LaboratorieService();
 
@@ -66,6 +67,17 @@ class Laboratorie extends Component {
     }
 
     render() {
+
+        // Loader 
+        if (this.state.laboratories.length === 0) {
+            return (
+                <div className="text-center">
+                    <Spinner />
+                </div>
+            )
+        }
+        // /Loader
+
         return (
             <>
                 <PageTitle title="Laboratorie" sub_title="Laboratorie list" />
