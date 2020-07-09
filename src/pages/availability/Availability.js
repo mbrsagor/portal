@@ -98,8 +98,8 @@ class Availability extends Component {
                                             <tr key={index}>
                                                 <td>#{availability.id}</td>
                                                 <td>{availability.day}</td>
-                                                <td>{availability.time}</td>
-                                                <td>{availability.date}</td>
+                                                <td>{availability.start_time}</td>
+                                                <td>{availability.end_time}</td>
                                                 <td>
                                                     <Moment format='MMMM Do YYYY, h:mm:ss a'>{availability.created_at}</Moment>
                                                 </td>

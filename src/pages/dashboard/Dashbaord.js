@@ -5,6 +5,7 @@ import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
 import PageTitle from '../../components/common/PageTitle';
+import Chart from './chart';
 
 class Dashboard extends Component {
     render() {
@@ -38,6 +39,9 @@ class Dashboard extends Component {
 
                             </Row>
                         </div>
+
+                        <Chart />
+
                     </Col>
                 </Row>
                 <Footer />

@@ -15,8 +15,8 @@ class AddAvailability extends Component {
         super(props);
         this.state = {
             day: '',
-            time: '',
-            date: ''
+            start_time: '',
+            end_time: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -25,8 +25,8 @@ class AddAvailability extends Component {
     handleCreate() {
         availability_service.createAvailability({
             'day': this.refs.day.value,
-            'time': this.refs.time.value,
-            'date': this.refs.date.value
+            'start_time': this.refs.start_time.value,
+            'end_time': this.refs.end_time.value
         }).then((response => {
             console.log(response.data);
         })).catch((error) => {
@@ -39,8 +39,8 @@ class AddAvailability extends Component {
         availability_service.udpateAvailability({
             'id': id,
             'day': this.refs.day.value,
-            'time': this.refs.time.value,
-            'date': this.refs.date.value
+            'start_time': this.refs.start_time.value,
+            'end_time': this.refs.end_time.value
         }).then((response) => {
             console.log(response.data)
         }).catch((error) => {
@@ -92,25 +92,23 @@ class AddAvailability extends Component {
                                                     {/* <small className="text-danger">{this.state.department_name}</small> */}
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="time">Enter Availability Time</label>
+                                                    <label htmlFor="start_time">Enter availability start time</label>
                                                     <input type="time"
                                                         className="form-control"
-                                                        id="time"
-                                                        ref="time"
-                                                        name="time"
-                                                        placeholder="Enter availability time"
+                                                        id="start_time"
+                                                        ref="start_time"
+                                                        name="start_time"
                                                     />
                                                     {/* <small className="text-danger">{this.state.employee_type}</small> */}
                                                 </div>
 
                                                 <div className="form-group">
-                                                    <label htmlFor="date">Enter Availability Date</label>
-                                                    <input type="date"
+                                                    <label htmlFor="end_time">Enter availability end time</label>
+                                                    <input type="time"
                                                         className="form-control"
-                                                        id="date"
-                                                        ref="date"
-                                                        name="date"
-                                                        placeholder="Enter availability date"
+                                                        id="end_time"
+                                                        ref="end_time"
+                                                        name="end_time"
                                                     />
                                                     {/* <small className="text-danger">{this.state.employee_type}</small> */}
                                                 </div>
