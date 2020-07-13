@@ -4,9 +4,89 @@ import PageTitle from '../../components/common/PageTitle';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
+import DoctorService from '../../services/DoctorService';
+
+const doctor_service = new DoctorService();
 
 class AddDoctor extends Component {
-    state = {}
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            specialization: '',
+            address: '',
+            phone_number: '',
+            education: '',
+            date_of_birth: '',
+            visit_fee: '',
+            designation: '',
+            roles: '',
+            department: '',
+            availability: '',
+            experience: '',
+            gender: '',
+            profile_photo: ''
+        }
+    }
+
+    handleCreate() {
+        doctor_service.createDoctor({
+            'specialization': this.refs.specialization.value,
+            'address': this.refs.address.value,
+            'phone_number': this.refs.phone_number.value,
+            'education': this.refs.education.value,
+            'date_of_birth': this.refs.date_of_birth.value,
+            'visit_fee': this.refs.visit_fee.value,
+            'designation': this.refs.designation.value,
+            'roles': this.refs.roles.value,
+            'department': this.refs.department.value,
+            'availability': this.refs.availability.value,
+            'experience': this.refs.experience.value,
+            'gender': this.refs.gender.value,
+            'profile_photo': this.refs.profile_photo.value,
+        }).then((response => {
+            console.log(response);
+        })).catch((error => {
+            console.log(error);
+        }))
+    }
+
+    handleUpdate(id) {
+        doctor_service.updateDoctor({
+            'id': id,
+            'specialization': this.refs.specialization.value,
+            'address': this.refs.address.value,
+            'phone_number': this.refs.phone_number.value,
+            'education': this.refs.education.value,
+            'date_of_birth': this.refs.date_of_birth.value,
+            'visit_fee': this.refs.visit_fee.value,
+            'designation': this.refs.designation.value,
+            'roles': this.refs.roles.value,
+            'department': this.refs.department.value,
+            'availability': this.refs.availability.value,
+            'experience': this.refs.experience.value,
+            'gender': this.refs.gender.value,
+            'profile_photo': this.refs.profile_photo.value,
+        }).then((response => {
+            console.log(response);
+        })).catch((error => {
+            console.log(error);
+        }))
+    }
+    
+    // Form submit handler
+    handleSubmit(event) {
+        const { match: { params } } = this.props;
+        if (params && params.id) {
+            this.handleUpdate(params.id)
+        } else {
+            this.handleCreate()
+        }
+
+        event.preventDefault();
+        event.target.reset();
+    }
+
     render() {
         return (
             <>
@@ -18,7 +98,7 @@ class AddDoctor extends Component {
                     <Col className="p-0" lg={10}>
                         <PageTitle title="Add Doctor" sub_title="Add New Doctor" />
                         <div className="addDoctorForm p-4 m-4 bg-light">
-                            <form>
+                            <form onSubmit={this.handleSubmit}>
                                 <Row>
                                     <Col lg={6}>
                                         <div className="form-group">
@@ -67,7 +147,7 @@ class AddDoctor extends Component {
                                             </select>
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="desiexperiencegnation">Doctor Experience</label>
+                                            <label htmlFor="experience">Doctor Experience</label>
                                             <input type="text"
                                                 className="form-control"
                                                 id="experience"
