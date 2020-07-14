@@ -5,6 +5,9 @@ import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Sidebar from '../../components/common/Sidebar';
 import DoctorService from '../../services/DoctorService';
+import Roles from './options/Roles';
+import Availability from './options/Availability';
+import Department from './options/Department';
 
 const doctor_service = new DoctorService();
 
@@ -28,6 +31,7 @@ class AddDoctor extends Component {
             profile_photo: ''
         }
     }
+
 
     handleCreate() {
         doctor_service.createDoctor({
@@ -109,17 +113,19 @@ class AddDoctor extends Component {
                                                 ref="specialization"
                                                 name="specialization"
                                                 placeholder="Enter doctor specialization"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.specialization}</small> */}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="visit_fee">Doctor Visit Fee</label>
-                                            <input type="text"
+                                            <input type="number"
                                                 className="form-control"
                                                 id="visit_fee"
                                                 ref="visit_fee"
                                                 name="visit_fee"
                                                 placeholder="Enter doctor visit fee"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.visit_fee}</small> */}
                                         </div>
@@ -131,6 +137,7 @@ class AddDoctor extends Component {
                                                 ref="designation"
                                                 name="designation"
                                                 placeholder="Enter doctor designation"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.designation}</small> */}
                                         </div>
@@ -138,12 +145,11 @@ class AddDoctor extends Component {
                                             <label htmlFor="roles">Select Roles</label>
                                             <select
                                                 className="form-control"
+                                                required
                                                 id="address"
                                                 ref="address"
                                                 name="address">
-                                                <option value="1">Admin</option>
-                                                <option value="2">Nurse</option>
-                                                <option value="3">Doctor</option>
+                                                <Roles/>
                                             </select>
                                         </div>
                                         <div className="form-group">
@@ -154,12 +160,14 @@ class AddDoctor extends Component {
                                                 ref="experience"
                                                 name="experience"
                                                 placeholder="Enter work experience"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.experience}</small> */}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="gender">Select Gender</label>
                                             <select
+                                                required
                                                 className="form-control"
                                                 id="gender"
                                                 ref="gender"
@@ -179,6 +187,7 @@ class AddDoctor extends Component {
                                                 ref="address"
                                                 name="address"
                                                 placeholder="Enter doctor address"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.address}</small> */}
                                         </div>
@@ -190,6 +199,7 @@ class AddDoctor extends Component {
                                                 ref="phone_number"
                                                 name="phone_number"
                                                 placeholder="Enter phone number"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.phone_number}</small> */}
                                         </div>
@@ -201,31 +211,29 @@ class AddDoctor extends Component {
                                                 ref="date_of_birth"
                                                 name="date_of_birth"
                                                 placeholder="Enter date of birth"
+                                                required
                                             />
                                             {/* <small className="text-danger">{this.state.date_of_birth}</small> */}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="department">Select Department</label>
                                             <select
+                                                required
                                                 className="form-control"
                                                 id="department"
                                                 ref="department"
                                                 name="department">
-                                                <option value="1">Admin</option>
-                                                <option value="2">Nurse</option>
-                                                <option value="3">Doctor</option>
+                                                <Department />
                                             </select>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="availability">Select Availability</label>
                                             <select
-                                                className="form-control"
+                                                className="form-control selectpicker"
                                                 id="availability"
                                                 ref="availability"
                                                 name="availability">
-                                                <option value="1">Friday</option>
-                                                <option value="2">Sunday</option>
-                                                <option value="3">Monday</option>
+                                                <Availability />
                                             </select>
                                         </div>
                                         <br />
@@ -248,6 +256,7 @@ class AddDoctor extends Component {
                                     ref="education"
                                     name="education"
                                     placeholder="Enter all education"
+                                    required
                                 />
                                 <button className="btn btn-success mt-3" type="submit">Save</button>
                             </form>
