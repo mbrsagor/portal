@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RoleService from '../../../services/RoleService';
+import RoleService from '../../../../services/RoleService';
 
 const role_service = new RoleService();
 

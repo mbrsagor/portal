@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AvailabilityService from '../../../services/AvailabilityService';
+import AvailabilityService from '../../../../services/AvailabilityService';
 // import Select from 'react-select';
 
 const availability_service = new AvailabilityService();

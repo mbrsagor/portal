@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DepartmentService from '../../../services/DepartmentService';
+import DepartmentService from '../../../../services/DepartmentService';
 
 const department_service = new DepartmentService();
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap'
-import PageTitle from '../../components/common/PageTitle';
-import Header from '../../components/common/Header';
-import Footer from '../../components/common/Footer';
-import Sidebar from '../../components/common/Sidebar';
-import DoctorService from '../../services/DoctorService';
+import PageTitle from '../../../components/common/PageTitle';
+import Header from '../../../components/common/Header';
+import Footer from '../../../components/common/Footer';
+import Sidebar from '../../../components/common/Sidebar';
+import DoctorService from '../../../services/DoctorService';
 import Roles from './options/Roles';
 import Availability from './options/Availability';
 import Department from './options/Department';
@@ -86,6 +86,7 @@ class AddDoctor extends Component {
         } else {
             this.handleCreate()
         }
+        //alert("hello");
 
         event.preventDefault();
         event.target.reset();
