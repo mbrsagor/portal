@@ -64,7 +64,7 @@ class DoctorList extends Component{
                                         <th>Phone Number</th>
                                         <th>Visit Free</th>
                                         <th>Created Date</th>
-                                        <th>Actions</th>
+                                        <th className="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +78,7 @@ class DoctorList extends Component{
                                                 <td>
                                                     <Moment format='MMMM Do YYYY, h:mm:ss a'>{doctor.created_at}</Moment>
                                                 </td>
-                                                <td>
+                                                <td className="text-right">
                                                     <button
                                                         title="Update the doctor information."
                                                         data-toggle="modal" data-target="#open-modal"
