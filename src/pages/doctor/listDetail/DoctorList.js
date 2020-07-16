@@ -63,6 +63,8 @@ class DoctorList extends Component{
                                         <th>Designation</th>
                                         <th>Phone Number</th>
                                         <th>Visit Free</th>
+                                        <th>Specialization</th>
+                                        <th>Experience</th>
                                         <th>Created Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
@@ -71,10 +73,12 @@ class DoctorList extends Component{
                                     {this.state.doctors && this.state.doctors.map((doctor, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>#{doctor.user.username}</td>
+                                                <td>{doctor.user.username}</td>
                                                 <td>{doctor.designation}</td>
                                                 <td>0{doctor.phone_number}</td>
                                                 <td>{doctor.visit_fee}</td>
+                                                <td>{doctor.specialization}</td>
+                                                <td>{doctor.experience.job_year}</td>
                                                 <td>
                                                     <Moment format='MMMM Do YYYY, h:mm:ss a'>{doctor.created_at}</Moment>
                                                 </td>
