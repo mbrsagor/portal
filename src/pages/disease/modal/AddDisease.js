@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import $ from 'jquery';
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 import DiseaseService from '../../../services/DiseaseService';
 import Disages from '../Disease';
 import Header from '../../../components/common/Header';
@@ -12,19 +14,12 @@ class AddDisease extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            disease_name: '',
+            disease_image: ''
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    componentDidMount() {
-        const { match: { _params } } = this.props;
-        if (_params) {
-            disease_service.getDiseaseById(_params.id)
-                .then((disease => {
-                    this.refs.disease_name.value = disease.disease_name;
-                    this.refs.disease_image.value = disease.disease_image;
-                }))
-        };
-    };
 
     // Create diseage handeler
     handelerCreate() {
@@ -32,9 +27,9 @@ class AddDisease extends Component {
             'disease_name': this.refs.disease_name.value,
             'disease_image': this.refs.disease_image.value,
         }).then((result => {
-            alert(result)
+            ToastsStore.success(result)
         })).catch((error) => {
-            alert(error);
+            ToastsStore.warning(error);
         })
     }
 
@@ -45,10 +40,15 @@ class AddDisease extends Component {
             'disease_name': this.refs.disease_name.value,
             'disease_image': this.refs.disease_image.value,
         }).then((result) => {
-            alert('Disages has been updated.')
-        }).catch(() => {
-            alert('Something went wrong while updated the disages.');
+            ToastsStore.success('Disages has been updated.')
+        }).catch((error) => {
+            ToastsStore.warning('Something went wrong while updated the disages.');
         })
+    }
+
+    // Close modal after sumited
+    close_modal_box() {
+        $('#open-modal').modal('hide');
     }
 
     // Handeler submit
@@ -57,6 +57,7 @@ class AddDisease extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
+            this.close_modal_box();
             this.handelerCreate();
         }
         event.preventDefault();

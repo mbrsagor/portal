@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import HelpService from '../../../services/HelpService';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
+import $ from 'jquery';
 import HelpLine from '../HelpLine';
 import Header from '../../../components/common/Header';
 import Footer from '../../../components/common/Footer';
@@ -14,17 +15,6 @@ class AddHelp extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        const { match: { params } } = this.props;
-        if (params) {
-            help_service.getHelp(params.id)
-                .then((help => {
-                    this.refs.title.value = help.title;
-                    this.refs.help_text.value = help.help_text;
-                }))
-        }
     }
 
     // Create help 
@@ -52,6 +42,11 @@ class AddHelp extends Component {
         });
     }
 
+    // Close modal after sumited
+    close_modal_box() {
+        $('#open-modal').modal('hide');
+    }
+
     // Create update customer `handler`
     handleSubmit(event) {
         const { match: { params } } = this.props;
@@ -59,6 +54,7 @@ class AddHelp extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
+            this.close_modal_box();
             this.handleCreate();
         }
         event.preventDefault();
