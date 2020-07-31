@@ -27,9 +27,9 @@ class AddDisease extends Component {
             'disease_name': this.refs.disease_name.value,
             'disease_image': this.refs.disease_image.value,
         }).then((result => {
-            ToastsStore.success(result)
+            alert(result)
         })).catch((error) => {
-            ToastsStore.warning(error);
+            alert(error);
         })
     }
 
@@ -76,51 +76,52 @@ class AddDisease extends Component {
                     </Col>
                     <Col className="p-0" lg={10}>
                         <Disages />
-                    </Col>
-                </Row>
-                <div className="modal fade mt-5" id="open-modal">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title custom_model_title">Add new Disease</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="modal-body text-left">
-                                    <div className="card-body">
-                                        <div className="form-group">
-                                            <label htmlFor="disease_name">Enter Disease Name</label>
-                                            <input type="text"
-                                                className="form-control"
-                                                id="disease_name"
-                                                ref="disease_name"
-                                                name="disease_name"
-                                                placeholder="Enter disease name"
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <div className="custom-file">
-                                                <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
-                                                <input type="file"
-                                                    name="disease_image"
-                                                    ref="disease_image"
-                                                    className="custom-file-input"
-                                                    id="customFile"
-                                                />
+                        <div className="modal fade mt-5" id="open-modal">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h4 className="modal-title custom_model_title">Add new Disease</h4>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form onSubmit={this.handleSubmit}>
+                                        <div className="modal-body text-left">
+                                            <div className="card-body">
+                                                <div className="form-group">
+                                                    <label htmlFor="disease_name">Enter Disease Name</label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        id="disease_name"
+                                                        ref="disease_name"
+                                                        name="disease_name"
+                                                        placeholder="Enter disease name"
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <div className="custom-file">
+                                                        <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
+                                                        <input type="file"
+                                                            name="disease_image"
+                                                            ref="disease_image"
+                                                            className="custom-file-input"
+                                                            id="customFile"
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div className="modal-footer text-right">
+                                            <button type="button" className="btn btn-danger  btn-sm" data-dismiss="modal">Close</button>
+                                            <button type="submit" className="btn btn-success btn-sm">Save</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div className="modal-footer text-right">
-                                    <button type="button" className="btn btn-danger  btn-sm" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="btn btn-success btn-sm">Save</button>
-                                </div>
-                            </form>
+                            </div>
+                            {/* <ToastsContainer store={ToastsStore} /> */}
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
                 <Footer />
             </>
         );
