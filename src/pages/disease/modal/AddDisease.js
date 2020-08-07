@@ -14,10 +14,10 @@ class AddDisease extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = ({
             disease_name: '',
             disease_image: ''
-        }
+        });
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -25,12 +25,14 @@ class AddDisease extends Component {
     handelerCreate() {
         disease_service.createDisease({
             'disease_name': this.refs.disease_name.value,
-            'disease_image': this.refs.disease_image.value,
-        }).then((result => {
-            alert(result)
-        })).catch((error) => {
+            'disease_image': this.refs.disease_image.value
+        }).then((response => {
+            alert.log(response);
+            ToastsStore.success('successfully created the Disages!');
+        })).catch((error => {
             alert(error);
-        })
+            ToastsStore.warning('Something went wrong while creating Disages.??', error);
+        }))
     }
 
     // Update diseage handeler
@@ -39,10 +41,10 @@ class AddDisease extends Component {
             'id': id,
             'disease_name': this.refs.disease_name.value,
             'disease_image': this.refs.disease_image.value,
-        }).then((result) => {
+        }).then((response) => {
             ToastsStore.success('Disages has been updated.')
         }).catch((error) => {
-            ToastsStore.warning('Something went wrong while updated the disages.');
+            ToastsStore.warning('Something went wrong while creating Disages.??', error);
         })
     }
 
@@ -118,7 +120,7 @@ class AddDisease extends Component {
                                     </form>
                                 </div>
                             </div>
-                            {/* <ToastsContainer store={ToastsStore} /> */}
+                            <ToastsContainer store={ToastsStore} />
                         </div>
                     </Col>
                 </Row>

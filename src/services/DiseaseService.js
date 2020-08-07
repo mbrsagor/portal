@@ -14,7 +14,7 @@ export default class DiseaseService {
     }
 
     deleteDisease(disease) {
-        const url = `${API_BASE_URL}/api/help/${disease.id}/`;
+        const url = `${API_BASE_URL}/api/disease/${disease.id}/`;
         return axios.delete(url);
     }
 
