@@ -59,8 +59,14 @@ class AddDisease extends Component {
         if (params && params.id) {
             this.handleUpdate(params.id);
         } else {
-            this.close_modal_box();
-            this.handelerCreate();
+            if (this.refs.disease_name.value.length === 0) {
+                this.setState({
+                    'disease_name': 'Disease name is required'
+                })
+            } else {
+                this.close_modal_box();
+                this.handelerCreate();   
+            }
         }
         event.preventDefault();
         event.target.reset()
@@ -99,6 +105,7 @@ class AddDisease extends Component {
                                                         name="disease_name"
                                                         placeholder="Enter disease name"
                                                     />
+                                                    <small className="text-danger">{this.state.disease_name}</small>
                                                 </div>
                                                 <div className="form-group">
                                                     <div className="custom-file">
