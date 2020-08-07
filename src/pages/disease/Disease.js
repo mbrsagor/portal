@@ -12,7 +12,10 @@ class Disease extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { diseases: [] };
+        this.state = {
+            diseases: [],
+            disease: {}
+        };
     }
 
     componentDidMount() {
@@ -26,7 +29,16 @@ class Disease extends Component {
             });
     }
 
-    // Delete laboratorie
+    UpdateDisease(disease) {
+        this.setState({
+            disease: disease
+        })
+
+        let _json = JSON.stringify(disease);
+        alert(_json);
+    }
+
+    // Delete disease
     handleDelete(e, id) {
         swal({
             title: "Are you sure?",
@@ -95,7 +107,13 @@ class Disease extends Component {
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.updated_at}</Moment></td>
                                             <td className="text-right">
-                                                <button className="btn btn-info btn-sm"><FeatherIcon icon="edit-3" /></button>
+                                                <button
+                                                    title="Update the disease."
+                                                    data-toggle="modal" data-target="#open-modal"
+                                                    onClick={() => this.UpdateDisease(disease)}
+                                                    className="btn btn-info btn-sm">
+                                                    <FeatherIcon icon="edit-3" />
+                                                </button>
                                                 <button
                                                     onClick={e => this.handleDelete(e, disease.id)}
                                                     className="btn btn-danger btn-sm ml-2">
