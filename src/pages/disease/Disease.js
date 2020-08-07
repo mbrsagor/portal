@@ -3,6 +3,7 @@ import PageTitle from '../../components/common/PageTitle';
 import FeatherIcon from 'feather-icons-react';
 import DiseaseService from '../../services/DiseaseService';
 import Moment from 'react-moment';
+import swal from "sweetalert";
 import Spinner from '../../components/common/Spinner';
 
 const disease_service = new DiseaseService();
@@ -23,6 +24,32 @@ class Disease extends Component {
             }).catch(error => {
                 console.log('Error ', error);
             });
+    }
+
+    // Delete laboratorie
+    handleDelete(e, id) {
+        swal({
+            title: "Are you sure?",
+            text: "Diseases will be deleted permanently!",
+            icon: "warning",
+            buttons: ["No", "Yes"],
+            dangerMode: true
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    var self = this;
+                    var _data = null;
+                    disease_service.deleteDisease({ id: id })
+                        .then(() => {
+                            _data = self.state.diseases.filter(function (obj) {
+                                return obj.id !== id
+                            });
+                            self.setState({
+                                diseases: _data
+                            })
+                        });
+                }
+            })
     }
 
     render() {
@@ -69,7 +96,11 @@ class Disease extends Component {
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.updated_at}</Moment></td>
                                             <td className="text-right">
                                                 <button className="btn btn-info btn-sm"><FeatherIcon icon="edit-3" /></button>
-                                                <button className="btn btn-danger btn-sm ml-2"><FeatherIcon icon="trash" /></button>
+                                                <button
+                                                    onClick={e => this.handleDelete(e, disease.id)}
+                                                    className="btn btn-danger btn-sm ml-2">
+                                                    <FeatherIcon icon="trash" />
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
