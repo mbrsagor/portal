@@ -53,6 +53,7 @@ class Disease extends Component {
                                         <th>Disease Name</th>
                                         <th>Disease Flag</th>
                                         <th>Created Date</th>
+                                        <th>Updated Date</th>
                                         <th className="text-right">Actions</th>
                                     </tr>
                                 </thead>
@@ -65,6 +66,7 @@ class Disease extends Component {
                                                 <img className="img-thumbnail image_in_table" src={disease.disease_image} alt={disease.disease_name} />
                                             </td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
+                                            <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.updated_at}</Moment></td>
                                             <td className="text-right">
                                                 <button className="btn btn-info btn-sm"><FeatherIcon icon="edit-3" /></button>
                                                 <button className="btn btn-danger btn-sm ml-2"><FeatherIcon icon="trash" /></button>
