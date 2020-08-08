@@ -5,7 +5,7 @@ import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Home from './pages/home/Home';
+// import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashbaord';
 import AddDoctor from './pages/doctor/addDoctor/AddDoctor';
 import DoctorList from './pages/doctor/listDetail/DoctorList';
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/" component={Home} /> */}
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/add-doctor" component={AddDoctor} />
           <Route path="/doctor-list" component={DoctorList} />
@@ -40,7 +40,7 @@ class App extends Component {
           <Route path="/add-laboratorie" component={AddLaboratorie} />
           <Route path="/add-service" component={AddService} />
           <Route path="/settings/add-role" component={AddRole} />
-          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />
           <Route component={Error404} />
         </Switch>
       </BrowserRouter>
