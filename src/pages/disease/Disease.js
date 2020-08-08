@@ -90,7 +90,8 @@ class Disease extends Component {
                                     <tr>
                                         <th>ID</th>
                                         <th>Disease Name</th>
-                                        <th>Disease Flag</th>
+                                        <th>Disease Fee</th>
+                                        <th>Availability</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
                                         <th className="text-right">Actions</th>
@@ -101,9 +102,8 @@ class Disease extends Component {
                                         <tr key={disease.id}>
                                             <td>#{disease.id}</td>
                                             <td>{disease.disease_name}</td>
-                                            <td>
-                                                <img className="img-thumbnail image_in_table" src={disease.disease_image} alt={disease.disease_name} />
-                                            </td>
+                                            <td>{disease.disease_fee}</td>
+                                            <td>{disease.disease_availability ? 'Avaiable' : 'Not Avaiable'}</td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.updated_at}</Moment></td>
                                             <td className="text-right">

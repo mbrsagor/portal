@@ -16,7 +16,8 @@ class AddDisease extends Component {
         super(props);
         this.state = ({
             disease_name: '',
-            disease_image: ''
+            disease_fee: '',
+            disease_availability: ''
         });
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -25,7 +26,8 @@ class AddDisease extends Component {
     handleCreate() {
         disease_service.createDisease({
             'disease_name': this.refs.disease_name.value,
-            // 'disease_image': this.refs.disease_image.value
+            'disease_fee': this.refs.disease_fee.value,
+            'disease_availability': this.refs.disease_availability.value
         }).then((response => {
             alert(response);
             ToastsStore.success('successfully created the Disease!');
@@ -40,7 +42,8 @@ class AddDisease extends Component {
         disease_service.updateDisease({
             'id': id,
             'disease_name': this.refs.disease_name.value,
-            'disease_image': this.refs.disease_image.value,
+            'disease_fee': this.refs.disease_fee.value,
+            'disease_availability': this.refs.disease_availability.value
         }).then((response) => {
             ToastsStore.success('Disages has been updated.')
         }).catch((error) => {
@@ -63,9 +66,14 @@ class AddDisease extends Component {
                 this.setState({
                     'disease_name': 'Disease name is required'
                 })
-            } else {
+            } else if (this.refs.disease_fee.value.length === 0) {
+                this.setState({
+                    'disease_fee': 'Disease fee is required'
+                })
+            }
+            else {
                 this.close_modal_box();
-                this.handleCreate();   
+                this.handleCreate();
             }
         }
         event.preventDefault();
@@ -108,15 +116,31 @@ class AddDisease extends Component {
                                                     <small className="text-danger">{this.state.disease_name}</small>
                                                 </div>
                                                 <div className="form-group">
-                                                    <div className="custom-file">
-                                                        <label className="custom-file-label" htmlFor="customFile">Disease photo (Optional)</label>
-                                                        <input type="file"
-                                                            name="disease_image"
-                                                            ref="disease_image"
-                                                            className="custom-file-input"
-                                                            id="customFile"
-                                                        />
+                                                    <label htmlFor="disease_fee">Enter Disease Fee</label>
+                                                    <input type="number"
+                                                        className="form-control"
+                                                        id="disease_fee"
+                                                        ref="disease_fee"
+                                                        name="disease_fee"
+                                                        placeholder="Enter disease fee"
+                                                    />
+                                                    <small className="text-danger">{this.state.disease_fee}</small>
+                                                </div>
+                                                <div className="form-group">
+                                                    <div className="input-group input-group-sm">
+                                                        <input
+                                                            ref="disease_availability"
+                                                            name="disease_availability"
+                                                            type="checkbox"
+                                                            id="disease_availability"
+                                                            className="mt-1"
+                                                            value="0" />
+                                                        <label className="pull-left ml-2"
+                                                            aria-describedby="disease_availability"
+                                                            id="disease_availability"
+                                                            htmlFor="disease_availability">Disease Availability</label>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
