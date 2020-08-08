@@ -19,7 +19,7 @@ class AddLaboratorie extends Component {
             machinery_name: '',
             total_machinery: ''
         });
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // create Laboratorie handler

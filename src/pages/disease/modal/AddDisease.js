@@ -22,16 +22,16 @@ class AddDisease extends Component {
     }
 
     // Create diseage handeler
-    handelerCreate() {
+    handleCreate() {
         disease_service.createDisease({
             'disease_name': this.refs.disease_name.value,
-            'disease_image': this.refs.disease_image.value
+            // 'disease_image': this.refs.disease_image.value
         }).then((response => {
-            alert.log(response);
-            ToastsStore.success('successfully created the Disages!');
+            alert(response);
+            ToastsStore.success('successfully created the Disease!');
         })).catch((error => {
             alert(error);
-            ToastsStore.warning('Something went wrong while creating Disages.??', error);
+            ToastsStore.warning('Something went wrong while creating Disease.??', error);
         }))
     }
 
@@ -65,7 +65,7 @@ class AddDisease extends Component {
                 })
             } else {
                 this.close_modal_box();
-                this.handelerCreate();   
+                this.handleCreate();   
             }
         }
         event.preventDefault();
