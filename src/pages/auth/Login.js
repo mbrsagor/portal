@@ -17,6 +17,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
+            login_failed_message: ""
         };
 
     };
@@ -43,7 +44,10 @@ class Login extends Component {
                 window.location.reload();
             },
             error => {
-                var message = `Sorry!, Username and Passsword Invalid`
+                this.setState({
+                    'login_failed_message': 'Sorry! Username and Passsword Invalid'
+                })
+                var message = `Sorry! Username and Passsword Invalid`
                 ToastsStore.error(message);
             }
         )
@@ -67,9 +71,9 @@ class Login extends Component {
                                 <div className="login_form">
                                     <div className="login_right_side text-center">
                                         <h2 className="mb-4"><span className="mr-5"><FeatherIcon icon="globe" /></span> Covid-19</h2>
-                                        <div className="alert alert-danger alert-dismissible">
+                                        <div className={this.state.login_failed_message ? 'alert alert-danger alert-dismissible': ''}>
                                             <a href="javascript(void)" className="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            <strong>Sorry!</strong> Username & Password Incorrent
+                                            {this.state.login_failed_message}
                                         </div>
                                         <form onSubmit={this.handleLogin}>
                                             <div className="form-group text-left positon-relative">
