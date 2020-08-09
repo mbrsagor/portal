@@ -45,7 +45,7 @@ class Login extends Component {
             },
             error => {
                 this.setState({
-                    'login_failed_message': 'Sorry! Username and Passsword Invalid'
+                    'login_failed_message': 'Someting went wrong, retry or contact administrator.'
                 })
                 var message = `Sorry! Username and Passsword Invalid`
                 ToastsStore.error(message);
