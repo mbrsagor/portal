@@ -102,7 +102,7 @@ class Disease extends Component {
                                         <tr key={disease.id}>
                                             <td>#{disease.id}</td>
                                             <td>{disease.disease_name}</td>
-                                            <td>{disease.disease_fee}</td>
+                                            <td>{disease.disease_fee} BDT</td>
                                             <td>{disease.disease_availability ? 'Avaiable' : 'Not Avaiable'}</td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.created_at}</Moment></td>
                                             <td><Moment format='MMMM Do YYYY, h:mm:ss a'>{disease.updated_at}</Moment></td>

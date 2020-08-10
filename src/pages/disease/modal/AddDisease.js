@@ -29,11 +29,9 @@ class AddDisease extends Component {
             'disease_fee': this.refs.disease_fee.value,
             'disease_availability': this.refs.disease_availability.value
         }).then((response => {
-            alert(response);
             ToastsStore.success('successfully created the Disease!');
         })).catch((error => {
-            alert(error);
-            ToastsStore.warning('Something went wrong while creating Disease.??', error);
+            ToastsStore.error('Something went wrong while creating Disease.??');
         }))
     }
 
