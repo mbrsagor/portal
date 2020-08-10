@@ -17,7 +17,12 @@ export default class AuthService {
 
     // Logout
     logout() {
-        localStorage.removeItem('user');
+        return axios.post(`${API_BASE_URL}/rest-auth/logout/`, {}).then(response => {
+            if (response.data.accessToken) {
+                localStorage.removeItem('user', JSON.stringify(response.data))
+            }
+            return response.data;
+        })
     }
 
     // User Registration

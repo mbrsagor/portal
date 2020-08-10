@@ -39,9 +39,16 @@ class Login extends Component {
         e.preventDefault();
 
         auth_service.login(this.state.username, this.state.password).then(
-            () => {
+            (response) => {
+                const token = response.key;
+                const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+                localStorage.setItem('token', token);
+                sessionStorage.setItem('token', token);
+                localStorage.setItem('expirationDate', expirationDate);
+                sessionStorage.setItem('expirationDate', expirationDate);
                 this.props.history.push('/dashboard');
-                window.location.reload();
+                // window.location.reload();
+
             },
             error => {
                 this.setState({
@@ -110,7 +117,7 @@ class Login extends Component {
                                             </label>
                                             </div>
                                             <div className="button-group text-left">
-                                                <button className="btn btn-success btn-sm mr-2">Login</button>
+                                                <button type="submit" className="btn btn-success btn-sm mr-2">Login</button>
                                                 <button className="btn btn-danger btn-sm">Forgot password</button>
                                             </div>
                                         </form>

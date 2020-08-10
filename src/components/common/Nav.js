@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import FeatherIcon from 'feather-icons-react';
+import Logout from '../../pages/auth/Logout'
 
 class Nav extends Component {
     render() {
@@ -14,7 +15,7 @@ class Nav extends Component {
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             <a className="mr-4" href="#register"> Mbr-Sagor <FeatherIcon icon="user" /></a>
-                            <a href="/">Logout <FeatherIcon icon="lock" /></a>
+                            <Logout />
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>

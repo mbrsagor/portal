@@ -67,6 +67,7 @@ button:focus {
 input:focus {
     box-shadow: none !important;
     border-color: #ced4da !important;
+    outline: none !important;
 }
 
 select:focus {
@@ -360,6 +361,15 @@ footer {
         position: absolute;
         margin: 8px;
     }
+}
+
+.logout_btn {
+    background: transparent;
+    border: transparent;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 // Slide
