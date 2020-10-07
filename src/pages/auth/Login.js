@@ -43,14 +43,10 @@ class Login extends Component {
                 const token = response.key;
                 const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
                 localStorage.setItem('token', token);
-                sessionStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
-                sessionStorage.setItem('expirationDate', expirationDate);
-                this.props.history.push('/dashboard');
-                // window.location.reload();
-
-            },
-            error => {
+                // this.props.history.push('/dashboard');
+                console.log(token);
+            },error => {
                 this.setState({
                     'login_failed_message': 'Someting went wrong, retry or contact administrator.'
                 })
