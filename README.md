@@ -1,5 +1,5 @@
 ## Covid-19 Frontend
-
+> Vrsion 2
 You locally run project follow the command:
 
 #### First setp:
