@@ -29,6 +29,7 @@ $primary_color: #1abc9c;
 $secondary_color: #16a085;
 $border_color1: #27ae60;
 
+@import './error.scss';
 
 a {
     text-decoration: none;

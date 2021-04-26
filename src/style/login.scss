@@ -1,0 +1,55 @@
+// Login page
+.lgoin_container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.auth {
+    background: url(../static/auth_bg.jpg);
+    background-size: cover;
+    padding: 50px 0;
+}
+
+.bg_login_left {
+    background: $primary_color;
+}
+
+.login_left_side {
+    padding: 50px;
+    h2 {
+        font-size: 1.6em;
+    }
+}
+
+.bg_login_right {
+    background: #ffffff;
+}
+
+.login_right_side {
+    padding: 50px;
+    h2 {
+        font-size: 1.6em;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        color: $primary_color;
+    }
+
+    input {
+        border-radius: 15px;
+        background: $common_color;
+        padding-left: 40px;
+    }
+    svg {
+        position: absolute;
+        margin: 8px;
+    }
+}
+
+.logout_btn {
+    background: transparent;
+    border: transparent;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+}
