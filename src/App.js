@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   return (
     <div className="App">
-        <h2>Hello, Covid-12</h2>
+        <h2>Hello, covid19 New branch</h2>
     </div>
   );
 }
