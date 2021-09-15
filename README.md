@@ -24,3 +24,9 @@ If alright successfully done, final step run the command for runing the project.
 ```
 
 ### `npm start`
+
+
+```
+yarn remove node-sass
+yarn add node-sass@4.14.1
+```
