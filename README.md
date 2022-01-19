@@ -22,11 +22,10 @@ npm install
 ```
 If alright successfully done, final step run the command for runing the project.
 ```
+###### N:B: If you checkout the `version: 2 ` Frontend UI please run the below command:
 
-### `npm start`
-
-
-```
-yarn remove node-sass
-yarn add node-sass@4.14.1
+```bash
+git checkout v2
+yarn install
+yarn start
 ```
