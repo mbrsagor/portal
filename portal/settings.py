@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import environ
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,7 +130,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -137,3 +137,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Upload large file size
 MAX_UPLOADING_FILE_SIZE = 31457280  # 30 MB
+
+# Auth configuration
+AUTH_USER_MODEL = 'user.User'
+AUTHENTICATION_BACKENDS = ['utils.backend.EmailPhoneAuthenticationBackend']
+LOGIN_URL = '/signin/'
+LOGIN_REDIRECT_URL = '/signin/'
+
+# Django Message Framework
+MESSAGE_TAGS = {
+    messages.INFO: 'SUCCESS',
+    messages.ERROR: 'ERROR',
+    messages.WARNING: 'WARNING'
+}
