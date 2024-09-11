@@ -1,0 +1,47 @@
+{% extends "base_auth.html" %}
+{% block content%}
+<form method="POST" , autocomplete="off">
+  {% if form.errors %}
+  <p>{{ form.errors }}</p>
+  <p />
+  {% endif %} {% csrf_token %}
+  <h1>Create Account</h1>
+  <div>
+    <input type="text" class="form-control" placeholder="Username" name="username" />
+  </div>
+  <div>
+    <input type="email" class="form-control" placeholder="Email" name="email" />
+  </div>
+  <div>
+    <input type="password" class="form-control" placeholder="Password" name="password1" />
+  </div>
+  <div>
+    <input type="password" class="form-control" placeholder="Confirm Password" name="password2" />
+  </div>
+  <div>
+    <button class="btn btn-default submit" type="submit">
+      Submit
+    </button>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="separator">
+    <p class="change_link">
+      Already a member ?
+      <a href="#signin" class="to_register"> Log in </a>
+    </p>
+
+    <div class="clearfix"></div>
+    <br />
+
+    <div>
+      <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+      <p>
+        ©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4
+        template. Privacy and Terms
+      </p>
+    </div>
+  </div>
+</form>
+{% endblock %}
