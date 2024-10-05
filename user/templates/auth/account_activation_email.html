@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Activate your account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body bgcolor="#FAF3E1">
+<div style="max-width: 600px; margin: 10px auto; border: 1px solid #f2f2f2">
+    {% autoescape off %}
+        <img src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/17/pic.png" alt="">
+        <div style="padding: 10px; background: #FFFFFF">
+            <div style="padding: 20px">
+                <h2>Hello {{ user.name }},</h2>
+                <p>Please click on the button to complete the verification process for your account.</p>
+                <a style="text-decoration: none; color: #ffffff; background: #5156BE; padding: 6px; border-radius: 5px"
+                   href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">VERIFY YOUR EMAIL ADDRESS</a>
+            </div>
+        </div>
+        <div style="padding: 10px; background: #EDEDED">
+            <div style="padding: 20px">
+                <p>If you didn't attempt to verify your email address with our service, delete this email. <br/>Cheers,</p>
+                <p><b>PowurHouz Team</b></p>
+            </div>
+        </div>
+        <div style="padding: 10px; background: #BBBBBB">
+            <div style="text-align: center">
+                <p><a style="text-decoration: none; color: #FFFFFF"
+                      href="mailto:info@powurhouz.com">info@powurhouz.com</a></p>
+            </div>
+        </div>
+    {% endautoescape %}
+</div>
+</body>
+</html>

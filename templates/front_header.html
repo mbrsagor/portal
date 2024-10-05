@@ -1,0 +1,27 @@
+<div class="header_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="header_top_left">
+                    {% if request.user.is_authenticated %}
+                        <p class="text-white mb-0 mt-2">{{ request.user.name }}</p>
+                    {% else %}
+                        <ul>
+                            <li><a href="{% url 'signin' %}">Login</a></li>
+                            <li><a href="{% url 'signup' %}">Registration</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="header_top_right">
+                    <ul>
+                        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li><a href="https://powurhouz.com">Official Website</a></li>
+                        <li><a href="https://powurhouz.com/contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

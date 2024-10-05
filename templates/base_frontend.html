@@ -1,0 +1,51 @@
+{% load static %}
+<!Doctype>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="GDS" content="Generator Search">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.jpg' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Poppins:700" rel="stylesheet"/>
+    <title>{% block title %} {% endblock %}</title>
+    {% include 'styles.html' %}
+    <link rel="stylesheet" href="{% static 'assets/css/frontend.css' %}">
+</head>
+<body>
+<header>
+    {% include 'front_header.html' %}
+    <div class="header_main">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-md-8">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="/static/assets/images/logo.jpg" alt=""/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quick_search">
+                        <form method="get" action="{% url 'search_system_list' %}">
+                            <button type="submit" class="btn btn-default">
+                                <i class="mdi mdi-search-web font-size-20"></i>
+                            </button>
+                            <input name="q" type="text" placeholder="quick searching" class="form-control"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}{% endblock %}
+{% include 'scripts.html' %}
+<footer class="header_top text-center">
+    <div style="color: #ffffff; padding: 12px 0">
+        <p style="margin: 0 !important;">&copy;2024 All right reserved || Developed by <a class="text-white" href="http://globaldynamicsolutions.us/">Global Dynamic Solutions</a></p>
+    </div>
+</footer>
+</body>
+</html>

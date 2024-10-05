@@ -1,0 +1,79 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %} {% endblock %} || PowurHouz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Powurhouz portal web application" name="description"/>
+    <meta content="Powurhouz" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.jpg' %}">
+    {% include 'styles.html' %}
+    <style>
+        .search_filter_item input, select {
+            display: block;
+            width: 100%;
+            padding: 0.47rem 0.75rem;
+            font-size: .875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bs-body-color);
+            background-color: var(--bs-tertiary-bg);
+            background-clip: padding-box;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: var(--bs-border-radius);
+            -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+<!-- <body data-layout="horizontal"> -->
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <header id="page-topbar">
+        {% include 'header.html' %}
+    </header>
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="vertical-menu">
+        <div data-simplebar class="h-100">
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                {% include 'navmenu.html' %}
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+                {% block content %} {% endblock %}
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'footer.html' %}
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+<!-- JAVASCRIPT -->
+{% include 'scripts.html' %}
+</body>
+</html>

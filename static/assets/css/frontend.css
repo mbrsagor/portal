@@ -1,0 +1,89 @@
+ul {
+    margin-bottom: 0 !important;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 10px;
+}
+
+ul li a {
+    color: #ffffff;
+}
+
+.header_top_right {
+    text-align: right;
+}
+
+.header_top {
+    background: #313469 !important;
+}
+
+.base_btn_bg_color {
+    background: #313469 !important;
+    border-color: #313469 !important;
+}
+
+.header_main {
+    margin-top: 10px;
+    border-bottom: 1px solid #f3f3f3;
+    padding-bottom: 5px;
+}
+
+.quick_search form {
+    margin-top: 15px;
+    position: relative;
+}
+
+.quick_search button {
+    position: absolute;
+    top: -5px;
+    right: 0;
+}
+
+.main {
+    padding: 0 20px;
+    background: url("/static/assets/images/frontend_bg.jpeg") no-repeat;
+    /*height: 650px;*/
+    background-size: cover;
+}
+
+.search {
+    padding: 280px 0;
+}
+
+.filter_form {
+    padding: 20px;
+    background: aliceblue;
+    border-radius: 20px
+}
+
+.dropdown_btn {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px
+}
+
+.filter_form select {
+    --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%232c302e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    display: block;
+    width: 100%;
+    padding: 0.47rem 2.25rem 0.47rem 0.75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-tertiary-bg);
+    background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

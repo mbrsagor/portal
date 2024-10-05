@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ request.user.name }} {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm order-2 order-sm-1">
+                            <div class="d-flex align-items-start mt-3 mt-sm-0">
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-xl me-3">
+                                        {% if request.user.profile.avatar %}
+                                            <img style="width: 100%; height: 100%"
+                                                 src="{{ request.user.profile.avatar.url }}" alt=""
+                                                 class="img-fluid rounded-circle d-block">
+                                        {% else %}
+                                            <img src="{% static 'assets/images/users/avatar-2.jpg' %}" alt=""
+                                                 class="img-fluid rounded-circle d-block">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div>
+                                        <h5 class="font-size-16 mb-1">{{ request.user.name }}</h5>
+                                        {% if request.user.profile.title %}
+                                            <p class="text-muted font-size-13">{{ request.user.profile.title }}</p>
+                                        {% endif %}
+                                        <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
+                                            <div>
+                                                <i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>{{ request.user.phone }}
+                                            </div>
+                                            <div>
+                                                <i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>{{ request.user.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto order-1 order-sm-2">
+                            <div class="d-flex align-items-start justify-content-end gap-2">
+                                <a href="{% url 'dashboard' %}" class="btn btn-soft-light"><i class="me-1"></i>Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link px-3 active" data-bs-toggle="tab" href="#profile" role="tab">Profile
+                                Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" data-bs-toggle="tab" href="#updateBtn" role="tab">Update
+                                Profile</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="profile" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">My details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="pb-3">
+                                <div class="text-muted">
+                                    <div style="display: flex; justify-content: space-between">
+                                        <ul class="list-unstyled mb-0">
+                                            {% if request.user.name %}
+                                                <p class="mb-0"><b>Fullname</b>: {{ request.user.name }}</p>
+                                            {% endif %}
+                                            {% if request.user.email %}
+                                                <p class="mb-0"><b>Email</b>: {{ request.user.email }}</p>
+                                            {% endif %}
+                                            {% if request.user.phone %}
+                                                <p class="mb-0"><b>Phone Number</b>: {{ request.user.phone }}</p>
+                                            {% endif %}
+                                            {% if request.user.profile.street %}
+                                                <p class="mb-0"><b>Street</b>: {{ request.user.profile.street }}</p>
+                                            {% endif %}
+                                        </ul>
+                                        <ul class="list-unstyled mb-0">
+                                            {% if request.user.profile.company_name %}
+                                                <p class="mb-0"><b>Company
+                                                    name</b>: {{ request.user.profile.company_name }}</p>
+                                            {% endif %}
+                                            {% if request.user.profile.title %}
+                                                <p class="mb-0"><b>Designation</b>: {{ request.user.profile.title }}</p>
+                                            {% endif %}
+                                            {% if request.user.profile.state %}
+                                                <p class="mb-0"><b>State</b>: {{ request.user.profile.state }}</p>
+                                            {% endif %}
+                                            {% if request.user.profile.city %}
+                                                <p class="mb-0"><b>City</b>: {{ request.user.profile.city }}</p>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end tab pane -->
+                <div class="tab-pane" id="updateBtn" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Update Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% include 'common/message/success_msg.html' %}
+                                {% csrf_token %}
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px">
+                                    <div class="form-group">
+                                        <label for="name">Full Name</label>
+                                        {{ u_form.name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        {{ u_form.email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Email Address</label>
+                                        {{ u_form.phone }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company_name">Company Name</label>
+                                        {{ p_form.company_name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        {{ p_form.title }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        {{ p_form.street }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        {{ p_form.city }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        {{ p_form.state }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zip_code">Zip Code</label>
+                                        {{ p_form.zip_code }}
+                                    </div>
+                                    <div style="position: relative" class="form-group">
+                                        <label for="avatar">Upload profile picture (Attachment file should be 1MB Max)</label>
+                                        {{ p_form.avatar }}
+                                        {% if request.user.profile.id %}
+                                            <div style="height: 25px; width: 100px; background: #F8F9FA; position: absolute;top: 35px;left: 105px;"></div>
+                                            <p class="mb-0"
+                                               style="position: absolute;top: 35px;left: 110px;z-index: 999;">{{ request.user.profile.avatar }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-sm mt-3">Update</button>
+                            </form>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end tab pane -->
+            </div>
+            <!-- end tab content -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+{% endblock %}
