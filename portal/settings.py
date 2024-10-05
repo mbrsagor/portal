@@ -157,8 +157,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth configuration
 AUTH_USER_MODEL = 'user.User'
-LOGIN_URL = '/user/login/'
-LOGIN_REDIRECT_URL = 'user/login/'
+LOGIN_URL = '/user/signin/'
+LOGIN_REDIRECT_URL = 'user/signin/'
 
 # Django Message Framework
 MESSAGE_TAGS = {

@@ -28,14 +28,13 @@ class SingUpForm(UserCreationForm):
         super(SingUpForm, self).__init__(*args, **kwargs)
         self.fields.pop('password2')
 
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter valid password'}))
-
     class Meta:
         model = User
         fields = (
             'name', 'email', 'phone', 'password1'
         )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter valid password'}))
 
 
 class CreateUserByAdminForm(UserCreationForm):
