@@ -1,0 +1,35 @@
+<style type="text/css">
+    .message {
+        list-style: none;
+        margin-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .custom_msg {
+        max-width: fit-content;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 99;
+    }
+</style>
+
+<script type="text/javascript">
+    setTimeout(() => {
+        const box = document.getElementById('messageArea');
+        box.style.display = 'none';
+    }, 4000); // 👈️ time in milliseconds
+</script>
+
+<div id="messageArea" class="custom_msg">
+    {% if messages %}
+        <div class="alert alert-success alert-dismissable">
+            <h4><i class="icon fa fa-check"></i>Succeeded</h4>
+            <ul class="message">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,13 @@
+<style>
+    .errorlist {
+        list-style: none;
+        padding-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+</style>
+
+<!-- Danger Alert -->
+<div class="alert alert-danger alert-dismissible alert-solid alert-label-icon fade show" role="alert">
+    <i class="ri-error-warning-line label-icon"></i><strong>Error</strong> - {{ form.errors }}
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
