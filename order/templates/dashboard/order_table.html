@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">List of orders</h4>
+            </div>
+            {% if systems %}
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered border-success mb-0">
+                            <thead>
+                            <tr>
+                                <th>Exhaust</th>
+                                <th>Model</th>
+                                <th>Set Rating</th>
+                                <th>Composition</th>
+                                <th>Lubrication</th>
+                                <th>Air requirement</th>
+                                <th>Created At</th>
+                                <th class="text-center">Details</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in systems %}
+                                <tr>
+                                    <td>{{ obj.exhaust }}</td>
+                                    <td>{{ obj.model }}</td>
+                                    <td>{{ obj.set_rating }}</td>
+                                    <td>{{ obj.composition }}</td>
+                                    <td>{{ obj.lubrication }}</td>
+                                    <td>{{ obj.air_requirement }}</td>
+                                    <td>{{ obj.created_at|date:'D M Y' }}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-success btn-sm card_custom_border_color" href="{% url 'system_details' obj.pk %}">
+                                            <i class="mdi mdi-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="text-center"><p>No orders found yet</p></div>
+            {% endif %}
+            <!-- end card body -->
+        </div>
+    </div>
+</div>

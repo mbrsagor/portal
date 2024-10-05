@@ -3,10 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>{% block title %} {% endblock %} || PowurHouz</title>
+    <title>{% block title %} {% endblock %} || Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Powurhouz portal web application" name="description"/>
-    <meta content="Powurhouz" name="author"/>
+    <meta content="Powurhouz Portal web application" name="description"/>
+    <meta content="Graphics Portal" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.jpg' %}">
     {% include 'styles.html' %}
@@ -57,45 +57,6 @@
                         <li></li>
                     </ul>
                     <!-- end bubble effect -->
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-xl-7">
-                            <div class="p-0 p-sm-4 px-xl-0">
-{#                                <div id="carousel" class="carousel slide" data-bs-ride="carousel">#}
-{#                                    <div class="carousel-inner">#}
-{#                                        {% if carousels %}#}
-{#                                            {% for obj in carousels %}#}
-{#                                                <div class="carousel-item {% if obj.is_running %} active {% else %} {% endif %}">#}
-{#                                                    <div class="testi-contain text-white">#}
-{#                                                        <i class="bx bxs-quote-alt-left text-success display-6"></i>#}
-{#                                                        <h4 class="mt-4 fw-medium lh-base text-white">#}
-{#                                                            “{{ obj.description }}”#}
-{#                                                        </h4>#}
-{#                                                        <div class="mt-4 pt-3 pb-5">#}
-{#                                                            <div class="d-flex align-items-start">#}
-{#                                                                {% if obj.avatar %}#}
-{#                                                                    <div class="flex-shrink-0">#}
-{#                                                                        <img src="{{ obj.avatar.url }}"#}
-{#                                                                             class="avatar-md img-fluid rounded-circle"#}
-{#                                                                             alt="...">#}
-{#                                                                    </div>#}
-{#                                                                {% endif %}#}
-{#                                                                <div class="flex-grow-1 ms-3 mb-4">#}
-{#                                                                    <h5 class="font-size-18 text-white">{{ obj.name }}</h5>#}
-{#                                                                    <p class="mb-0 text-white-50">{{ obj.designation }}</p>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                            {% endfor %}#}
-{#                                        {% endif %}#}
-{#                                    </div>#}
-{#                                    <!-- end carousel-inner -->#}
-{#                                </div>#}
-                                <!-- end review carousel -->
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- end col -->
