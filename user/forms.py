@@ -1,12 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User, Profile
 
 
 class LoginForm(AuthenticationForm):
     """
-    Name: Merchant login form
+    Name: user login form
     """
     username = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Email valid email', 'required': True,
@@ -19,10 +19,11 @@ class LoginForm(AuthenticationForm):
                                          attrs={'class': 'form-check-input', 'id': 'remember-check'}))
 
 
-class SingUpForm(UserCreationForm):
+class SingUpForm(forms.ModelForm):
     """
     Name: general user signUp
     """
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -30,19 +31,26 @@ class SingUpForm(UserCreationForm):
             'name', 'email', 'phone', 'password1'
         )
 
-    def __init__(self, *args, **kwargs):
-        super(SingUpForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password2')
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])  # Use password1 only
+        if commit:
+            user.save()
+        return user
 
 
-class CreateUserByAdminForm(UserCreationForm):
+class CreateUserByAdminForm(forms.ModelForm):
     """
     User create by admin
     """
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
 
-    def __init__(self, *args, **kwargs):
-        super(CreateUserByAdminForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password2')
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])  # Use password1 only
+        if commit:
+            user.save()
+        return user
 
     class Meta:
         model = User

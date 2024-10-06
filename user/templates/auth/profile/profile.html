@@ -25,10 +25,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div>
-                                        <h5 class="font-size-16 mb-1">{{ request.user.name }}</h5>
-                                        {% if request.user.profile.title %}
-                                            <p class="text-muted font-size-13">{{ request.user.profile.title }}</p>
-                                        {% endif %}
+                                        <h5 class="font-size-16 mb-1">{{ request.user.fullname }}</h5>
                                         <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                             <div>
                                                 <i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>{{ request.user.phone }}
@@ -91,9 +88,6 @@
                                                 <p class="mb-0"><b>Company
                                                     name</b>: {{ request.user.profile.company_name }}</p>
                                             {% endif %}
-                                            {% if request.user.profile.title %}
-                                                <p class="mb-0"><b>Designation</b>: {{ request.user.profile.title }}</p>
-                                            {% endif %}
                                             {% if request.user.profile.state %}
                                                 <p class="mb-0"><b>State</b>: {{ request.user.profile.state }}</p>
                                             {% endif %}
@@ -135,10 +129,6 @@
                                     <div class="form-group">
                                         <label for="company_name">Company Name</label>
                                         {{ p_form.company_name }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="title">Title</label>
-                                        {{ p_form.title }}
                                     </div>
                                     <div class="form-group">
                                         <label for="street">Street</label>

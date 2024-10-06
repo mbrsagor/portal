@@ -245,7 +245,7 @@ class UserCreateByAdminView(SuccessMessageMixin, generic.CreateView):
         cd = form.cleaned_data
         email_to = cd['email']
         subject = "{0} Login credentials ".format(cd['email'])
-        mes = "Welcome to PowurHouz new member! Please check below your login credentials for login in your account."
+        mes = "Welcome to Cutout portal new member! Please check below your login credentials for login in your account."
         message = f"{mes}\n\nEmail Address: {cd['email']}\nPassword: {cd['password1']}"
         send_mail(subject, message, settings.EMAIL_HOST, [email_to, ])
         return super().form_valid(form)

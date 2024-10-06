@@ -10,7 +10,8 @@ class DashboardView(generic.TemplateView):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        access = self.request.user.is_superuser or self.request.user.is_staff
-        if not access:
-            return redirect(reverse_lazy('signin'))
+        # access = self.request.user.is_superuser or self.request.user.is_staff
+        # access = self.request.user.is_superuser or self.request.user.is_staff
+        # if not access:
+        #     return redirect(reverse_lazy('signin'))
         return super(DashboardView, self).dispatch(request, *args, **kwargs)
