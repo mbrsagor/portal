@@ -5,10 +5,10 @@
         <div class="navbar-brand-box">
             <a href="{% url 'dashboard' %}" class="logo logo-dark">
                 <span class="logo-sm">
-                    <img src="{% static 'assets/images/favicon.jpg' %}" alt="" height="35">
+                    <img src="{% static 'assets/images/favicon.ico' %}" alt="" height="35">
                 </span>
                 <span class="logo-lg">
-                    <img src="{% static 'assets/images/logo.jpg' %}" alt="" height="50">
+                    <img src="{% static 'assets/images/logo.png' %}" alt="" height="50">
                 </span>
             </a>
         </div>
@@ -40,7 +40,7 @@
                 <a class="dropdown-item" href="{% url 'password_change' %}"><i
                         class="mdi mdi-key font-size-16 align-middle me-1"></i> Change Password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href=""><i
+                <a class="dropdown-item" href="{% url 'signout' %}"><i
                         class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
             </div>
         </div>

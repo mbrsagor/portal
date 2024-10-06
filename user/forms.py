@@ -25,8 +25,17 @@ class SingUpForm(UserCreationForm):
     """
 
     def __init__(self, *args, **kwargs):
-        super(SingUpForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password2')
+        super().__init__(*args, **kwargs)
+        # Remove the password2 field
+        del self.fields['password2']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        # Set the password properly using the set_password method
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user
 
     class Meta:
         model = User
