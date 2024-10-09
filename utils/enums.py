@@ -5,6 +5,7 @@ class UserTypes(IntEnum):
     USER = 1
     MANAGER = 2
     ADMIN = 3
+    CUSTOMER = 4
 
     @classmethod
     def get_choices(cls):
