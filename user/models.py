@@ -6,7 +6,7 @@ from utils.enums import UserTypes
 from user.manager import UserManager
 
 
-class DomainEntity(models.Model):
+class Timestamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -15,13 +15,12 @@ class DomainEntity(models.Model):
         abstract = True
 
 
-class User(AbstractUser, DomainEntity):
+class User(AbstractUser, Timestamp):
     username = None
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=200, unique=True)
     phone = models.CharField(max_length=15, unique=True)
     role = models.IntegerField(choices=UserTypes.get_choices(), default=UserTypes.USER.value)
-    
 
     def __str__(self):
         return self.name
@@ -32,7 +31,7 @@ class User(AbstractUser, DomainEntity):
     objects = UserManager()
 
 
-class Profile(DomainEntity):
+class Profile(Timestamp):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     company_name = models.CharField(max_length=200, blank=True, null=True, default="")
     street = models.CharField(max_length=200, blank=True, null=True, default="")
