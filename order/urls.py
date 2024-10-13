@@ -8,4 +8,6 @@ urlpatterns = [
     # Services
     path('services/', service_view.ServiceListView.as_view(), name='services'),
     path('create-service/', service_view.ServiceCreateView.as_view(), name='create_service'),
+    path('service-update/<pk>/', service_view.ServiceUpdateView.as_view(), name='service_update'),
+    path('service-delete/<pk>/', service_view.ServiceDeleteView.as_view(), name='service_delete'),
 ]

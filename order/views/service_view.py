@@ -22,3 +22,22 @@ class ServiceListView(generic.ListView):
     paginate_by = 10
     context_object_name = 'services'
     template_name = 'services/services.html'
+
+
+@method_decorator(login_required(login_url="/user/signin/"), name="dispatch")
+class ServiceUpdateView(SuccessMessageMixin, generic.UpdateView):
+    model = Service
+    form_class = service_form.ServiceModelForm
+    template_name = "services/create_service.html"
+    success_message = "The service has been updated successfully."
+
+    def get_success_url(self):
+        return reverse('service_update', kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required(login_url='/user/signin/'), name='dispatch')
+class ServiceDeleteView(SuccessMessageMixin, generic.DeleteView):
+    model = Service
+    success_url = '/services/'
+    success_message = 'The service has been deleted successfully.'
+    template_name = 'common/delete_confirm.html'
