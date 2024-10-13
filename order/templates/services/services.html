@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Service List {% endblock %}
+
+{% block content %}
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">Services</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Slider List</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <div class="row">
+        <div class="col-md-12">
+            {% include 'common/message/success_msg.html' %}
+            <div style="display: flex; justify-content: end" class="mb-3">
+                <a class="btn btn-success btn-sm" href="{% url 'create_service' %}"><i class="mdi mdi-plus"></i></a>
+            </div>
+            {% if services %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered border-success mb-0">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th class="text-center">Image</th>
+                            <th>Created At</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in services %}
+                            <tr>
+                                <td>{{ obj.name }}</td>
+                                <td>{{ obj.price }}</td>
+                                <td>{% if obj.is_active %} Active {% else %} Deactivate {% endif %}</td>
+                                <td class="text-center">
+                                    {% if obj.icon %}
+                                        <img height="30" src="{{ obj.icon.url }}" alt="">
+                                    {% endif %}
+                                </td>
+                                <td>{{ obj.created_at }} </td>
+                                <td class="text-center">
+                                    <a class="btn btn-success btn-sm"
+                                       href=""><i
+                                            class="mdi mdi-pencil"></i></a>
+                                    <a class="btn btn-danger btn-sm"
+                                       href=""><i
+                                            class="mdi mdi-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center">
+                    <p>No service found</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

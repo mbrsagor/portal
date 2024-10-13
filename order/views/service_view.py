@@ -14,3 +14,11 @@ class ServiceCreateView(SuccessMessageMixin, generic.CreateView):
     success_url = '/create-service/'
     template_name = 'services/create_service.html'
     success_message = 'The service has been created successfully.'
+
+
+@method_decorator(login_required(login_url="/user/signin/"), name="dispatch")
+class ServiceListView(generic.ListView):
+    model = Service
+    paginate_by = 10
+    context_object_name = 'services'
+    template_name = 'services/services.html'
