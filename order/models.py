@@ -1,6 +1,8 @@
 from django.db import models
 from user.models import User, Timestamp
 
+from utils.enums import Status
+
 
 class Service(Timestamp):
     name = models.CharField(max_length=200)
@@ -11,3 +13,31 @@ class Service(Timestamp):
 
     def __str__(self):
         return self.name
+
+
+class Workflow(Timestamp):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Order(Timestamp):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orderBy')
+    service = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orderService')
+    work_process = models.ForeignKey(Workflow, on_delete=models.CASCADE, related_name='orderWord')
+    status = models.IntegerField(choices=Status.get_status(), default=Status.PENDING.value)
+    quantity = models.IntegerField(default=1)
+    instruction = models.TextField(default='')
+    download_link = models.URLField()
+
+    def __str__(self):
+        return self.service.name
+    
+    @property
+    def get_user(self):
+        return self.user.name
+
+    @property
+    def total_price(self):
+        return self.quantity * self.service.price
