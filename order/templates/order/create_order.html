@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Create Order {% endblock %}
+
+{% block content %}
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">Create Order</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Create Order</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <div class="row">
+        <div class="col-xl-12 col-md-12">
+            <!-- card -->
+            <div class="card card-h-100">
+                <!-- card body -->
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% include 'common/message/success_msg.html' %}
+                        {% if form.errors %} {% include 'common/message/error_msg.html' %} {% endif %}
+                        {% csrf_token %}
+                        <div id="progrss-wizard" class="twitter-bs-wizard">
+                            <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                <li class="nav-item">
+                                    <a href="#first-step" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                             title="Step one">
+                                            <i class="bx bx-list-ul"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#second-step" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                             title="Step two">
+                                            <i class="bx bx-book-bookmark"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#third-step" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                             title="Step three">
+                                            <i class="bx bx-scan"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- wizard-nav -->
+                            <div id="bar" class="progress mt-4">
+                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"></div>
+                            </div>
+                            <div class="tab-content twitter-bs-wizard-tab-content">
+                                <div class="tab-pane" id="first-step">
+                                    <div class="row mb-2">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="service">Select service</label>
+                                                {{ form.service }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="engine_type">Select delivery time</label>
+                                                {{ form.types }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="quantity">Image quantity</label>
+                                                {{ form.quantity }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="instruction">Instruction</label>
+                                                {{ form.instruction }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="download_link">Download Link</label>
+                                                {{ form.download_link }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="bore_and_stroke">Bore and stroke, mm (in.)</label>
+                                                {{ form.bore_and_stroke }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="compression_ratio">Compression ratio</label>
+                                                {{ form.compression_ratio }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="piston_speed">Piston speed, m/min. (ft./min.)</label>
+                                                {{ form.piston_speed }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary">Next <i
+                                                class="bx bx-chevron-right ms-1"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="second-step">
+                                    <div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="model">Engine Model</label>
+                                                    {{ form.model }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="power_at_rated_rpm">Rated rpm</label>
+                                                    {{ form.power_at_rated_rpm }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="steady_state">Frequency regulation, steady state</label>
+                                                    {{ form.steady_state }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="frequency">Select frequency</label>
+                                                    {{ form.frequency }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="air_cleaner_type_all_models">Air cleaner type, all
+                                                        models</label>
+                                                    {{ form.air_cleaner_type_all_models }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="cylinder_head_material">Cylinder head material</label>
+                                                    {{ form.cylinder_head_material }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="max_power_at_rated_rpm_kwm">Max. power at rated rpm, kWm
+                                                        (BHP)</label>
+                                                    {{ form.max_power_at_rated_rpm_kwm }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="frequency_regulation_steady_state">Frequency regulation,
+                                                        steady state</label>
+                                                    {{ form.frequency_regulation_steady_state }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"><i
+                                                class="bx bx-chevron-left me-1"></i> Previous</a></li>
+                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary">Next
+                                            <i class="bx bx-chevron-right ms-1"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="third-step">
+                                    <div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="crankshaft_material">Crankshaft material</label>
+                                                    {{ form.crankshaft_material }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="governor_type_make_model">Governor: type,
+                                                        make/model</label>
+                                                    {{ form.governor_type_make_model }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="frequency_regulation_no_load_to_full_load">Frequency
+                                                        regulation, no-load to-full load</label>
+                                                    {{ form.frequency_regulation_no_load_to_full_load }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mt-2">
+                                                    <label for="upload">Upload multiple image (Attachment file should be 1MB Max)</label>
+                                                    <input id="upload" type="file" name="image" class="form-control"
+                                                           multiple/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"><i
+                                                class="bx bx-chevron-left me-1"></i> Previous</a></li>
+                                        <li class="next">
+                                            <button name="engine_form" type="submit" class="btn btn-success">
+                                                {% if order.id %} Update {% else %}
+                                                    Create {% endif %} Order
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+{% endblock %}
