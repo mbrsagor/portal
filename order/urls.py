@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import dashboard_view, service_view
+from .views import dashboard_view, service_view, order_view
 
 urlpatterns = [
     # Dashboard
@@ -10,4 +10,6 @@ urlpatterns = [
     path('create-service/', service_view.ServiceCreateView.as_view(), name='create_service'),
     path('service-update/<pk>/', service_view.ServiceUpdateView.as_view(), name='service_update'),
     path('service-delete/<pk>/', service_view.ServiceDeleteView.as_view(), name='service_delete'),
+    # Orders
+    path('create-order/', order_view.OrderCreateView.as_view(), name='create_order'),
 ]

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Service, Workflow, Order
+from .models import *
 
-admin.site.register([Service, Workflow, Order])
+admin.site.register([Service, Workflow, Order, Preference, FileFormate])

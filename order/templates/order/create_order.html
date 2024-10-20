@@ -50,7 +50,7 @@
                                 <li class="nav-item">
                                     <a href="#third-step" class="nav-link" data-toggle="tab">
                                         <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                             title="Step three">
+                                             title="Final Step">
                                             <i class="bx bx-scan"></i>
                                         </div>
                                     </a>
@@ -62,7 +62,15 @@
                             </div>
                             <div class="tab-content twitter-bs-wizard-tab-content">
                                 <div class="tab-pane" id="first-step">
-                                    <div class="row mb-2">
+                                    <div class="row mb-4">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="job_title">Job Title</label>
+                                                {{ form.job_title }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="service">Select service</label>
@@ -72,11 +80,11 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="engine_type">Select delivery time</label>
-                                                {{ form.types }}
+                                                {{ form.work_process }}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="quantity">Image quantity</label>
@@ -85,36 +93,8 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label for="instruction">Instruction</label>
-                                                {{ form.instruction }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="download_link">Download Link</label>
+                                                <label for="download_link">Download link</label>
                                                 {{ form.download_link }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="bore_and_stroke">Bore and stroke, mm (in.)</label>
-                                                {{ form.bore_and_stroke }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="compression_ratio">Compression ratio</label>
-                                                {{ form.compression_ratio }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="piston_speed">Piston speed, m/min. (ft./min.)</label>
-                                                {{ form.piston_speed }}
                                             </div>
                                         </div>
                                     </div>
@@ -124,65 +104,11 @@
                                     </ul>
                                 </div>
                                 <div class="tab-pane" id="second-step">
-                                    <div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="model">Engine Model</label>
-                                                    {{ form.model }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="power_at_rated_rpm">Rated rpm</label>
-                                                    {{ form.power_at_rated_rpm }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="steady_state">Frequency regulation, steady state</label>
-                                                    {{ form.steady_state }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="frequency">Select frequency</label>
-                                                    {{ form.frequency }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="air_cleaner_type_all_models">Air cleaner type, all
-                                                        models</label>
-                                                    {{ form.air_cleaner_type_all_models }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="cylinder_head_material">Cylinder head material</label>
-                                                    {{ form.cylinder_head_material }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="max_power_at_rated_rpm_kwm">Max. power at rated rpm, kWm
-                                                        (BHP)</label>
-                                                    {{ form.max_power_at_rated_rpm_kwm }}
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="frequency_regulation_steady_state">Frequency regulation,
-                                                        steady state</label>
-                                                    {{ form.frequency_regulation_steady_state }}
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="instruction">Instruction</label>
+                                                {{ form.instruction }}
                                             </div>
                                         </div>
                                     </div>
@@ -194,36 +120,17 @@
                                     </ul>
                                 </div>
                                 <div class="tab-pane" id="third-step">
-                                    <div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="crankshaft_material">Crankshaft material</label>
-                                                    {{ form.crankshaft_material }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="governor_type_make_model">Governor: type,
-                                                        make/model</label>
-                                                    {{ form.governor_type_make_model }}
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="service">Select service</label>
+                                                {{ form.service }}
                                             </div>
                                         </div>
-                                        <div class="row mb-2">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="frequency_regulation_no_load_to_full_load">Frequency
-                                                        regulation, no-load to-full load</label>
-                                                    {{ form.frequency_regulation_no_load_to_full_load }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group mt-2">
-                                                    <label for="upload">Upload multiple image (Attachment file should be 1MB Max)</label>
-                                                    <input id="upload" type="file" name="image" class="form-control"
-                                                           multiple/>
-                                                </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="engine_type">Select delivery time</label>
+                                                {{ form.work_process }}
                                             </div>
                                         </div>
                                     </div>

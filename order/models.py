@@ -21,10 +21,29 @@ class Workflow(Timestamp):
     def __str__(self):
         return self.name
 
+class Preference(Timestamp):
+    name = models.CharField(max_length=200)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+
+class FileFormate(Timestamp):
+    name = models.CharField(max_length=200)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Order(Timestamp):
+    job_title = models.CharField(max_length=150)
+    exit_meta_date = models.BooleanField(default=False)
+    preference = models.ManyToManyField(Preference, related_name='orderPreference')
+    file_formate = models.ManyToManyField(FileFormate, related_name='orderFileFormate')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orderBy')
-    service = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orderService')
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='orderService')
     work_process = models.ForeignKey(Workflow, on_delete=models.CASCADE, related_name='orderWord')
     status = models.IntegerField(choices=Status.get_status(), default=Status.PENDING.value)
     quantity = models.IntegerField(default=1)
