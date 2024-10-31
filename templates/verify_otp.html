@@ -1,0 +1,26 @@
+{% extends 'general_base.html' %}
+
+{% block title %} Verify OTP {% endblock %}
+
+{% block content %}
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Verify your OTP</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% include 'common/success_msg.html' %}
+                    {% if form.errors %} {% include 'common/error_msg.html' %} {% endif %}
+                    <div class="form-group">
+                        <label for="otp">Enter OTP:</label>
+                        <input type="text" class="form-control mt-1" id="otp" name="otp" required>
+                    </div>
+                    <button style="background: #1a434e !important; border-color: #1a434e !important" type="submit" class="btn btn-success btn-sm mt-2">Verify</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
