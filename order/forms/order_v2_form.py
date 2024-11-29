@@ -14,3 +14,11 @@ class MyForm(forms.Form):
         required=True
     )
 
+
+
+# Here, this constructor is basically called for remove password2 field
+    def __init__(self, *args, **kwargs):
+        super(SingUpForm, self).__init__(*args, **kwargs)
+        self.fields.pop('password2')
+        self.fields['host'].required = False  # Make the host field optional
+
