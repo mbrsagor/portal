@@ -1,4 +1,4 @@
-# portal
+# Portal web application
 
 > If you want to deploy the application cloud please follow the below instructions:
 
@@ -25,7 +25,7 @@ GRANT ALL PRIVILEGES ON DATABASE portal TO dev;
 
 > Create a Python Virtual Environment & run project
 ```bash
-git clone https://github.com/mbrsagor/portal
+git clone https://github.com/mbrsagor/portal.git
 cd portal
 git checkout develop
 sudo apt install python3-virtualenv
@@ -37,16 +37,24 @@ pip install -r requirements.txt
 
 > Create .env file and paste info from `.sample_env` file.
 ```.dotenv
-SECRET_KEY="django-insecure-pd0p!1mz&@st!t08rkolpav5b!n0%p4&mr4kdy#v2pmlp9m2or"
+# General
 DEBUG=True
 ALLOWED_HOSTS=*
+SECRET_KEY='django-insecure-d$(=a+9n%zseic=!@35rhd35f)$lq%ik(@2w0%n#3(1v5z6oyo'
 
-# Database config
+# DB connection
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=portal
-DB_USERNAME=dev
-DB_PASSWORD=12345
+DB_USERNAME=postgres
+DB_PASSWORD=123456
+
+# SMTP email configuration
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='sagor.hello@gmail.com'
+EMAIL_HOST_PASSWORD='kenccqpwqqjlmbnr'
+EMAIL_USE_TLS=False
 ```
 
 > Migrations and create superuser.
@@ -108,7 +116,7 @@ sudo vim /etc/nginx/sites-available/portal
 server {
     listen 80;
      client_max_body_size 200M;
-    server_name 18.214.100.68;
+    server_name 13.201.81.122;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         root /home/ubuntu/portal;
