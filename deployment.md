@@ -115,8 +115,8 @@ sudo vim /etc/nginx/sites-available/portal
 ```bash
 server {
     listen 80;
-     client_max_body_size 200M;
-    server_name 13.201.81.122;
+    server_name 13.127.32.111;
+    client_max_body_size 200M;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         root /home/ubuntu/portal;
