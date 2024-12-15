@@ -8,6 +8,7 @@ from order.models import Order
 from order.forms.order_form import OrderModelForm
 
 
+# Customer can create new order without creating payment.
 @method_decorator(login_required(login_url="/user/signin/"), name="dispatch")
 class OrderCreateView(SuccessMessageMixin, generic.CreateView):
     model = Order
