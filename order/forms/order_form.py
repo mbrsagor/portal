@@ -3,6 +3,7 @@ from order.models import Order
 
 
 
+# TODO: Customer create order form
 class OrderModelForm(forms.ModelForm):
     class Meta:
         model = Order
