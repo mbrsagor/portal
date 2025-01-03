@@ -8,6 +8,7 @@ from django.core.mail.backends.smtp import EmailBackend as SMTPBackend
 User = get_user_model()
 
 
+# Custom email backend
 class EmailBackend(SMTPBackend):
     @cached_property
     def ssl_context(self):
@@ -22,6 +23,7 @@ class EmailBackend(SMTPBackend):
             return ssl_context
 
 
+# User active sending email
 class EmailPhoneAuthenticationBackend(object):
     def authenticate(self, request, username=None, password=None):
         try:
